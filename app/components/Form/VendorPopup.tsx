@@ -1,4 +1,3 @@
-// VendorPopup.tsx
 import React from "react";
 import {
   Dialog,
@@ -12,7 +11,7 @@ import { TransitionProps } from "@mui/material/transitions";
 
 // Define the transition for bottom-to-top animation
 const Transition = React.forwardRef(function Transition(
-  props: TransitionProps & { children?: React.ReactNode },  // Ensure children is a valid ReactNode
+  props: TransitionProps & { children: React.ReactElement }, // Ensure children is explicitly typed as ReactElement
   ref: React.Ref<unknown>
 ) {
   return <Slide direction="up" ref={ref} {...props} />;

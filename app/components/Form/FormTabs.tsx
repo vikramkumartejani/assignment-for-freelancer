@@ -270,6 +270,7 @@ const SubmissionTable: React.FC<SubmissionTableProps> = ({ data }) => {
                   fontSize: "14px",
                   fontWeight: "600",
                   lineHeight: "20px",
+                  cursor:"pointer"
                 }}
                 onClick={() => handleClickOpen(row.vendorName)} // Open dialog on click
               >
