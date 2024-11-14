@@ -1,0 +1,189 @@
+
+
+
+
+
+
+
+
+<Dialog
+        open={open}
+        onClose={onClose}
+        TransitionComponent={Transition}
+        keepMounted
+        fullWidth
+        maxWidth="xl"
+      >
+        <Box>
+          <DialogTitle
+            style={{ backgroundColor: "#f4f6f8", padding: "20px 24px" }}
+          >
+            <Grid container alignItems="center" justifyContent="space-between">
+              <Typography variant="h6" style={{ fontWeight: 600 }}>
+                {vendorName}
+              </Typography>
+              <Box>
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  size="small"
+                  style={{ marginRight: "8px" }}
+                >
+                  Edit
+                </Button>
+                <Button
+                  variant="outlined"
+                  color="warning"
+                  size="small"
+                  style={{ marginRight: "8px" }}
+                >
+                  Dispute
+                </Button>
+                <Button
+                  variant="contained"
+                  color="error"
+                  size="small"
+                  style={{ marginRight: "8px" }}
+                >
+                  Reject
+                </Button>
+                <Button variant="contained" color="success" size="small">
+                  Approve
+                </Button>
+              </Box>
+            </Grid>
+          </DialogTitle>
+        </Box>
+
+        {/* Accordion Sections */}
+        <DialogContent style={{ padding: "16px 24px" }}>
+          <Accordion style={{ marginBottom: "16px" }}>
+            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+              <Typography variant="subtitle1" style={{ fontWeight: 600 }}>
+                Vendor Information
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <Typography variant="body2" style={{ fontWeight: 500 }}>
+                    Name of Vendor
+                  </Typography>
+                  <Typography variant="body2">123 Industries</Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography variant="body2" style={{ fontWeight: 500 }}>
+                    Category of Products
+                  </Typography>
+                  <Typography variant="body2">Service</Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography variant="body2" style={{ fontWeight: 500 }}>
+                    Email ID
+                  </Typography>
+                  <Typography variant="body2">info@dmacq.com</Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography variant="body2" style={{ fontWeight: 500 }}>
+                    Registered Office Address
+                  </Typography>
+                  <Typography variant="body2">
+                    C 208, Neelkanth Business Park, Nathani Road, Vidyavihar
+                    West, Mumbai, Maharashtra 400086, India
+                  </Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography variant="body2" style={{ fontWeight: 500 }}>
+                    Head Office Address
+                  </Typography>
+                  <Typography variant="body2">
+                    C 208, Neelkanth Business Park, Nathani Road, Vidyavihar
+                    West, Mumbai, Maharashtra 400086, India
+                  </Typography>
+                </Grid>
+              </Grid>
+            </AccordionDetails>
+          </Accordion>
+
+          <Accordion style={{ marginBottom: "16px" }}>
+            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+              <Typography variant="subtitle1" style={{ fontWeight: 600 }}>
+                Key Contacts and Details
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <Typography variant="body2" style={{ fontWeight: 500 }}>
+                    Name of Owner
+                  </Typography>
+                  <Typography variant="body2">SRIKANT KRISHNAN</Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography variant="body2" style={{ fontWeight: 500 }}>
+                    Designation
+                  </Typography>
+                  <Typography variant="body2">Director</Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography variant="body2" style={{ fontWeight: 500 }}>
+                    Email ID
+                  </Typography>
+                  <Typography variant="body2">srinav@gmail.com</Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography variant="body2" style={{ fontWeight: 500 }}>
+                    Phone Number
+                  </Typography>
+                  <Typography variant="body2">+91 9999102950</Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography variant="body2" style={{ fontWeight: 500 }}>
+                    Address
+                  </Typography>
+                  <Typography variant="body2">
+                    611, Hermes Manor 17 Asha Nagar RD No3 Pestom Sagar Opp
+                    Shopper Stop Chembur Mumbai 400089
+                  </Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography variant="body2" style={{ fontWeight: 500 }}>
+                    Website
+                  </Typography>
+                  <Typography variant="body2">
+                    <a
+                      href="https://www.dmacq.com"
+                      target="_blank"
+                      style={{
+                        color: "#0066cc",
+                        textDecoration: "none",
+                        fontWeight: 600,
+                      }}
+                    >
+                      www.dmacq.com
+                    </a>
+                  </Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography variant="body2" style={{ fontWeight: 500 }}>
+                    Sector
+                  </Typography>
+                  <Typography variant="body2">IT</Typography>
+                </Grid>
+              </Grid>
+            </AccordionDetails>
+          </Accordion>
+        </DialogContent>
+
+        {/* Footer Button */}
+        <DialogActions style={{ padding: "16px" }}>
+          <Button
+            onClick={onClose}
+            variant="contained"
+            color="primary"
+            size="small"
+          >
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
