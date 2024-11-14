@@ -13,6 +13,7 @@ import {
   TableHead,
   TableRow,
   Paper,
+  Grid,
   TableSortLabel,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
@@ -160,193 +161,195 @@ const SubmissionTable: React.FC<SubmissionTableProps> = ({ data }) => {
   };
 
   return (
-    <TableContainer component={Paper}>
-      <Table>
-        <TableHead sx={{ backgroundColor: "#F1F5FA" }}>
-          <TableRow>
-            <TableCell
-              sx={{
-                fontFamily: "Noto Sans",
-                fontSize: "13px",
-                fontWeight: 600,
-                lineHeight: "17.71px",
-                color: "#40566D",
-              }}
-            >
-              <TableSortLabel
-                active={orderBy === "vendorName"}
-                direction={orderBy === "vendorName" ? order : "asc"}
-                onClick={() => handleRequestSort("vendorName")}
-              >
-                Vendor Name
-              </TableSortLabel>
-            </TableCell>
-            <TableCell
-              sx={{
-                fontFamily: "Noto Sans",
-                fontSize: "13px",
-                fontWeight: 600,
-                lineHeight: "17.71px",
-                color: "#40566D",
-              }}
-            >
-              <TableSortLabel
-                active={orderBy === "email"}
-                direction={orderBy === "email" ? order : "asc"}
-                onClick={() => handleRequestSort("email")}
-              >
-                Email ID
-              </TableSortLabel>
-            </TableCell>
-            <TableCell
-              sx={{
-                fontFamily: "Noto Sans",
-                fontSize: "13px",
-                fontWeight: 600,
-                lineHeight: "17.71px",
-                color: "#40566D",
-              }}
-            >
-              <TableSortLabel
-                active={orderBy === "ownerName"}
-                direction={orderBy === "ownerName" ? order : "asc"}
-                onClick={() => handleRequestSort("ownerName")}
-              >
-                Name of Owner
-              </TableSortLabel>
-            </TableCell>
-            <TableCell
-              sx={{
-                fontFamily: "Noto Sans",
-                fontSize: "13px",
-                fontWeight: 600,
-                lineHeight: "17.71px",
-                color: "#40566D",
-              }}
-            >
-              Phone Number
-            </TableCell>
-            <TableCell
-              sx={{
-                fontFamily: "Noto Sans",
-                fontSize: "13px",
-                fontWeight: 600,
-                lineHeight: "17.71px",
-                color: "#40566D",
-              }}
-            >
-              City
-            </TableCell>
-            <TableCell
-              sx={{
-                fontFamily: "Noto Sans",
-                fontSize: "13px",
-                fontWeight: 600,
-                lineHeight: "17.71px",
-                color: "#40566D",
-              }}
-            >
-              Pan Card
-            </TableCell>
-            <TableCell
-              sx={{
-                fontFamily: "Noto Sans",
-                fontSize: "13px",
-                fontWeight: 600,
-                lineHeight: "17.71px",
-                color: "#40566D",
-              }}
-            >
-              Aadhar Card
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {stableSort(data, comparator).map((row, index) => (
-            <TableRow key={index}>
+    <Box sx={{ overflowX: "auto", display: "none" }}>
+      <TableContainer component={Paper}>
+        <Table className="overflow-hidden">
+          <TableHead sx={{ backgroundColor: "#F1F5FA" }}>
+            <TableRow>
               <TableCell
                 sx={{
-                  color: "#4838B0",
-                  fontSize: "14px",
-                  fontWeight: "600",
-                  lineHeight: "20px",
-                  cursor:"pointer"
+                  fontFamily: "Noto Sans",
+                  fontSize: { xs: "12px", sm: "13px" }, // Responsive font size
+                  fontWeight: 600,
+                  lineHeight: "17.71px",
+                  color: "#40566D",
                 }}
-                onClick={() => handleClickOpen(row.vendorName)} // Open dialog on click
               >
-                {row.vendorName}
+                <TableSortLabel
+                  active={orderBy === "vendorName"}
+                  direction={orderBy === "vendorName" ? order : "asc"}
+                  onClick={() => handleRequestSort("vendorName")}
+                >
+                  Vendor Name
+                </TableSortLabel>
               </TableCell>
               <TableCell
                 sx={{
-                  color: "#2F4256",
-                  fontSize: "13px",
-                  fontWeight: "500",
+                  fontFamily: "Noto Sans",
+                  fontSize: { xs: "12px", sm: "13px" },
+                  fontWeight: 600,
                   lineHeight: "17.71px",
+                  color: "#40566D",
                 }}
               >
-                {row.email}
+                <TableSortLabel
+                  active={orderBy === "email"}
+                  direction={orderBy === "email" ? order : "asc"}
+                  onClick={() => handleRequestSort("email")}
+                >
+                  Email ID
+                </TableSortLabel>
               </TableCell>
               <TableCell
                 sx={{
-                  color: "#2F4256",
-                  fontSize: "13px",
-                  fontWeight: "500",
+                  fontFamily: "Noto Sans",
+                  fontSize: { xs: "12px", sm: "13px" },
+                  fontWeight: 600,
                   lineHeight: "17.71px",
+                  color: "#40566D",
                 }}
               >
-                {row.ownerName}
+                <TableSortLabel
+                  active={orderBy === "ownerName"}
+                  direction={orderBy === "ownerName" ? order : "asc"}
+                  onClick={() => handleRequestSort("ownerName")}
+                >
+                  Name of Owner
+                </TableSortLabel>
               </TableCell>
               <TableCell
                 sx={{
-                  color: "#2F4256",
-                  fontSize: "13px",
-                  fontWeight: "500",
+                  fontFamily: "Noto Sans",
+                  fontSize: { xs: "12px", sm: "13px" },
+                  fontWeight: 600,
                   lineHeight: "17.71px",
+                  color: "#40566D",
                 }}
               >
-                {row.phoneNumber}
+                Phone Number
               </TableCell>
               <TableCell
                 sx={{
-                  color: "#2F4256",
-                  fontSize: "13px",
-                  fontWeight: "500",
+                  fontFamily: "Noto Sans",
+                  fontSize: { xs: "12px", sm: "13px" },
+                  fontWeight: 600,
                   lineHeight: "17.71px",
+                  color: "#40566D",
                 }}
               >
-                {row.city}
+                City
               </TableCell>
               <TableCell
                 sx={{
-                  color: "#2F4256",
-                  fontSize: "13px",
-                  fontWeight: "500",
+                  fontFamily: "Noto Sans",
+                  fontSize: { xs: "12px", sm: "13px" },
+                  fontWeight: 600,
                   lineHeight: "17.71px",
+                  color: "#40566D",
                 }}
               >
-                {row.panCard}
+                Pan Card
               </TableCell>
               <TableCell
                 sx={{
-                  color: "#2F4256",
-                  fontSize: "13px",
-                  fontWeight: "500",
+                  fontFamily: "Noto Sans",
+                  fontSize: { xs: "12px", sm: "13px" },
+                  fontWeight: 600,
                   lineHeight: "17.71px",
+                  color: "#40566D",
                 }}
               >
-                {row.aadharCard}
+                Aadhar Card
               </TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-      {/* Pass the dialog state and handler to VendorPopup */}
+          </TableHead>
+          <TableBody>
+            {stableSort(data, comparator).map((row, index) => (
+              <TableRow key={index}>
+                <TableCell
+                  sx={{
+                    color: "#4838B0",
+                    fontSize: { xs: "12px", sm: "14px" },
+                    fontWeight: "600",
+                    lineHeight: "20px",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => handleClickOpen(row.vendorName)}
+                >
+                  {row.vendorName}
+                </TableCell>
+                <TableCell
+                  sx={{
+                    color: "#2F4256",
+                    fontSize: { xs: "12px", sm: "13px" },
+                    fontWeight: "500",
+                    lineHeight: "17.71px",
+                  }}
+                >
+                  {row.email}
+                </TableCell>
+                <TableCell
+                  sx={{
+                    color: "#2F4256",
+                    fontSize: { xs: "12px", sm: "13px" },
+                    fontWeight: "500",
+                    lineHeight: "17.71px",
+                  }}
+                >
+                  {row.ownerName}
+                </TableCell>
+                <TableCell
+                  sx={{
+                    color: "#2F4256",
+                    fontSize: { xs: "12px", sm: "13px" },
+                    fontWeight: "500",
+                    lineHeight: "17.71px",
+                  }}
+                >
+                  {row.phoneNumber}
+                </TableCell>
+                <TableCell
+                  sx={{
+                    color: "#2F4256",
+                    fontSize: { xs: "12px", sm: "13px" },
+                    fontWeight: "500",
+                    lineHeight: "17.71px",
+                  }}
+                >
+                  {row.city}
+                </TableCell>
+                <TableCell
+                  sx={{
+                    color: "#2F4256",
+                    fontSize: { xs: "12px", sm: "13px" },
+                    fontWeight: "500",
+                    lineHeight: "17.71px",
+                  }}
+                >
+                  {row.panCard}
+                </TableCell>
+                <TableCell
+                  sx={{
+                    color: "#2F4256",
+                    fontSize: { xs: "12px", sm: "13px" },
+                    fontWeight: "500",
+                    lineHeight: "17.71px",
+                  }}
+                >
+                  {row.aadharCard}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+
       <VendorPopup
         open={openDialog}
         onClose={handleClose}
         vendorName={selectedVendorName}
       />
-    </TableContainer>
+    </Box>
   );
 };
 
@@ -362,14 +365,14 @@ const TabContent: React.FC<TabContentProps> = ({ data }) => (
       justifyContent="start"
       mb={3}
       mt={3}
-      sx={{ gap: "12px" }}
+      sx={{ gap: "12px", flexWrap: "wrap" }}
     >
       <TextField
         placeholder="Search"
         variant="outlined"
         size="small"
         sx={{
-          width: "309px",
+          width: { xs: '100%', sm: '100%', md: '309px' },
           "& .MuiOutlinedInput-root": {
             borderRadius: "8px",
             height: "36px",
@@ -385,68 +388,76 @@ const TabContent: React.FC<TabContentProps> = ({ data }) => (
           startAdornment: <SearchIcon sx={{ mr: 1, color: "gray" }} />,
         }}
       />
+      <Box sx={{display:'flex', alignItems:'center', gap:'12px', flexWrap:"wrap"}}>
+        <Button
+          variant="outlined"
+          startIcon={<FilterAltOutlinedIcon />}
+          className="sm:w-fit w-full"
+          sx={{
+            borderColor: "#6C849D2E",
+            width:'100%',
+            color: "#40566D",
+            borderRadius: "8px",
+            paddingX: 2,
+            textTransform: "none",
+            fontWeight: "500",
+            fontSize: "14px",
+          }}
+        >
+          Filter
+        </Button>
 
-      <Button
-        variant="outlined"
-        startIcon={<FilterAltOutlinedIcon />}
-        sx={{
-          borderColor: "#6C849D2E",
-          color: "#40566D",
-          borderRadius: "8px",
-          paddingX: 2,
-          textTransform: "none",
-          fontWeight: "500",
-          fontSize: "14px",
-        }}
-      >
-        Filter
-      </Button>
+        <Button
+          variant="outlined"
+          startIcon={<DateRangeOutlinedIcon />}
+          className="sm:w-fit w-full"
+          sx={{
+            borderColor: "#6C849D2E",
+            color: "#40566D",
+            borderRadius: "8px",
+            paddingX: 2,
+            textTransform: "none",
+            fontWeight: "500",
+            fontSize: "14px",
+          }}
+        >
+          Select Date Range
+        </Button>
 
-      <Button
-        variant="outlined"
-        startIcon={<DateRangeOutlinedIcon />}
-        sx={{
-          borderColor: "#6C849D2E",
-          color: "#40566D",
-          borderRadius: "8px",
-          paddingX: 2,
-          textTransform: "none",
-          fontWeight: "500",
-          fontSize: "14px",
-        }}
-      >
-        Select Date Range
-      </Button>
-      <Button
-        variant="outlined"
-        startIcon={<IosShareOutlinedIcon />}
-        sx={{
-          borderColor: "#6C849D2E",
-          color: "#40566D",
-          borderRadius: "8px",
-          paddingX: 2,
-          textTransform: "none",
-          fontWeight: "500",
-          fontSize: "14px",
-        }}
-      >
-        Export
-      </Button>
-      <Button
-        variant="outlined"
-        startIcon={<SettingsOutlinedIcon />}
-        sx={{
-          borderColor: "#6C849D2E",
-          color: "#40566D",
-          borderRadius: "8px",
-          paddingX: 2,
-          textTransform: "none",
-          fontWeight: "500",
-          fontSize: "14px",
-        }}
-      >
-        Customize
-      </Button>
+        <Button
+          variant="outlined"
+          startIcon={<IosShareOutlinedIcon />}
+          className="sm:w-fit w-full"
+          sx={{
+            borderColor: "#6C849D2E",
+            color: "#40566D",
+            borderRadius: "8px",
+            paddingX: 2,
+            textTransform: "none",
+            fontWeight: "500",
+            fontSize: "14px",
+          }}
+        >
+          Export
+        </Button>
+
+        <Button
+          variant="outlined"
+          startIcon={<SettingsOutlinedIcon />}
+          className="sm:w-fit w-full"
+          sx={{
+            borderColor: "#6C849D2E",
+            color: "#40566D",
+            borderRadius: "8px",
+            paddingX: 2,
+            textTransform: "none",
+            fontWeight: "500",
+            fontSize: "14px",
+          }}
+        >
+          Customize
+        </Button>
+      </Box>
     </Box>
     <SubmissionTable data={data} />
   </Box>
@@ -460,28 +471,43 @@ const FormTabs: React.FC = () => {
   };
 
   return (
-    <Box sx={{ width: "100%", marginTop: "20px" }}>
-      <Tabs
-        value={activeTab}
-        onChange={handleChange}
-        aria-label="submission tabs"
-        indicatorColor="primary"
-        sx={{
-          color: "#58728D",
-          borderBottom: "1px solid #167B592E",
-          "& .MuiTab-root": {
-            textTransform: "none",
-            fontWeight: "bold",
-            fontSize: "14px",
-          },
-          "& .MuiTabs-indicator": { height: "2px" },
-        }}
-      >
-        <Tab label="Pending Submission" />
-        <Tab label="Dispute Submission" />
-        <Tab label="Rejected Submission" />
-        <Tab label="Approved Submission" />
-      </Tabs>
+    <Box sx={{ width: "100%", marginTop: "20px", overflowX: "auto" }}>
+     <Tabs
+  value={activeTab}
+  onChange={handleChange}
+  aria-label="submission tabs"
+  sx={{
+    color: "#58728D",
+    overflowX: "auto",
+    borderBottom: "1px solid #167B592E",
+    "& .MuiTabs-flexContainer": {
+      flexWrap: { xs: "wrap", sm: "nowrap" }, // wrap tabs on small screens
+      justifyContent: { xs: "space-between", sm: "flex-start" }, // ensure space on mobile
+    },
+    "& .MuiTab-root": {
+      textTransform: "none",
+      fontWeight: "500",
+      fontSize: { xs: "12px", sm: "14px" }, // reduce font size for small screens
+      padding: { xs: "6px 8px", sm: "8px 16px" }, // adjust padding for mobile
+      minWidth: { xs: "auto", sm: "120px" },
+      whiteSpace: "nowrap",
+      borderBottom: "2px solid transparent",
+      "&.Mui-selected": {
+        borderBottomColor: "#5D4AD4",
+        fontWeight: "700",
+      },
+    },
+    "& .MuiTabs-indicator": {
+      display: "none", // hide the indicator for a cleaner design
+    },
+  }}
+>
+  <Tab label="Pending Submission" />
+  <Tab label="Dispute Submission" />
+  <Tab label="Rejected Submission" />
+  <Tab label="Approved Submission" />
+</Tabs>
+
 
       <Box sx={{ mt: 2 }}>
         {activeTab === 0 && <TabContent data={submissionData} />}
