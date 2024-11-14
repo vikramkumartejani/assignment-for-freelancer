@@ -161,7 +161,7 @@ const SubmissionTable: React.FC<SubmissionTableProps> = ({ data }) => {
   };
 
   return (
-    <Box sx={{ overflowX: "auto", display: "none" }}>
+    <Box sx={{ overflowX: "auto"}}>
       <TableContainer component={Paper}>
         <Table className="overflow-hidden">
           <TableHead sx={{ backgroundColor: "#F1F5FA" }}>
@@ -372,7 +372,7 @@ const TabContent: React.FC<TabContentProps> = ({ data }) => (
         variant="outlined"
         size="small"
         sx={{
-          width: { xs: '100%', sm: '100%', md: '309px' },
+          width: { xs: "100%", sm: "100%", md: "309px" },
           "& .MuiOutlinedInput-root": {
             borderRadius: "8px",
             height: "36px",
@@ -388,14 +388,21 @@ const TabContent: React.FC<TabContentProps> = ({ data }) => (
           startAdornment: <SearchIcon sx={{ mr: 1, color: "gray" }} />,
         }}
       />
-      <Box sx={{display:'flex', alignItems:'center', gap:'12px', flexWrap:"wrap"}}>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          gap: "12px",
+          flexWrap: "wrap",
+        }}
+      >
         <Button
           variant="outlined"
           startIcon={<FilterAltOutlinedIcon />}
           className="sm:w-fit w-full"
           sx={{
             borderColor: "#6C849D2E",
-            width:'100%',
+            width: "100%",
             color: "#40566D",
             borderRadius: "8px",
             paddingX: 2,
@@ -472,42 +479,41 @@ const FormTabs: React.FC = () => {
 
   return (
     <Box sx={{ width: "100%", marginTop: "20px", overflowX: "auto" }}>
-     <Tabs
-  value={activeTab}
-  onChange={handleChange}
-  aria-label="submission tabs"
-  sx={{
-    color: "#58728D",
-    overflowX: "auto",
-    borderBottom: "1px solid #167B592E",
-    "& .MuiTabs-flexContainer": {
-      flexWrap: { xs: "wrap", sm: "nowrap" }, // wrap tabs on small screens
-      justifyContent: { xs: "space-between", sm: "flex-start" }, // ensure space on mobile
-    },
-    "& .MuiTab-root": {
-      textTransform: "none",
-      fontWeight: "500",
-      fontSize: { xs: "12px", sm: "14px" }, // reduce font size for small screens
-      padding: { xs: "6px 8px", sm: "8px 16px" }, // adjust padding for mobile
-      minWidth: { xs: "auto", sm: "120px" },
-      whiteSpace: "nowrap",
-      borderBottom: "2px solid transparent",
-      "&.Mui-selected": {
-        borderBottomColor: "#5D4AD4",
-        fontWeight: "700",
-      },
-    },
-    "& .MuiTabs-indicator": {
-      display: "none", // hide the indicator for a cleaner design
-    },
-  }}
->
-  <Tab label="Pending Submission" />
-  <Tab label="Dispute Submission" />
-  <Tab label="Rejected Submission" />
-  <Tab label="Approved Submission" />
-</Tabs>
-
+      <Tabs
+        value={activeTab}
+        onChange={handleChange}
+        aria-label="submission tabs"
+        sx={{
+          color: "#58728D",
+          overflowX: "auto",
+          borderBottom: "1px solid #167B592E",
+          "& .MuiTabs-flexContainer": {
+            flexWrap: { xs: "wrap", sm: "nowrap" }, // wrap tabs on small screens
+            justifyContent: { xs: "space-between", sm: "flex-start" }, // ensure space on mobile
+          },
+          "& .MuiTab-root": {
+            textTransform: "none",
+            fontWeight: "500",
+            fontSize: { xs: "12px", sm: "14px" }, // reduce font size for small screens
+            padding: { xs: "6px 8px", sm: "8px 16px" }, // adjust padding for mobile
+            minWidth: { xs: "auto", sm: "120px" },
+            whiteSpace: "nowrap",
+            borderBottom: "2px solid transparent",
+            "&.Mui-selected": {
+              borderBottomColor: "#5D4AD4",
+              fontWeight: "700",
+            },
+          },
+          "& .MuiTabs-indicator": {
+            display: "none", // hide the indicator for a cleaner design
+          },
+        }}
+      >
+        <Tab label="Pending Submission" />
+        <Tab label="Dispute Submission" />
+        <Tab label="Rejected Submission" />
+        <Tab label="Approved Submission" />
+      </Tabs>
 
       <Box sx={{ mt: 2 }}>
         {activeTab === 0 && <TabContent data={submissionData} />}
