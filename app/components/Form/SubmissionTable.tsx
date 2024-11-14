@@ -66,7 +66,7 @@ const SubmissionTable: React.FC<SubmissionTableProps> = ({ data }) => {
   };
 
   return (
-    <Box sx={{ overflowX: "auto" }} width={"100%"}>
+    <Box sx={{ overflowX: "auto" }}>
       <TableContainer component={Paper} className="overflow-x-auto">
         <Table className="overflow-hidden">
           <TableHead sx={{ backgroundColor: "#F1F5FA" }}>
