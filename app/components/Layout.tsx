@@ -25,7 +25,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
       {/* Body Section (Sidebar + Content) */}
       <Box sx={{ display: "flex", flex: 1, pt: 8 }}>
-        {/* Sidebar */}
         <Drawer
           variant="permanent"
           sx={{
@@ -34,14 +33,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             [`& .MuiDrawer-paper`]: {
               width: drawerWidth,
               boxSizing: "border-box",
-              mt: 8, // Offset for header height
+              mt: 8,
             },
+            display: { lg: "block", xs: "none" },
           }}
         >
           <Sidebar />
         </Drawer>
 
-        {/* Main Content */}
         <Box
           component="main"
           sx={{
