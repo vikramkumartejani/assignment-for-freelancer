@@ -1,357 +1,14 @@
 "use client";
 import React, { useState } from "react";
-import {
-  Box,
-  Tabs,
-  Tab,
-  Button,
-  TextField,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  Grid,
-  TableSortLabel,
-} from "@mui/material";
+import { Box, Tabs, Tab, Button, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
 import DateRangeOutlinedIcon from "@mui/icons-material/DateRangeOutlined";
 import IosShareOutlinedIcon from "@mui/icons-material/IosShareOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
-import { TransitionProps } from "@mui/material/transitions";
-import VendorPopup from "./VendorPopup";
-
-interface SubmissionData {
-  vendorName: string;
-  email: string;
-  ownerName: string;
-  phoneNumber: string;
-  city: string;
-  panCard: string;
-  aadharCard: string;
-}
-
-const submissionData: SubmissionData[] = [
-  {
-    vendorName: "dMACQ Software",
-    email: "info@dmacq.com",
-    ownerName: "SRIKANT KRISHNAN",
-    phoneNumber: "+91 9999102950",
-    city: "Mumbai",
-    panCard: "GHFPP098GF",
-    aadharCard: "9853 2565 4569",
-  },
-  {
-    vendorName: "XYZ Corporation",
-    email: "xyzcorporation@corp.in",
-    ownerName: "Nilesh Bhosale",
-    phoneNumber: "+91 9999102950",
-    city: "Bangalore",
-    panCard: "Passport",
-    aadharCard: "9853 2565 4569",
-  },
-  {
-    vendorName: "123 Industries",
-    email: "Industries@itr.in",
-    ownerName: "Nayan Parab",
-    phoneNumber: "+91 9999102950",
-    city: "Delhi",
-    panCard: "ABCD1234",
-    aadharCard: "C4567-09876-12345",
-  },
-  {
-    vendorName: "123 Industries",
-    email: "support@product.io",
-    ownerName: "Kavita Patel",
-    phoneNumber: "+91 9999102950",
-    city: "Kolkata",
-    panCard: "ZXCV5678",
-    aadharCard: "C4567-09876-12345",
-  },
-  {
-    vendorName: "Tech Solutions Ltd.",
-    email: "sales@enterprise.biz",
-    ownerName: "Rahul Singh",
-    phoneNumber: "+91 9999102950",
-    city: "Hyderabad",
-    panCard: "Library Card",
-    aadharCard: "9853 2565 4569",
-  },
-  {
-    vendorName: "Global Innovations",
-    email: "contact@startup.co",
-    ownerName: "Pooja Shah",
-    phoneNumber: "+91 9999102950",
-    city: "Pune",
-    panCard: "QWERTY123",
-    aadharCard: "123-45-6789",
-  },
-  {
-    vendorName: "Sunset Enterprises",
-    email: "partnerships@tech.org",
-    ownerName: "Meera Joshi",
-    phoneNumber: "+91 9999102950",
-    city: "Jaipur",
-    panCard: "ASDFG678",
-    aadharCard: "78901234",
-  },
-  {
-    vendorName: "Bright Ideas Inc.",
-    email: "clients@consulting.info",
-    ownerName: "Arjun Gupta",
-    phoneNumber: "+91 9999102950",
-    city: "Surat",
-    panCard: "Employee ID",
-    aadharCard: "78901234",
-  },
-];
-
-interface SubmissionTableProps {
-  data: SubmissionData[];
-}
-
-const SubmissionTable: React.FC<SubmissionTableProps> = ({ data }) => {
-  const [order, setOrder] = useState<"asc" | "desc">("asc");
-  const [orderBy, setOrderBy] = useState<keyof SubmissionData>("vendorName");
-
-  const [openDialog, setOpenDialog] = useState<boolean>(false);
-  const [selectedVendorName, setSelectedVendorName] = useState<string>("");
-
-  const handleClickOpen = (vendorName: string) => {
-    setSelectedVendorName(vendorName);
-    setOpenDialog(true);
-  };
-
-  const handleClose = () => {
-    setOpenDialog(false);
-  };
-
-  const handleRequestSort = (property: keyof SubmissionData) => {
-    const isAsc = orderBy === property && order === "asc";
-    setOrder(isAsc ? "desc" : "asc");
-    setOrderBy(property);
-  };
-
-  const stableSort = (
-    array: SubmissionData[],
-    comparator: (a: SubmissionData, b: SubmissionData) => number
-  ) => {
-    const stabilizedArray = array.map(
-      (el, index) => [el, index] as [SubmissionData, number]
-    );
-    stabilizedArray.sort((a, b) => {
-      const order = comparator(a[0], b[0]);
-      if (order !== 0) return order;
-      return a[1] - b[1];
-    });
-    return stabilizedArray.map((el) => el[0]);
-  };
-
-  const comparator = (a: SubmissionData, b: SubmissionData) => {
-    if (a[orderBy] < b[orderBy]) {
-      return order === "asc" ? -1 : 1;
-    }
-    if (a[orderBy] > b[orderBy]) {
-      return order === "asc" ? 1 : -1;
-    }
-    return 0;
-  };
-
-  return (
-    <Box sx={{ overflowX: "auto"}}>
-      <TableContainer component={Paper}>
-        <Table className="overflow-hidden">
-          <TableHead sx={{ backgroundColor: "#F1F5FA" }}>
-            <TableRow>
-              <TableCell
-                sx={{
-                  fontFamily: "Noto Sans",
-                  fontSize: { xs: "12px", sm: "13px" }, // Responsive font size
-                  fontWeight: 600,
-                  lineHeight: "17.71px",
-                  color: "#40566D",
-                }}
-              >
-                <TableSortLabel
-                  active={orderBy === "vendorName"}
-                  direction={orderBy === "vendorName" ? order : "asc"}
-                  onClick={() => handleRequestSort("vendorName")}
-                >
-                  Vendor Name
-                </TableSortLabel>
-              </TableCell>
-              <TableCell
-                sx={{
-                  fontFamily: "Noto Sans",
-                  fontSize: { xs: "12px", sm: "13px" },
-                  fontWeight: 600,
-                  lineHeight: "17.71px",
-                  color: "#40566D",
-                }}
-              >
-                <TableSortLabel
-                  active={orderBy === "email"}
-                  direction={orderBy === "email" ? order : "asc"}
-                  onClick={() => handleRequestSort("email")}
-                >
-                  Email ID
-                </TableSortLabel>
-              </TableCell>
-              <TableCell
-                sx={{
-                  fontFamily: "Noto Sans",
-                  fontSize: { xs: "12px", sm: "13px" },
-                  fontWeight: 600,
-                  lineHeight: "17.71px",
-                  color: "#40566D",
-                }}
-              >
-                <TableSortLabel
-                  active={orderBy === "ownerName"}
-                  direction={orderBy === "ownerName" ? order : "asc"}
-                  onClick={() => handleRequestSort("ownerName")}
-                >
-                  Name of Owner
-                </TableSortLabel>
-              </TableCell>
-              <TableCell
-                sx={{
-                  fontFamily: "Noto Sans",
-                  fontSize: { xs: "12px", sm: "13px" },
-                  fontWeight: 600,
-                  lineHeight: "17.71px",
-                  color: "#40566D",
-                }}
-              >
-                Phone Number
-              </TableCell>
-              <TableCell
-                sx={{
-                  fontFamily: "Noto Sans",
-                  fontSize: { xs: "12px", sm: "13px" },
-                  fontWeight: 600,
-                  lineHeight: "17.71px",
-                  color: "#40566D",
-                }}
-              >
-                City
-              </TableCell>
-              <TableCell
-                sx={{
-                  fontFamily: "Noto Sans",
-                  fontSize: { xs: "12px", sm: "13px" },
-                  fontWeight: 600,
-                  lineHeight: "17.71px",
-                  color: "#40566D",
-                }}
-              >
-                Pan Card
-              </TableCell>
-              <TableCell
-                sx={{
-                  fontFamily: "Noto Sans",
-                  fontSize: { xs: "12px", sm: "13px" },
-                  fontWeight: 600,
-                  lineHeight: "17.71px",
-                  color: "#40566D",
-                }}
-              >
-                Aadhar Card
-              </TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {stableSort(data, comparator).map((row, index) => (
-              <TableRow key={index}>
-                <TableCell
-                  sx={{
-                    color: "#4838B0",
-                    fontSize: { xs: "12px", sm: "14px" },
-                    fontWeight: "600",
-                    lineHeight: "20px",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => handleClickOpen(row.vendorName)}
-                >
-                  {row.vendorName}
-                </TableCell>
-                <TableCell
-                  sx={{
-                    color: "#2F4256",
-                    fontSize: { xs: "12px", sm: "13px" },
-                    fontWeight: "500",
-                    lineHeight: "17.71px",
-                  }}
-                >
-                  {row.email}
-                </TableCell>
-                <TableCell
-                  sx={{
-                    color: "#2F4256",
-                    fontSize: { xs: "12px", sm: "13px" },
-                    fontWeight: "500",
-                    lineHeight: "17.71px",
-                  }}
-                >
-                  {row.ownerName}
-                </TableCell>
-                <TableCell
-                  sx={{
-                    color: "#2F4256",
-                    fontSize: { xs: "12px", sm: "13px" },
-                    fontWeight: "500",
-                    lineHeight: "17.71px",
-                  }}
-                >
-                  {row.phoneNumber}
-                </TableCell>
-                <TableCell
-                  sx={{
-                    color: "#2F4256",
-                    fontSize: { xs: "12px", sm: "13px" },
-                    fontWeight: "500",
-                    lineHeight: "17.71px",
-                  }}
-                >
-                  {row.city}
-                </TableCell>
-                <TableCell
-                  sx={{
-                    color: "#2F4256",
-                    fontSize: { xs: "12px", sm: "13px" },
-                    fontWeight: "500",
-                    lineHeight: "17.71px",
-                  }}
-                >
-                  {row.panCard}
-                </TableCell>
-                <TableCell
-                  sx={{
-                    color: "#2F4256",
-                    fontSize: { xs: "12px", sm: "13px" },
-                    fontWeight: "500",
-                    lineHeight: "17.71px",
-                  }}
-                >
-                  {row.aadharCard}
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-
-      <VendorPopup
-        open={openDialog}
-        onClose={handleClose}
-        vendorName={selectedVendorName}
-      />
-    </Box>
-  );
-};
+import SubmissionTable from "./SubmissionTable";
+import { SubmissionData } from "./TableData";
+import { submissionData } from "./TableData";
 
 interface TabContentProps {
   data: SubmissionData[];
@@ -394,15 +51,15 @@ const TabContent: React.FC<TabContentProps> = ({ data }) => (
           alignItems: "center",
           gap: "12px",
           flexWrap: "wrap",
+          width: "100%", // Ensure Box takes full width
         }}
       >
         <Button
           variant="outlined"
           startIcon={<FilterAltOutlinedIcon />}
-          className="sm:w-fit w-full"
           sx={{
             borderColor: "#6C849D2E",
-            width: "100%",
+            width: { xs: "100%", sm: "auto" }, // Full width on xs, fit content on sm and above
             color: "#40566D",
             borderRadius: "8px",
             paddingX: 2,
@@ -417,9 +74,9 @@ const TabContent: React.FC<TabContentProps> = ({ data }) => (
         <Button
           variant="outlined"
           startIcon={<DateRangeOutlinedIcon />}
-          className="sm:w-fit w-full"
           sx={{
             borderColor: "#6C849D2E",
+            width: { xs: "100%", sm: "auto" }, // Full width on xs, fit content on sm and above
             color: "#40566D",
             borderRadius: "8px",
             paddingX: 2,
@@ -434,9 +91,9 @@ const TabContent: React.FC<TabContentProps> = ({ data }) => (
         <Button
           variant="outlined"
           startIcon={<IosShareOutlinedIcon />}
-          className="sm:w-fit w-full"
           sx={{
             borderColor: "#6C849D2E",
+            width: { xs: "100%", sm: "auto" }, // Full width on xs, fit content on sm and above
             color: "#40566D",
             borderRadius: "8px",
             paddingX: 2,
@@ -451,9 +108,9 @@ const TabContent: React.FC<TabContentProps> = ({ data }) => (
         <Button
           variant="outlined"
           startIcon={<SettingsOutlinedIcon />}
-          className="sm:w-fit w-full"
           sx={{
             borderColor: "#6C849D2E",
+            width: { xs: "100%", sm: "auto" }, // Full width on xs, fit content on sm and above
             color: "#40566D",
             borderRadius: "8px",
             paddingX: 2,

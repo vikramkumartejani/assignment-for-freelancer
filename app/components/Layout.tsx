@@ -46,6 +46,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           sx={{
             flexGrow: 1,
             bgcolor: "background.default",
+            width: "100%",
           }}
           style={{ padding: "20px" }}
         >
