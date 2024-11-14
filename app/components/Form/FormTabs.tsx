@@ -20,6 +20,8 @@ import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
 import DateRangeOutlinedIcon from "@mui/icons-material/DateRangeOutlined";
 import IosShareOutlinedIcon from "@mui/icons-material/IosShareOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import { TransitionProps } from "@mui/material/transitions";
+import VendorPopup from "./VendorPopup";
 
 interface SubmissionData {
   vendorName: string;
@@ -112,7 +114,19 @@ interface SubmissionTableProps {
 
 const SubmissionTable: React.FC<SubmissionTableProps> = ({ data }) => {
   const [order, setOrder] = useState<"asc" | "desc">("asc");
-  const [orderBy, setOrderBy] = useState<keyof SubmissionData>("vendorName"); // Fix here
+  const [orderBy, setOrderBy] = useState<keyof SubmissionData>("vendorName");
+
+  const [openDialog, setOpenDialog] = useState<boolean>(false);
+  const [selectedVendorName, setSelectedVendorName] = useState<string>("");
+
+  const handleClickOpen = (vendorName: string) => {
+    setSelectedVendorName(vendorName);
+    setOpenDialog(true);
+  };
+
+  const handleClose = () => {
+    setOpenDialog(false);
+  };
 
   const handleRequestSort = (property: keyof SubmissionData) => {
     const isAsc = orderBy === property && order === "asc";
@@ -167,7 +181,6 @@ const SubmissionTable: React.FC<SubmissionTableProps> = ({ data }) => {
                 Vendor Name
               </TableSortLabel>
             </TableCell>
-
             <TableCell
               sx={{
                 fontFamily: "Noto Sans",
@@ -258,6 +271,7 @@ const SubmissionTable: React.FC<SubmissionTableProps> = ({ data }) => {
                   fontWeight: "600",
                   lineHeight: "20px",
                 }}
+                onClick={() => handleClickOpen(row.vendorName)} // Open dialog on click
               >
                 {row.vendorName}
               </TableCell>
@@ -325,6 +339,12 @@ const SubmissionTable: React.FC<SubmissionTableProps> = ({ data }) => {
           ))}
         </TableBody>
       </Table>
+      {/* Pass the dialog state and handler to VendorPopup */}
+      <VendorPopup
+        open={openDialog}
+        onClose={handleClose}
+        vendorName={selectedVendorName}
+      />
     </TableContainer>
   );
 };
