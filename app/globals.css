@@ -59,3 +59,24 @@ body {
   color: white !important;
   padding: 8px 12px;
 }
+
+
+/* Table */
+.css-169941l-MuiTableCell-root {
+  padding: 16px;
+}
+
+.css-1xoao6p-MuiTableCell-root {
+  padding: 16px;
+}
+
+
+@media screen and (max-width: 640px) {
+  .css-169941l-MuiTableCell-root {
+    padding: 10px 14px;
+  }
+  .css-1xoao6p-MuiTableCell-root {
+    padding: 10px 14px;
+  }
+}
+ 

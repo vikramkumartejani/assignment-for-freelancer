@@ -99,7 +99,15 @@ const VendorPopup: React.FC<VendorPopupProps> = ({
         </Box>
 
         {/* Inputs */}
-        <DialogContent style={{ padding: "16px 24px" }}>
+        <DialogContent
+          sx={{
+            padding: {
+              xs: "14px 12px",
+              sm: "14px 20px",
+              md: "16px 24px",
+            },
+          }}
+        >
           <Typography
             variant="h6"
             sx={{ fontSize: "13px", fontWeight: "500", color: "#2F4256" }}
@@ -167,9 +175,31 @@ const VendorPopup: React.FC<VendorPopupProps> = ({
         </DialogContent>
 
         <DialogActions
-          style={{ padding: "12px 24px", backgroundColor: "#F1F5FA", borderTop:'1px solid #6C849D2E' }}
+          style={{
+            backgroundColor: "#F1F5FA",
+            borderTop: "1px solid #6C849D2E",
+          }}
+          sx={{
+            padding: {
+              xs: "14px 12px",
+              sm: "14px 20px",
+              md: "16px 24px",
+            },
+          }}
         >
-          <Button sx={{backgroundColor:'white',textTransform:'capitalize', padding:'0px 16px', height:"40px", border:"2px solid #5D4AD43D", color:"#4838B0", fontSize:'14px', fontWeight:'600', borderRadius:'8px'}}>
+          <Button
+            sx={{
+              backgroundColor: "white",
+              textTransform: "capitalize",
+              padding: "0px 16px",
+              height: "40px",
+              border: "2px solid #5D4AD43D",
+              color: "#4838B0",
+              fontSize: "14px",
+              fontWeight: "600",
+              borderRadius: "8px",
+            }}
+          >
             Close
           </Button>
           <Button

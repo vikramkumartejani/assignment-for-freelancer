@@ -25,23 +25,7 @@ const Header = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
 
-  const [open, setOpen] = useState<boolean>(false);
-
-  // Handle opening the dialog
-  const handleClickOpen = (): void => {
-    setOpen(true);
-  };
-
-  // Handle closing the dialog
-  const handleClose = (): void => {
-    setOpen(false);
-  };
-
-  // Handle raising the dispute
-  const handleRaiseDispute = (): void => {
-    console.log("Dispute Raised");
-    setOpen(false); // Close the dialog after raising the dispute
-  };
+ 
 
   return (
     <AppBar position="fixed" sx={{ backgroundColor: "#192839", zIndex: 1100 }}>
@@ -108,8 +92,7 @@ const Header = () => {
 
         <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <div>
-            {/* Profile image that opens the dialog */}
-            <Box onClick={handleClickOpen}>
+            <Box >
               <Image
                 src="/assets/profile.svg"
                 alt="Logo"
@@ -118,12 +101,7 @@ const Header = () => {
               />
             </Box>
 
-            {/* RaiseDisputePopup component */}
-            <RaiseDisputePopup
-        open={open}
-        handleClose={handleClose}
-        handleRaiseDispute={handleRaiseDispute}
-      />
+           
           </div>
 
           {isMobile && (

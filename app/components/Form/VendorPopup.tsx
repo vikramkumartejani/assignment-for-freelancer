@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import {
   Button,
   Dialog,
@@ -20,6 +20,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { TransitionProps } from "@mui/material/transitions";
 import { Search } from "@mui/icons-material";
 import { SubmissionData } from "./TableData";
+import RaiseDisputePopup from "./RaiseDisputePopup";
 
 interface VendorPopupProps {
   open: boolean;
@@ -35,10 +36,28 @@ const Transition = React.forwardRef(function Transition(
 });
 
 const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
+  const [openS, setOpen] = useState<boolean>(false);
+
+  // Handle opening the dialog
+  const handleClickOpen = (): void => {
+    setOpen(true);
+  };
+
+  // Handle closing the dialog
+  const handleClose = (): void => {
+    setOpen(false);
+  };
+
+  // Handle raising the dispute
+  const handleRaiseDispute = (): void => {
+    console.log("Dispute Raised");
+    setOpen(false); // Close the dialog after raising the dispute
+  };
   return (
     <Dialog
       fullScreen
       open={open}
+      className="mt-[80px]"
       onClose={onClose}
       TransitionComponent={Transition}
     >
@@ -63,8 +82,9 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
           >
             {vendorData?.vendorName}
           </Typography>
+          {/* Filters Btns */}
           <Box display="flex" alignItems="center" gap={"12px"}>
-            <TextField
+            {/* <TextField
               variant="outlined"
               placeholder="Search"
               size="small"
@@ -90,9 +110,9 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
                   borderColor: "#E0E3EB",
                 },
               }}
-            />
+            /> */}
 
-            <Button
+            {/* <Button
               variant="outlined"
               className="edit-btn"
               sx={{
@@ -102,18 +122,29 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
                 justifyContent: "center",
               }}
             >
-              <img src="/assets/note_alt.png" alt="" />
+              <img src="/assets/edit.svg" alt="" />
               Edit
-            </Button>
-            <Button variant="contained" color="warning">
-              Dispute
-            </Button>
-            <Button variant="contained" color="error">
+            </Button> */}
+            <div>
+              <Button
+                onClick={handleClickOpen}
+                variant="contained"
+                color="warning"
+              >
+                Dispute
+              </Button>
+              <RaiseDisputePopup
+                open={openS}
+                handleClose={handleClose}
+                handleRaiseDispute={handleRaiseDispute}
+              />
+            </div>
+            {/* <Button variant="contained" color="error">
               Reject
             </Button>
             <Button variant="contained" color="success">
               Approve
-            </Button>
+            </Button> */}
             <IconButton edge="end" onClick={onClose}>
               <CloseIcon sx={{ color: "#40566D" }} />
             </IconButton>
@@ -133,7 +164,7 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
               xs: "15px !important",
               sm: "16px !important",
               md: "24px !important",
-            }, // Add !important to ensure the styles are applied
+            },
           }}
         >
           {/* Vendor Information Section */}
@@ -141,26 +172,26 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
             defaultExpanded
             elevation={0}
             sx={{
-              paddingX: "0 !important",
+              padding: "0px",
+              borderBottom: "1px solid #6C849D2E",
             }}
           >
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               sx={{
-                paddingX: "0 !important",
+                padding: "0px",
               }}
             >
               <Typography
                 variant="subtitle1"
-                sx={{ fontWeight: "700", color: "#2F4256", fontSize: "14px" }}
+                sx={{ fontWeight: "700", color: "#58728D", fontSize: "14px" }}
               >
                 Vendor Information
               </Typography>
             </AccordionSummary>
             <AccordionDetails
               sx={{
-                paddingX: "0 !important",
-                paddingY: 0,
+                padding: "0px",
               }}
             >
               <Box
@@ -287,28 +318,29 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
           {/* Key Contacts and Details Section */}
           <Accordion
             sx={{
-              paddingX: "0",
+              padding: "0px",
+              borderBottom: "1px solid #6C849D2E",
             }}
             defaultExpanded
             elevation={0}
           >
             <AccordionSummary
               sx={{
-                paddingX: "0",
+                padding: "0px",
               }}
               expandIcon={<ExpandMoreIcon />}
             >
               <Typography
                 variant="subtitle1"
-                sx={{ fontWeight: "700", color: "#2F4256", fontSize: "14px" }}
+                sx={{ fontWeight: "700", color: "#58728D", fontSize: "14px" }}
               >
                 Key Contacts and Details
               </Typography>
             </AccordionSummary>
             <AccordionDetails
               sx={{
-                paddingX: "0",
-                paddingY: "0",
+                paddingX: "0px",
+                paddingY: "0px",
               }}
             >
               <Box
@@ -507,29 +539,26 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
           {/* Additional Sections (Expandable) */}
           <Accordion
             sx={{
-              paddingX: "0",
+              padding: "0px",
+              borderBottom: "1px solid #6C849D2E",
             }}
             defaultExpanded
             elevation={0}
           >
             <AccordionSummary
               sx={{
-                paddingX: "0",
+                padding: "0px",
               }}
               expandIcon={<ExpandMoreIcon />}
             >
               <Typography
                 variant="subtitle1"
-                sx={{ fontWeight: "700", color: "#2F4256", fontSize: "14px" }}
+                sx={{ fontWeight: "700", color: "#58728D", fontSize: "14px" }}
               >
                 Organizational Information
               </Typography>
             </AccordionSummary>
-            <AccordionDetails
-              sx={{
-                paddingX: "0",
-              }}
-            >
+            <AccordionDetails sx={{ padding: "0px 0px 10px 0px" }}>
               <Typography>
                 Additional organizational information goes here...
               </Typography>
@@ -545,22 +574,18 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
           >
             <AccordionSummary
               sx={{
-                paddingX: "0",
+                padding: "0px",
               }}
               expandIcon={<ExpandMoreIcon />}
             >
               <Typography
                 variant="subtitle1"
-                sx={{ fontWeight: "700", color: "#2F4256", fontSize: "14px" }}
+                sx={{ fontWeight: "700", color: "#58728D", fontSize: "14px" }}
               >
                 Key Contacts and Details
               </Typography>
             </AccordionSummary>
-            <AccordionDetails
-              sx={{
-                paddingX: "0",
-              }}
-            >
+            <AccordionDetails sx={{ padding: "0px 0px 30px 0px" }}>
               <Typography>More key contacts and details go here...</Typography>
             </AccordionDetails>
           </Accordion>
