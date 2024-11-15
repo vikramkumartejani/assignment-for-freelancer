@@ -23,10 +23,12 @@ const SubmissionTable: React.FC<SubmissionTableProps> = ({ data }) => {
   const [orderBy, setOrderBy] = useState<keyof SubmissionData>("vendorName");
 
   const [openDialog, setOpenDialog] = useState<boolean>(false);
-  const [selectedVendorName, setSelectedVendorName] = useState<string>("");
+  const [selectedVendor, setSelectedVendor] = useState<SubmissionData | null>(
+    null
+  );
 
-  const handleClickOpen = (vendorName: string) => {
-    setSelectedVendorName(vendorName);
+  const handleClickOpen = (vendorData: SubmissionData) => {
+    setSelectedVendor(vendorData);
     setOpenDialog(true);
   };
 
@@ -179,7 +181,7 @@ const SubmissionTable: React.FC<SubmissionTableProps> = ({ data }) => {
                     lineHeight: "20px",
                     cursor: "pointer",
                   }}
-                  onClick={() => handleClickOpen(row.vendorName)}
+                  onClick={() => handleClickOpen(row)}
                 >
                   {row.vendorName}
                 </TableCell>
@@ -252,7 +254,7 @@ const SubmissionTable: React.FC<SubmissionTableProps> = ({ data }) => {
       <VendorPopup
         open={openDialog}
         onClose={handleClose}
-        vendorName={selectedVendorName}
+        vendorData={selectedVendor}
       />
     </Box>
   );
