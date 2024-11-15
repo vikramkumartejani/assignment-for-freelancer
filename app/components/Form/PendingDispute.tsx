@@ -32,7 +32,7 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
 }) => {
   // Create a reference for the drawer
   const drawerRef = useRef<HTMLDivElement | null>(null);
-  const [expanded, setExpanded] = useState<string | false>(false);
+  const [expanded, setExpanded] = useState<string | false>("panel1");
 
   const handleAccordionChange =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
