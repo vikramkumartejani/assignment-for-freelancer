@@ -231,6 +231,7 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
             },
           }}
         >
+          {/* Buttons */}
           <div className="mt-5 flex lg:hidden flex-wrap gap-[14px] ">
             <TextField
               variant="outlined"
@@ -353,6 +354,7 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
               Approve
             </Button>
           </div>
+
           {/* Vendor Information Section */}
           <Accordion
             defaultExpanded
@@ -776,6 +778,8 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
             </AccordionDetails>
           </Accordion>
         </Box>
+
+        {/* SideBar */}
         <Box
           sx={{
             paddingX: "8px",
@@ -785,8 +789,8 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
             minWidth: "40px !important",
           }}
         >
-          <img src="/assets/preview.png" alt="" className="mb-[16px]" />
-          <img src="/assets/history.png" alt="" />
+          <img src="/assets/preview.svg" alt="" className="mb-[16px]" />
+          <img src="/assets/history.svg" alt="" />
         </Box>
       </Box>
     </Dialog>
