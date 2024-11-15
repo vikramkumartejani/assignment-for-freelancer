@@ -167,7 +167,7 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
                     >
                       <Avatar
                         sx={{ width: "24px", height: "24px" }}
-                        src="/path/to/user1.jpg"
+                        src="/assets/profile-img1.png"
                         alt="User 1"
                       />
                     </ListItemAvatar>
@@ -197,7 +197,7 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
                     >
                       <Avatar
                         sx={{ width: "24px", height: "24px" }}
-                        src="/path/to/user2.jpg"
+                        src="/assets/profile-img2.png"
                         alt="User 2"
                       />
                     </ListItemAvatar>
