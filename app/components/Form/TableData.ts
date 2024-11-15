@@ -1,4 +1,3 @@
-// Exporting the interface
 export interface SubmissionData {
   vendorName: string;
   email: string;
@@ -9,7 +8,6 @@ export interface SubmissionData {
   aadharCard: string;
 }
 
-// Exporting the data array
 export const submissionData: SubmissionData[] = [
   {
     vendorName: "dMACQ Software",

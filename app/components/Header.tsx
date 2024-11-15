@@ -7,9 +7,6 @@ import {
   Toolbar,
   Typography,
   Drawer,
-  List,
-  ListItem,
-  ListItemText,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
@@ -17,6 +14,7 @@ import Image from "next/image";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
+import RaiseDisputePopup from "./Form/RaiseDisputePopup";
 
 const Header = () => {
   const theme = useTheme();
@@ -25,6 +23,24 @@ const Header = () => {
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
+  };
+
+  const [open, setOpen] = useState<boolean>(false);
+
+  // Handle opening the dialog
+  const handleClickOpen = (): void => {
+    setOpen(true);
+  };
+
+  // Handle closing the dialog
+  const handleClose = (): void => {
+    setOpen(false);
+  };
+
+  // Handle raising the dispute
+  const handleRaiseDispute = (): void => {
+    console.log("Dispute Raised");
+    setOpen(false); // Close the dialog after raising the dispute
   };
 
   return (
@@ -91,14 +107,25 @@ const Header = () => {
         </Box>
 
         <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <Box>
-            <Image
-              src="/assets/profile.svg"
-              alt="Logo"
-              width={45}
-              height={40}
-            />
-          </Box>
+          <div>
+            {/* Profile image that opens the dialog */}
+            <Box onClick={handleClickOpen}>
+              <Image
+                src="/assets/profile.svg"
+                alt="Logo"
+                width={45}
+                height={40}
+              />
+            </Box>
+
+            {/* RaiseDisputePopup component */}
+            <RaiseDisputePopup
+        open={open}
+        handleClose={handleClose}
+        handleRaiseDispute={handleRaiseDispute}
+      />
+          </div>
+
           {isMobile && (
             <IconButton
               onClick={toggleDrawer}
