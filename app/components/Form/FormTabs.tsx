@@ -22,9 +22,19 @@ const TabContent: React.FC<TabContentProps> = ({ data }) => (
       justifyContent="start"
       mb={3}
       mt={3}
-      sx={{ gap: "12px", flexWrap: "wrap" }}
+      sx={{display:'flex', gap: "12px", flexWrap: "wrap" }}
     >
-      <TextField
+      
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          gap: "12px",
+          flexWrap: "wrap",
+          width: "100%",
+        }}
+      >
+        <TextField
         placeholder="Search"
         variant="outlined"
         size="small"
@@ -45,21 +55,12 @@ const TabContent: React.FC<TabContentProps> = ({ data }) => (
           startAdornment: <SearchIcon sx={{ mr: 1, color: "gray" }} />,
         }}
       />
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          gap: "12px",
-          flexWrap: "wrap",
-          width: "100%", 
-        }}
-      >
         <Button
           variant="outlined"
           startIcon={<FilterAltOutlinedIcon />}
           sx={{
             borderColor: "#6C849D2E",
-            width: { xs: "100%", sm: "auto" }, 
+            width: { xs: "100%", sm: "auto" },
             color: "#40566D",
             borderRadius: "8px",
             paddingX: 2,
@@ -76,7 +77,7 @@ const TabContent: React.FC<TabContentProps> = ({ data }) => (
           startIcon={<DateRangeOutlinedIcon />}
           sx={{
             borderColor: "#6C849D2E",
-            width: { xs: "100%", sm: "auto" }, 
+            width: { xs: "100%", sm: "auto" },
             color: "#40566D",
             borderRadius: "8px",
             paddingX: 2,
@@ -93,7 +94,7 @@ const TabContent: React.FC<TabContentProps> = ({ data }) => (
           startIcon={<IosShareOutlinedIcon />}
           sx={{
             borderColor: "#6C849D2E",
-            width: { xs: "100%", sm: "auto" }, 
+            width: { xs: "100%", sm: "auto" },
             color: "#40566D",
             borderRadius: "8px",
             paddingX: 2,
@@ -110,7 +111,7 @@ const TabContent: React.FC<TabContentProps> = ({ data }) => (
           startIcon={<SettingsOutlinedIcon />}
           sx={{
             borderColor: "#6C849D2E",
-            width: { xs: "100%", sm: "auto" },  
+            width: { xs: "100%", sm: "auto" },
             color: "#40566D",
             borderRadius: "8px",
             paddingX: 2,
@@ -145,14 +146,14 @@ const FormTabs: React.FC = () => {
           overflowX: "auto",
           borderBottom: "1px solid #167B592E",
           "& .MuiTabs-flexContainer": {
-            flexWrap: { xs: "wrap", sm: "nowrap" },  
-            justifyContent: { xs: "space-between", sm: "flex-start" },  
+            flexWrap: { xs: "wrap", sm: "nowrap" },
+            justifyContent: { xs: "space-between", sm: "flex-start" },
           },
           "& .MuiTab-root": {
             textTransform: "none",
             fontWeight: "500",
-            fontSize: { xs: "12px", sm: "14px" }, 
-            padding: { xs: "6px 8px", sm: "8px 16px" },  
+            fontSize: { xs: "12px", sm: "14px" },
+            padding: { xs: "6px 8px", sm: "8px 16px" },
             minWidth: { xs: "auto", sm: "120px" },
             whiteSpace: "nowrap",
             borderBottom: "2px solid transparent",
