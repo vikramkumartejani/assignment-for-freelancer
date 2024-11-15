@@ -60,7 +60,6 @@ body {
   padding: 8px 12px;
 }
 
-
 /* Table */
 .css-169941l-MuiTableCell-root {
   padding: 16px;
@@ -70,7 +69,6 @@ body {
   padding: 16px;
 }
 
-
 @media screen and (max-width: 640px) {
   .css-169941l-MuiTableCell-root {
     padding: 10px 14px;
@@ -79,4 +77,11 @@ body {
     padding: 10px 14px;
   }
 }
- 
+
+.MuiAccordionSummary-content {
+  margin: 0;
+}
+
+.css-5u9rme-MuiButtonBase-root-MuiAccordionSummary-root.Mui-expanded {
+  min-height: auto;
+}

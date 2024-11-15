@@ -817,6 +817,7 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
             <Box
               sx={{
                 padding: "8px",
+                cursor: "pointer",
                 background: selectedIcon === "sms" ? "#EAE7FA" : "transparent",
                 borderLeft:
                   selectedIcon === "sms" ? "1px solid #5D4AD4" : "none",
@@ -831,6 +832,7 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
               sx={{
                 padding: "7px",
                 marginY: "10px",
+                cursor: "pointer",
                 background:
                   selectedIcon === "preview" ? "#EAE7FA" : "transparent",
                 borderLeft:
@@ -847,6 +849,7 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
             <Box
               sx={{
                 padding: "8px",
+                cursor: "pointer",
                 background:
                   selectedIcon === "history" ? "#EAE7FA" : "transparent",
                 borderLeft:
