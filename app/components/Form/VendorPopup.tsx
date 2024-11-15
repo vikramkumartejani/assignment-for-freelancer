@@ -21,6 +21,7 @@ import { TransitionProps } from "@mui/material/transitions";
 import { Search } from "@mui/icons-material";
 import { SubmissionData } from "./TableData";
 import RaiseDisputePopup from "./RaiseDisputePopup";
+import Image from "next/image";
 
 interface VendorPopupProps {
   open: boolean;
@@ -82,69 +83,132 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
           >
             {vendorData?.vendorName}
           </Typography>
+
           {/* Filters Btns */}
           <Box display="flex" alignItems="center" gap={"12px"}>
-            {/* <TextField
-              variant="outlined"
-              placeholder="Search"
-              size="small"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <Search style={{ color: "#6E8192" }} />
-                  </InputAdornment>
-                ),
-                style: {
-                  paddingLeft: "10px",
-                  paddingRight: "10px",
-                  height: "40px",
-                  borderRadius: "8px",
-                },
-              }}
-              sx={{
-                width: "300px",
-                "& .MuiOutlinedInput-root": {
-                  borderRadius: "20px",
-                },
-                "& fieldset": {
-                  borderColor: "#E0E3EB",
-                },
-              }}
-            /> */}
-
-            {/* <Button
-              variant="outlined"
-              className="edit-btn"
-              sx={{
-                gap: "4px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <img src="/assets/edit.svg" alt="" />
-              Edit
-            </Button> */}
-            <div>
-              <Button
-                onClick={handleClickOpen}
-                variant="contained"
-                color="warning"
-              >
-                Dispute
-              </Button>
-              <RaiseDisputePopup
-                open={openS}
-                handleClose={handleClose}
-                handleRaiseDispute={handleRaiseDispute}
+            <div className="hidden lg:flex gap-[12px] ">
+              <TextField
+                variant="outlined"
+                placeholder="Search"
+                size="small"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Search style={{ color: "#6E8192" }} />
+                    </InputAdornment>
+                  ),
+                  style: {
+                    paddingLeft: "10px",
+                    paddingRight: "10px",
+                    height: "32px",
+                    borderRadius: "8px",
+                    borderColor: "#000",
+                  },
+                }}
+                sx={{
+                  width: "300px",
+                  "& .MuiOutlinedInput-root": {
+                    borderRadius: "20px",
+                  },
+                  "& fieldset": {
+                    borderColor: "#6C849D2E",
+                  },
+                }}
               />
+              <Button
+                variant="contained"
+                sx={{
+                  backgroundColor: "#F7F4FF",
+                  color: "#4838B0",
+                  width: "77px",
+                  height: "32px",
+                  textTransform: "capitalize",
+                  padding: "10px 12px",
+                  borderRadius: "4px",
+                  fontSize: "14px",
+                  fontWeight: 600,
+                  "&:hover": {
+                    backgroundColor: "#F7F5FF",
+                  },
+                }}
+              >
+                <Image
+                  src="/assets/edit.svg"
+                  alt="edit"
+                  width={20}
+                  height={20}
+                  className="mr-1 -mt-[1px]"
+                />
+                Edit
+              </Button>
+              <div>
+                <Button
+                  onClick={handleClickOpen}
+                  variant="contained"
+                  sx={{
+                    backgroundColor: "#E9690C",
+                    color: "white",
+                    width: "77px",
+                    height: "32px",
+                    textTransform: "capitalize",
+                    padding: "10px 12px",
+                    borderRadius: "4px",
+                    fontSize: "14px",
+                    fontWeight: 600,
+                    "&:hover": {
+                      backgroundColor: "#d25a08",
+                    },
+                  }}
+                >
+                  Dispute
+                </Button>
+
+                <RaiseDisputePopup
+                  open={openS}
+                  handleClose={handleClose}
+                  handleRaiseDispute={handleRaiseDispute}
+                />
+              </div>
+              <Button
+                variant="contained"
+                sx={{
+                  backgroundColor: "#D44A4A",
+                  color: "white",
+                  width: "77px",
+                  height: "32px",
+                  textTransform: "capitalize",
+                  padding: "10px 12px",
+                  borderRadius: "4px",
+                  fontSize: "14px",
+                  fontWeight: 600,
+                  "&:hover": {
+                    backgroundColor: "#D44A2A",
+                  },
+                }}
+              >
+                Reject
+              </Button>
+              <Button
+                variant="contained"
+                sx={{
+                  backgroundColor: "#167B59",
+                  color: "white",
+                  width: "77px",
+                  height: "32px",
+                  textTransform: "capitalize",
+                  padding: "10px 12px",
+                  borderRadius: "4px",
+                  fontSize: "14px",
+                  fontWeight: 600,
+                  "&:hover": {
+                    backgroundColor: "#167B79",
+                  },
+                }}
+              >
+                Approve
+              </Button>
             </div>
-            {/* <Button variant="contained" color="error">
-              Reject
-            </Button>
-            <Button variant="contained" color="success">
-              Approve
-            </Button> */}
+
             <IconButton edge="end" onClick={onClose}>
               <CloseIcon sx={{ color: "#40566D" }} />
             </IconButton>
@@ -167,6 +231,128 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
             },
           }}
         >
+          <div className="mt-5 flex lg:hidden flex-wrap gap-[14px] ">
+            <TextField
+              variant="outlined"
+              placeholder="Search"
+              size="small"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Search style={{ color: "#6E8192" }} />
+                  </InputAdornment>
+                ),
+                style: {
+                  paddingLeft: "10px",
+                  paddingRight: "10px",
+                  height: "32px",
+                  borderRadius: "8px",
+                  borderColor: "#000",
+                },
+              }}
+              sx={{
+                width: "100%",
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: "20px",
+                },
+                "& fieldset": {
+                  borderColor: "#6C849D2E",
+                },
+              }}
+            />
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: "#F7F4FF",
+                color: "#4838B0",
+                width: "77px",
+                height: "32px",
+                textTransform: "capitalize",
+                padding: "10px 12px",
+                borderRadius: "4px",
+                fontSize: "14px",
+                fontWeight: 600,
+                "&:hover": {
+                  backgroundColor: "#F7F5FF",
+                },
+              }}
+            >
+              <Image
+                src="/assets/edit.svg"
+                alt="edit"
+                width={20}
+                height={20}
+                className="mr-1 -mt-[1px]"
+              />
+              Edit
+            </Button>
+            <div>
+              <Button
+                onClick={handleClickOpen}
+                variant="contained"
+                sx={{
+                  backgroundColor: "#E9690C",
+                  color: "white",
+                  width: "77px",
+                  height: "32px",
+                  textTransform: "capitalize",
+                  padding: "10px 12px",
+                  borderRadius: "4px",
+                  fontSize: "14px",
+                  fontWeight: 600,
+                  "&:hover": {
+                    backgroundColor: "#d25a08",
+                  },
+                }}
+              >
+                Dispute
+              </Button>
+
+              <RaiseDisputePopup
+                open={openS}
+                handleClose={handleClose}
+                handleRaiseDispute={handleRaiseDispute}
+              />
+            </div>
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: "#D44A4A",
+                color: "white",
+                width: "77px",
+                height: "32px",
+                textTransform: "capitalize",
+                padding: "10px 12px",
+                borderRadius: "4px",
+                fontSize: "14px",
+                fontWeight: 600,
+                "&:hover": {
+                  backgroundColor: "#D44A2A",
+                },
+              }}
+            >
+              Reject
+            </Button>
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: "#167B59",
+                color: "white",
+                width: "77px",
+                height: "32px",
+                textTransform: "capitalize",
+                padding: "10px 12px",
+                borderRadius: "4px",
+                fontSize: "14px",
+                fontWeight: 600,
+                "&:hover": {
+                  backgroundColor: "#167B79",
+                },
+              }}
+            >
+              Approve
+            </Button>
+          </div>
           {/* Vendor Information Section */}
           <Accordion
             defaultExpanded

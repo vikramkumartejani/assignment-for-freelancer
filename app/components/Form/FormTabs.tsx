@@ -51,7 +51,7 @@ const TabContent: React.FC<TabContentProps> = ({ data }) => (
           alignItems: "center",
           gap: "12px",
           flexWrap: "wrap",
-          width: "100%", // Ensure Box takes full width
+          width: "100%", 
         }}
       >
         <Button
@@ -59,7 +59,7 @@ const TabContent: React.FC<TabContentProps> = ({ data }) => (
           startIcon={<FilterAltOutlinedIcon />}
           sx={{
             borderColor: "#6C849D2E",
-            width: { xs: "100%", sm: "auto" }, // Full width on xs, fit content on sm and above
+            width: { xs: "100%", sm: "auto" }, 
             color: "#40566D",
             borderRadius: "8px",
             paddingX: 2,
@@ -76,7 +76,7 @@ const TabContent: React.FC<TabContentProps> = ({ data }) => (
           startIcon={<DateRangeOutlinedIcon />}
           sx={{
             borderColor: "#6C849D2E",
-            width: { xs: "100%", sm: "auto" }, // Full width on xs, fit content on sm and above
+            width: { xs: "100%", sm: "auto" }, 
             color: "#40566D",
             borderRadius: "8px",
             paddingX: 2,
@@ -93,7 +93,7 @@ const TabContent: React.FC<TabContentProps> = ({ data }) => (
           startIcon={<IosShareOutlinedIcon />}
           sx={{
             borderColor: "#6C849D2E",
-            width: { xs: "100%", sm: "auto" }, // Full width on xs, fit content on sm and above
+            width: { xs: "100%", sm: "auto" }, 
             color: "#40566D",
             borderRadius: "8px",
             paddingX: 2,
@@ -110,7 +110,7 @@ const TabContent: React.FC<TabContentProps> = ({ data }) => (
           startIcon={<SettingsOutlinedIcon />}
           sx={{
             borderColor: "#6C849D2E",
-            width: { xs: "100%", sm: "auto" }, // Full width on xs, fit content on sm and above
+            width: { xs: "100%", sm: "auto" },  
             color: "#40566D",
             borderRadius: "8px",
             paddingX: 2,
@@ -145,14 +145,14 @@ const FormTabs: React.FC = () => {
           overflowX: "auto",
           borderBottom: "1px solid #167B592E",
           "& .MuiTabs-flexContainer": {
-            flexWrap: { xs: "wrap", sm: "nowrap" }, // wrap tabs on small screens
-            justifyContent: { xs: "space-between", sm: "flex-start" }, // ensure space on mobile
+            flexWrap: { xs: "wrap", sm: "nowrap" },  
+            justifyContent: { xs: "space-between", sm: "flex-start" },  
           },
           "& .MuiTab-root": {
             textTransform: "none",
             fontWeight: "500",
-            fontSize: { xs: "12px", sm: "14px" }, // reduce font size for small screens
-            padding: { xs: "6px 8px", sm: "8px 16px" }, // adjust padding for mobile
+            fontSize: { xs: "12px", sm: "14px" }, 
+            padding: { xs: "6px 8px", sm: "8px 16px" },  
             minWidth: { xs: "auto", sm: "120px" },
             whiteSpace: "nowrap",
             borderBottom: "2px solid transparent",
