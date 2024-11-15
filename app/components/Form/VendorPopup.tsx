@@ -22,12 +22,18 @@ import { Search } from "@mui/icons-material";
 import { SubmissionData } from "./TableData";
 import RaiseDisputePopup from "./RaiseDisputePopup";
 import Image from "next/image";
+import SmsOutlinedIcon from "@mui/icons-material/SmsOutlined";
+import PreviewOutlinedIcon from "@mui/icons-material/PreviewOutlined";
+import HistoryOutlinedIcon from "@mui/icons-material/HistoryOutlined";
+import PendingDisput from "./PendingDispute";
 
 interface VendorPopupProps {
   open: boolean;
   onClose: () => void;
   vendorData: SubmissionData | null;
 }
+
+type IconType = "sms" | "preview" | "history" | null;
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & { children: React.ReactElement },
@@ -38,6 +44,21 @@ const Transition = React.forwardRef(function Transition(
 
 const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
   const [openS, setOpen] = useState<boolean>(false);
+  const [selectedIcon, setSelectedIcon] = useState<IconType>(null);
+  const [isBoxVisible, setIsBoxVisible] = useState(false);
+
+  const handleIconClick = (icon: IconType) => {
+    setSelectedIcon(icon);
+    if (icon === "sms") {
+      setIsBoxVisible(true); // Show the drawer when 'sms' is clicked
+    } else {
+      setIsBoxVisible(false); // Hide the drawer if another icon is clicked
+    }
+  };
+
+  const handleCloseDrawer = () => {
+    setIsBoxVisible(false); // Close the drawer
+  };
 
   // Handle opening the dialog
   const handleClickOpen = (): void => {
@@ -220,6 +241,7 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
       <Box
         sx={{
           display: "flex",
+          position: "relative",
         }}
       >
         <Box
@@ -779,18 +801,66 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
           </Accordion>
         </Box>
 
-        {/* SideBar */}
-        <Box
-          sx={{
-            paddingX: "8px",
-            paddingY: "16px",
-            background: "#F1F5FA",
-            width: "40px !important",
-            minWidth: "40px !important",
-          }}
-        >
-          <img src="/assets/preview.svg" alt="" className="mb-[16px]" />
-          <img src="/assets/history.svg" alt="" />
+        <Box sx={{ display: "flex" }}>
+          {/* Conditional Box on the right side */}
+          <PendingDisput isVisible={isBoxVisible} onClose={handleCloseDrawer} />
+          {/* SideBar */}
+          <Box
+            sx={{
+              paddingY: "16px",
+              background: "#F1F5FA",
+              width: "40px",
+              minWidth: "40px",
+              zIndex: "2",
+            }}
+          >
+            <Box
+              sx={{
+                padding: "8px",
+                background: selectedIcon === "sms" ? "#EAE7FA" : "transparent",
+                borderLeft:
+                  selectedIcon === "sms" ? "1px solid #5D4AD4" : "none",
+              }}
+              onClick={() => handleIconClick("sms")}
+            >
+              <SmsOutlinedIcon
+                sx={{ color: selectedIcon === "sms" ? "#5D4AD4" : "#58728D" }}
+              />
+            </Box>
+            <Box
+              sx={{
+                padding: "7px",
+                marginY: "10px",
+                background:
+                  selectedIcon === "preview" ? "#EAE7FA" : "transparent",
+                borderLeft:
+                  selectedIcon === "preview" ? "1px solid #5D4AD4" : "none",
+              }}
+              onClick={() => handleIconClick("preview")}
+            >
+              <PreviewOutlinedIcon
+                sx={{
+                  color: selectedIcon === "preview" ? "#5D4AD4" : "#58728D",
+                }}
+              />
+            </Box>
+            <Box
+              sx={{
+                padding: "8px",
+                background:
+                  selectedIcon === "history" ? "#EAE7FA" : "transparent",
+                borderLeft:
+                  selectedIcon === "history" ? "1px solid #5D4AD4" : "none",
+              }}
+              onClick={() => handleIconClick("history")}
+            >
+              <HistoryOutlinedIcon
+                sx={{
+                  color: selectedIcon === "history" ? "#5D4AD4" : "#58728D",
+                }}
+              />
+            </Box>
+          </Box>
         </Box>
       </Box>
     </Dialog>
