@@ -96,6 +96,17 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
           <Accordion
             expanded={expanded === "panel1"}
             onChange={handleAccordionChange("panel1")}
+            elevation={0}
+            sx={{
+              padding: "0px",
+              borderBottom: "1px solid #6C849D2E",
+              minHeight: "auto", // For the Accordion itself
+              "&.Mui-expanded": {
+                minHeight: "auto", // Ensures no fixed height when expanded
+                marginTop: 0,
+                marginBottom: "12px",
+              },
+            }}
           >
             <AccordionSummary
               sx={{
@@ -105,6 +116,13 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
                 justifyContent: "space-between", // Aligns text and checkmark icon
                 alignItems: "center", // Centers items vertically
                 borderBottom: "1px solid #6C849D2E",
+                minHeight: "auto", // For the Accordion itself
+                "&.Mui-expanded": {
+                  minHeight: "auto", // Ensures no fixed height when expanded
+                },
+                "& .MuiAccordionSummary-content": {
+                  margin: "0", // Fixes content alignment when expanded
+                },
               }}
               expandIcon={
                 <ExpandMoreIcon
@@ -310,16 +328,33 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
               key={index}
               expanded={expanded === `panel${index + 2}`}
               onChange={handleAccordionChange(`panel${index + 2}`)}
+              elevation={0}
+              sx={{
+                padding: "0px",
+                borderBottom: "1px solid #6C849D2E",
+                minHeight: "auto", // For the Accordion itself
+                "&.Mui-expanded": {
+                  minHeight: "auto", // Ensures no fixed height when expanded
+                  marginTop: 0,
+                  marginBottom: "12px",
+                },
+              }}
             >
               <AccordionSummary
                 sx={{
                   margin: "0 !important",
                   padding: "12px",
-                  minHeight: "auto",
                   flexDirection: "row-reverse", // Places expand icon on the left
                   justifyContent: "space-between", // Aligns text and checkmark icon
                   alignItems: "center", // Centers items vertically
                   borderBottom: "1px solid #6C849D2E",
+                  minHeight: "auto", // For the Accordion itself
+                  "&.Mui-expanded": {
+                    minHeight: "auto", // Ensures no fixed height when expanded
+                  },
+                  "& .MuiAccordionSummary-content": {
+                    margin: "0", // Fixes content alignment when expanded
+                  },
                 }}
                 expandIcon={
                   <ExpandMoreIcon

@@ -77,11 +77,3 @@ body {
     padding: 10px 14px;
   }
 }
-
-.MuiAccordionSummary-content {
-  margin: 0;
-}
-
-.css-5u9rme-MuiButtonBase-root-MuiAccordionSummary-root.Mui-expanded {
-  min-height: auto;
-}

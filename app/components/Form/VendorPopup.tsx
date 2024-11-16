@@ -115,7 +115,7 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
-                      <Search style={{ color: "#6E8192" }} />
+                      <Search style={{ color: "#40566D" }} />
                     </InputAdornment>
                   ),
                   style: {
@@ -124,6 +124,7 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
                     height: "32px",
                     borderRadius: "8px",
                     borderColor: "#000",
+                    color: "#768EA7",
                   },
                 }}
                 sx={{
@@ -176,8 +177,16 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
                     borderRadius: "4px",
                     fontSize: "14px",
                     fontWeight: 600,
+                    boxShadow: "none !important", // Forcefully disable shadow
                     "&:hover": {
                       backgroundColor: "#d25a08",
+                      boxShadow: "none !important", // Ensure no hover shadow
+                    },
+                    "&:focus": {
+                      boxShadow: "none !important", // Remove focus shadow
+                    },
+                    "&:active": {
+                      boxShadow: "none !important", // Remove active shadow
                     },
                   }}
                 >
@@ -202,8 +211,16 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
                   borderRadius: "4px",
                   fontSize: "14px",
                   fontWeight: 600,
+                  boxShadow: "none !important", // Forcefully disable shadow
                   "&:hover": {
                     backgroundColor: "#D44A2A",
+                    boxShadow: "none !important", // Ensure no hover shadow
+                  },
+                  "&:focus": {
+                    boxShadow: "none !important", // Remove focus shadow
+                  },
+                  "&:active": {
+                    boxShadow: "none !important", // Remove active shadow
                   },
                 }}
               >
@@ -221,8 +238,16 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
                   borderRadius: "4px",
                   fontSize: "14px",
                   fontWeight: 600,
+                  boxShadow: "none !important", // Forcefully disable shadow
                   "&:hover": {
                     backgroundColor: "#167B79",
+                    boxShadow: "none !important", // Ensure no hover shadow
+                  },
+                  "&:focus": {
+                    boxShadow: "none !important", // Remove focus shadow
+                  },
+                  "&:active": {
+                    boxShadow: "none !important", // Remove active shadow
                   },
                 }}
               >
@@ -254,7 +279,7 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
           }}
         >
           {/* Buttons */}
-          <div className="mt-5 flex lg:hidden flex-wrap gap-[14px] ">
+          <div className="mt-5 flex lg:hidden flex-wrap gap-[14px] pb-3">
             <TextField
               variant="outlined"
               placeholder="Search"
@@ -262,7 +287,7 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <Search style={{ color: "#6E8192" }} />
+                    <Search style={{ color: "#40566D" }} />
                   </InputAdornment>
                 ),
                 style: {
@@ -271,6 +296,7 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
                   height: "32px",
                   borderRadius: "8px",
                   borderColor: "#000",
+                  color: "#768EA7",
                 },
               }}
               sx={{
@@ -323,8 +349,16 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
                   borderRadius: "4px",
                   fontSize: "14px",
                   fontWeight: 600,
+                  boxShadow: "none !important", // Forcefully disable shadow
                   "&:hover": {
                     backgroundColor: "#d25a08",
+                    boxShadow: "none !important", // Ensure no hover shadow
+                  },
+                  "&:focus": {
+                    boxShadow: "none !important", // Remove focus shadow
+                  },
+                  "&:active": {
+                    boxShadow: "none !important", // Remove active shadow
                   },
                 }}
               >
@@ -349,8 +383,16 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
                 borderRadius: "4px",
                 fontSize: "14px",
                 fontWeight: 600,
+                boxShadow: "none !important", // Forcefully disable shadow
                 "&:hover": {
                   backgroundColor: "#D44A2A",
+                  boxShadow: "none !important", // Ensure no hover shadow
+                },
+                "&:focus": {
+                  boxShadow: "none !important", // Remove focus shadow
+                },
+                "&:active": {
+                  boxShadow: "none !important", // Remove active shadow
                 },
               }}
             >
@@ -368,8 +410,16 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
                 borderRadius: "4px",
                 fontSize: "14px",
                 fontWeight: 600,
+                boxShadow: "none !important", // Forcefully disable shadow
                 "&:hover": {
                   backgroundColor: "#167B79",
+                  boxShadow: "none !important", // Ensure no hover shadow
+                },
+                "&:focus": {
+                  boxShadow: "none !important", // Remove focus shadow
+                },
+                "&:active": {
+                  boxShadow: "none !important", // Remove active shadow
                 },
               }}
             >
@@ -384,12 +434,23 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
             sx={{
               padding: "0px",
               borderBottom: "1px solid #6C849D2E",
+              minHeight: "auto", // For the Accordion itself
+              "&.Mui-expanded": {
+                minHeight: "auto", // Ensures no fixed height when expanded
+              },
             }}
           >
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               sx={{
                 padding: "0px",
+                minHeight: "auto", // For the Accordion itself
+                "&.Mui-expanded": {
+                  minHeight: "auto", // Ensures no fixed height when expanded
+                },
+                "& .MuiAccordionSummary-content": {
+                  margin: "16px 0", // Fixes content alignment when expanded
+                },
               }}
             >
               <Typography
@@ -527,18 +588,29 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
 
           {/* Key Contacts and Details Section */}
           <Accordion
+            defaultExpanded
+            elevation={0}
             sx={{
               padding: "0px",
               borderBottom: "1px solid #6C849D2E",
+              minHeight: "auto", // For the Accordion itself
+              "&.Mui-expanded": {
+                minHeight: "auto", // Ensures no fixed height when expanded
+              },
             }}
-            defaultExpanded
-            elevation={0}
           >
             <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
               sx={{
                 padding: "0px",
+                minHeight: "auto", // For the Accordion itself
+                "&.Mui-expanded": {
+                  minHeight: "auto", // Ensures no fixed height when expanded
+                },
+                "& .MuiAccordionSummary-content": {
+                  margin: "16px 0", // Fixes content alignment when expanded
+                },
               }}
-              expandIcon={<ExpandMoreIcon />}
             >
               <Typography
                 variant="subtitle1"
@@ -748,18 +820,29 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
 
           {/* Additional Sections (Expandable) */}
           <Accordion
+            defaultExpanded
+            elevation={0}
             sx={{
               padding: "0px",
               borderBottom: "1px solid #6C849D2E",
+              minHeight: "auto", // For the Accordion itself
+              "&.Mui-expanded": {
+                minHeight: "auto", // Ensures no fixed height when expanded
+              },
             }}
-            defaultExpanded
-            elevation={0}
           >
             <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
               sx={{
                 padding: "0px",
+                minHeight: "auto", // For the Accordion itself
+                "&.Mui-expanded": {
+                  minHeight: "auto", // Ensures no fixed height when expanded
+                },
+                "& .MuiAccordionSummary-content": {
+                  margin: "16px 0", // Fixes content alignment when expanded
+                },
               }}
-              expandIcon={<ExpandMoreIcon />}
             >
               <Typography
                 variant="subtitle1"
@@ -776,17 +859,29 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
           </Accordion>
 
           <Accordion
-            sx={{
-              paddingX: "0",
-            }}
             defaultExpanded
             elevation={0}
+            sx={{
+              padding: "0px",
+              borderBottom: "1px solid #6C849D2E",
+              minHeight: "auto", // For the Accordion itself
+              "&.Mui-expanded": {
+                minHeight: "auto", // Ensures no fixed height when expanded
+              },
+            }}
           >
             <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
               sx={{
                 padding: "0px",
+                minHeight: "auto", // For the Accordion itself
+                "&.Mui-expanded": {
+                  minHeight: "auto", // Ensures no fixed height when expanded
+                },
+                "& .MuiAccordionSummary-content": {
+                  margin: "16px 0", // Fixes content alignment when expanded
+                },
               }}
-              expandIcon={<ExpandMoreIcon />}
             >
               <Typography
                 variant="subtitle1"

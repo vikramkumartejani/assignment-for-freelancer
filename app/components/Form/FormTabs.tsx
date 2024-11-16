@@ -22,9 +22,8 @@ const TabContent: React.FC<TabContentProps> = ({ data }) => (
       justifyContent="start"
       mb={3}
       mt={3}
-      sx={{display:'flex', gap: "12px", flexWrap: "wrap" }}
+      sx={{ display: "flex", gap: "12px", flexWrap: "wrap" }}
     >
-      
       <Box
         sx={{
           display: "flex",
@@ -35,26 +34,36 @@ const TabContent: React.FC<TabContentProps> = ({ data }) => (
         }}
       >
         <TextField
-        placeholder="Search"
-        variant="outlined"
-        size="small"
-        sx={{
-          width: { xs: "100%", sm: "100%", md: "309px" },
-          "& .MuiOutlinedInput-root": {
-            borderRadius: "8px",
-            height: "36px",
-            padding: "8px 12px",
-            fontFamily: "Noto Sans",
-            fontSize: "14px",
-            fontWeight: 500,
-            lineHeight: "20px",
-            color: "#3D4B5C",
-          },
-        }}
-        InputProps={{
-          startAdornment: <SearchIcon sx={{ mr: 1, color: "gray" }} />,
-        }}
-      />
+          placeholder="Search"
+          variant="outlined"
+          size="small"
+          sx={{
+            width: { xs: "100%", sm: "100%", md: "309px" },
+            "& .MuiOutlinedInput-root": {
+              borderRadius: "8px",
+              height: "36px",
+              padding: "8px 12px",
+              fontFamily: "Noto Sans",
+              fontSize: "14px",
+              fontWeight: 500,
+              lineHeight: "20px",
+              color: "#3D4B5C",
+              "& fieldset": {
+                borderColor: "#6C849D2E", // Default border color
+              },
+              "&:hover fieldset": {
+                borderColor: "#4838B0", // Hover border color
+              },
+              "&.Mui-focused fieldset": {
+                borderColor: "#4838B0", // Focused border color
+              },
+            },
+          }}
+          InputProps={{
+            startAdornment: <SearchIcon sx={{ mr: 1, color: "gray" }} />,
+          }}
+        />
+
         <Button
           variant="outlined"
           startIcon={<FilterAltOutlinedIcon />}
@@ -157,13 +166,15 @@ const FormTabs: React.FC = () => {
             minWidth: { xs: "auto", sm: "120px" },
             whiteSpace: "nowrap",
             borderBottom: "2px solid transparent",
+            color: "#58728D", // Default (normal tab) text color
             "&.Mui-selected": {
-              borderBottomColor: "#5D4AD4",
+              color: "#4838B0", // Active tab text color
+              borderBottomColor: "#5D4AD4", // Active tab underline color
               fontWeight: "700",
             },
           },
           "& .MuiTabs-indicator": {
-            display: "none", // hide the indicator for a cleaner design
+            display: "none", // Hide the indicator for a cleaner design
           },
         }}
       >

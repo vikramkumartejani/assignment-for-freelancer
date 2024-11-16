@@ -31,7 +31,7 @@ const FormHeader = () => {
     <Box>
       <Typography
         sx={{
-          fontSize: { xs: "18px", sm: "20px" },  
+          fontSize: { xs: "18px", sm: "20px" },
           color: "#2F4256",
           fontWeight: "800",
           lineHeight: "28px",
@@ -41,7 +41,7 @@ const FormHeader = () => {
       </Typography>
       <Typography
         sx={{
-          fontSize: { xs: "12px", sm: "13px" },  
+          fontSize: { xs: "12px", sm: "13px" },
           color: "#2F4256",
           fontWeight: "500",
           lineHeight: "17.71px",
@@ -55,8 +55,13 @@ const FormHeader = () => {
         sx={{
           marginTop: "20px",
           display: "grid",
-          gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr", md: "1fr 1fr 1fr", lg: "1fr 1fr 1fr 1fr" },
-          gap: { xs: "12px", sm: "20px" }
+          gridTemplateColumns: {
+            xs: "1fr",
+            sm: "1fr 1fr",
+            md: "1fr 1fr 1fr",
+            lg: "1fr 1fr 1fr 1fr",
+          },
+          gap: { xs: "12px", sm: "20px" },
         }}
       >
         {submissionData.map((item, index) => (
@@ -68,7 +73,7 @@ const FormHeader = () => {
               borderRadius: "8px",
               padding: { xs: "10px 20px", sm: "12px 20px" },
               display: "flex",
-              justifyContent: { xs: "start", sm: "center" },
+              justifyContent: "start",
               gap: "16px",
               alignItems: "center",
             }}
@@ -81,7 +86,7 @@ const FormHeader = () => {
             />
             <Box>
               <Typography
-              // className="text-nowrap"
+                // className="text-nowrap"
                 sx={{
                   color: "#58728D",
                   fontSize: "14px",

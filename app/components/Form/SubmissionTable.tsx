@@ -71,12 +71,19 @@ const SubmissionTable: React.FC<SubmissionTableProps> = ({ data }) => {
     <Box sx={{ overflowX: "auto" }}>
       <TableContainer component={Paper} className="overflow-x-auto">
         <Table className="overflow-hidden">
-          <TableHead sx={{ backgroundColor: "#F1F5FA" }} className="text-nowrap">
-            <TableRow>
+          <TableHead
+            sx={{ backgroundColor: "#F1F5FA" }}
+            className="text-nowrap"
+          >
+            <TableRow
+              sx={{
+                borderBottom: "1px solid #6C849D2E", // Set row border color
+              }}
+            >
               <TableCell
                 sx={{
                   fontFamily: "Noto Sans",
-                  fontSize: { xs: "12px", sm: "13px" }, // Responsive font size
+                  fontSize: { xs: "12px", sm: "13px" },
                   fontWeight: 600,
                   lineHeight: "17.71px",
                   color: "#40566D",
@@ -172,7 +179,12 @@ const SubmissionTable: React.FC<SubmissionTableProps> = ({ data }) => {
           </TableHead>
           <TableBody className="text-nowrap">
             {stableSort(data, comparator).map((row, index) => (
-              <TableRow key={index}>
+              <TableRow
+                key={index}
+                sx={{
+                  borderBottom: "1px solid #6C849D2E", // Set row border color
+                }}
+              >
                 <TableCell
                   sx={{
                     color: "#4838B0",
