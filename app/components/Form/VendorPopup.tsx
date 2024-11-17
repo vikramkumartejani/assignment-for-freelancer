@@ -1,27 +1,22 @@
 import React, { FC, useState } from "react";
 import {
-  Button,
   Dialog,
   AppBar,
   Toolbar,
   Typography,
   Slide,
   IconButton,
-  TextField,
-  InputAdornment,
   Box,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { TransitionProps } from "@mui/material/transitions";
-import { Search } from "@mui/icons-material";
 import { SubmissionData } from "./TableData";
-import RaiseDisputePopup from "./RaiseDisputePopup";
 import SmsOutlinedIcon from "@mui/icons-material/SmsOutlined";
 import PreviewOutlinedIcon from "@mui/icons-material/PreviewOutlined";
 import HistoryOutlinedIcon from "@mui/icons-material/HistoryOutlined";
 import PendingDisput from "./PendingDispute";
 import { VendorPopupAccordion } from "./VendorPopupAccordion";
-import CustomButton from "../CustomButton";
+import SearchAndActionButtons from "./SearchAndActionButtons";
 
 interface VendorPopupProps {
   open: boolean;
@@ -45,7 +40,7 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
 
   const handleIconClick = (icon: IconType) => {
     setSelectedIcon(icon);
-    setIsBoxVisible(icon === "sms");  
+    setIsBoxVisible(icon === "sms");
   };
 
   const handleCloseDrawer = () => setIsBoxVisible(false);
@@ -93,76 +88,12 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
             </Typography>
             <Box display="flex" alignItems="center" gap={"12px"}>
               {/* Search and Buttons */}
-              <Box display="flex" gap={2}>
-                <TextField
-                  variant="outlined"
-                  placeholder="Search"
-                  size="small"
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <Search style={{ color: "#40566D" }} />
-                      </InputAdornment>
-                    ),
-                    style: {
-                      paddingLeft: "10px",
-                      paddingRight: "10px",
-                      height: "32px",
-                      borderRadius: "8px",
-                    },
-                  }}
-                  sx={{
-                    width: "300px",
-                    "& .MuiOutlinedInput-root": { borderRadius: "20px" },
-                    "& fieldset": { borderColor: "#6C849D2E" },
-                  }}
-                />
-                <CustomButton
-                  text="Edit"
-                  iconSrc="/assets/edit.svg"
-                  iconAlt="edit"
-                  sx={{
-                    backgroundColor: "#F7F4FF",
-                    color: "#4838B0",
-                    height: "32px",
-                  }}
-                  shadow={false}
-                />
-                <CustomButton
-                  onClick={handleClickOpen}
-                  text="Dispute"
-                  sx={{
-                    backgroundColor: "#E9690C",
-                    color: "white",
-                    "&:hover": { backgroundColor: "#d25a08" },
-                    height: "32px",
-                  }}
-                  shadow={false}
-                />
-                <RaiseDisputePopup
-                  open={openS}
+              <Box className="hidden lg:flex">
+                <SearchAndActionButtons
+                  handleClickOpen={handleClickOpen}
                   handleClose={handleClose}
                   handleRaiseDispute={handleRaiseDispute}
-                />
-                <CustomButton
-                  text="Reject"
-                  sx={{
-                    backgroundColor: "#D44A4A",
-                    color: "white",
-                    "&:hover": { backgroundColor: "#D44A2A" },
-                    height: "32px",
-                  }}
-                  shadow={false}
-                />
-                <CustomButton
-                  text="Approve"
-                  sx={{
-                    backgroundColor: "#167B59",
-                    color: "white",
-                    "&:hover": { backgroundColor: "#167B79" },
-                    height: "32px",
-                  }}
-                  shadow={false}
+                  openS={openS}
                 />
               </Box>
 
@@ -185,79 +116,15 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
               height: "100%",
             }}
           >
-            <div className="mt-5 flex lg:hidden flex-wrap gap-[14px] pb-3">
-              {/* Mobile View Buttons */}
-              <TextField
-                variant="outlined"
-                placeholder="Search"
-                size="small"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <Search style={{ color: "#40566D" }} />
-                    </InputAdornment>
-                  ),
-                  style: {
-                    paddingLeft: "10px",
-                    paddingRight: "10px",
-                    height: "32px",
-                    borderRadius: "8px",
-                  },
-                }}
-                sx={{
-                  width: "100%",
-                  "& .MuiOutlinedInput-root": { borderRadius: "20px" },
-                  "& fieldset": { borderColor: "#6C849D2E" },
-                }}
-              />
-              <CustomButton
-                text="Edit"
-                iconSrc="/assets/edit.svg"
-                iconAlt="edit"
-                sx={{
-                  backgroundColor: "#F7F4FF",
-                  color: "#4838B0",
-                  height: "32px",
-                }}
-                shadow={false}
-              />
-              <CustomButton
-                onClick={handleClickOpen}
-                text="Dispute"
-                sx={{
-                  backgroundColor: "#E9690C",
-                  color: "white",
-                  "&:hover": { backgroundColor: "#d25a08" },
-                  height: "32px",
-                }}
-                shadow={false}
-              />
-              <RaiseDisputePopup
-                open={openS}
+            <Box className="mt-5 pb-3 flex lg:hidden">
+              <SearchAndActionButtons
+                handleClickOpen={handleClickOpen}
                 handleClose={handleClose}
                 handleRaiseDispute={handleRaiseDispute}
+                openS={openS}
+                isMobile={true}
               />
-              <CustomButton
-                text="Reject"
-                sx={{
-                  backgroundColor: "#D44A4A",
-                  color: "white",
-                  "&:hover": { backgroundColor: "#D44A2A" },
-                  height: "32px",
-                }}
-                shadow={false}
-              />
-              <CustomButton
-                text="Approve"
-                sx={{
-                  backgroundColor: "#167B59",
-                  color: "white",
-                  "&:hover": { backgroundColor: "#167B79" },
-                  height: "32px",
-                }}
-                shadow={false}
-              />
-            </div>
+            </Box>
             <VendorPopupAccordion vendorData={vendorData} />
           </Box>
 
