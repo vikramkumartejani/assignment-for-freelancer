@@ -1,0 +1,67 @@
+import { createTheme, ThemeOptions } from "@mui/material/styles";
+
+// Augment the Theme interface inline to add custom properties
+declare module "@mui/material/styles" {
+  interface Theme {
+    custom: {
+      borderColor: string;
+      headerBackground: string;
+      searchBarColor: string;
+      drawerBackground: string;
+    };
+  }
+
+  interface ThemeOptions {
+    custom?: {
+      borderColor: string;
+      headerBackground: string;
+      searchBarColor: string;
+      drawerBackground: string;
+    };
+  }
+}
+
+const theme: ThemeOptions = createTheme({
+  palette: {
+    primary: {
+      main: "#2F4256", // Example color
+    },
+    secondary: {
+      main: "#58728D", // Example color
+    },
+    background: {
+      default: "#F9FAFB", // Example background color
+    },
+  },
+
+  typography: {
+    h1: {
+      fontSize: "24px",
+      fontWeight: 800,
+    },
+    body1: {
+      fontSize: "16px",
+      fontWeight: 500,
+    },
+    // Define other typography styles as needed
+  },
+
+  custom: {
+    borderColor: "#6C849D2E", // Custom border color
+    headerBackground: "#192839", // Custom header background color
+    searchBarColor: "#243547", // Custom search bar background color
+    drawerBackground: "#192839", // Custom drawer background color
+  },
+
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
+    },
+  },
+});
+
+export default theme;

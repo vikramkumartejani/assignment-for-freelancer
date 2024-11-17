@@ -1,11 +1,4 @@
-import {
-  AppBar,
-  Box,
-  CssBaseline,
-  Toolbar,
-  Typography,
-  Drawer,
-} from "@mui/material";
+import { Box, CssBaseline, Drawer } from "@mui/material";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 

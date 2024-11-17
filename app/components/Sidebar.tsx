@@ -6,6 +6,7 @@ import {
   ListItemIcon,
   ListItemText,
   Typography,
+  useTheme,
 } from "@mui/material";
 import { useState } from "react";
 import Image from "next/image";
@@ -13,6 +14,7 @@ import Link from "next/link";
 
 const Sidebar = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const theme = useTheme(); // Access the theme object
 
   const handleListItemClick = (index: number) => {
     setSelectedIndex(index);
@@ -20,12 +22,7 @@ const Sidebar = () => {
 
   const menuItems = [
     { text: "Forms", image: "/assets/form.svg", link: "/", id: 0 },
-    {
-      text: "Reports",
-      image: "/assets/reports.svg",
-      link: "/reports",
-      id: 1,
-    },
+    { text: "Reports", image: "/assets/reports.svg", link: "/reports", id: 1 },
     { text: "Forms", image: "/assets/no-active-form.svg", link: "/", id: 2 },
     {
       text: "Settings",
@@ -39,9 +36,9 @@ const Sidebar = () => {
     <Box
       sx={{
         width: 240,
-        height:'92%',
-        backgroundColor: "#F8FAFC",
-        color: "#3b3f5c",
+        height: "92%",
+        backgroundColor: theme.palette.background.default, // Use background color from theme
+        color: theme.palette.text.primary, // Use text primary color from theme
         padding: "16px 0 0 0",
         display: "flex",
         flexDirection: "column",
@@ -57,21 +54,29 @@ const Sidebar = () => {
               sx={{
                 display: "flex",
                 alignItems: "center",
-                color: selectedIndex === index ? "#6c63ff" : "#475569",
+                color:
+                  selectedIndex === index
+                    ? theme.palette.primary.main
+                    : theme.palette.text.secondary, // Use theme colors
                 backgroundColor:
-                  selectedIndex === index ? "#F4F2FF" : "transparent",
+                  selectedIndex === index
+                    ? theme.palette.action.hover
+                    : "transparent",
                 padding: "8px 20px",
                 borderRadius: 1,
                 cursor: "pointer",
                 textDecoration: "none",
-                "&:hover": { backgroundColor: "#f1f5f9" },
+                "&:hover": { backgroundColor: theme.palette.action.hover }, // Use theme hover color
               }}
               component="a"
             >
               <ListItem disablePadding>
                 <ListItemIcon
                   sx={{
-                    color: selectedIndex === index ? "#6c63ff" : "#475569",
+                    color:
+                      selectedIndex === index
+                        ? theme.palette.primary.main
+                        : theme.palette.text.secondary, // Use theme colors
                     minWidth: "28px",
                   }}
                 >
@@ -87,7 +92,10 @@ const Sidebar = () => {
                   primary={item.text}
                   primaryTypographyProps={{
                     fontWeight: selectedIndex === index ? "bold" : "normal",
-                    color: selectedIndex === index ? "#5D4AD4" : "#40566D",
+                    color:
+                      selectedIndex === index
+                        ? theme.palette.primary.main
+                        : theme.palette.text.primary, // Use theme colors
                     fontSize: "14px",
                   }}
                 />
@@ -100,16 +108,16 @@ const Sidebar = () => {
       {/* BIN */}
       <Box
         sx={{
-          borderTop: "1px solid #6C849D17",
+          borderTop: `1px solid ${theme.palette.divider}`, // Use theme divider color
           display: "flex",
           alignItems: "center",
-          color: "#475569",
+          color: theme.palette.text.primary, // Use text primary color from theme
           gap: "12px",
           padding: "8px 24px",
           borderRadius: 1,
           cursor: "pointer",
           fontWeight: "600",
-          "&:hover": { backgroundColor: "#f1f5f9" },
+          "&:hover": { backgroundColor: theme.palette.action.hover }, // Use theme hover color
         }}
       >
         <Image src="/assets/bin.svg" alt="bin" width={11.67} height={15} />
@@ -118,7 +126,7 @@ const Sidebar = () => {
             fontSize: "14px",
             fontWeight: "600",
             lineHeight: "23.8px",
-            color: "#58728D",
+            color: theme.palette.secondary.main, // Use secondary color from theme
             marginTop: "1px",
           }}
         >

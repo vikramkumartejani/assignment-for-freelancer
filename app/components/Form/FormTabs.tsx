@@ -9,6 +9,7 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import SubmissionTable from "./SubmissionTable";
 import { SubmissionData } from "./TableData";
 import { submissionData } from "./TableData";
+import CustomButton from "../CustomButton";
 
 interface TabContentProps {
   data: SubmissionData[];
@@ -64,12 +65,12 @@ const TabContent: React.FC<TabContentProps> = ({ data }) => (
           }}
         />
 
-        <Button
+        <CustomButton
           variant="outlined"
           startIcon={<FilterAltOutlinedIcon />}
+          text="Filter"
           sx={{
             borderColor: "#6C849D2E",
-            width: { xs: "100%", sm: "auto" },
             color: "#40566D",
             borderRadius: "8px",
             paddingX: 2,
@@ -77,16 +78,14 @@ const TabContent: React.FC<TabContentProps> = ({ data }) => (
             fontWeight: "500",
             fontSize: "14px",
           }}
-        >
-          Filter
-        </Button>
-
-        <Button
+          shadow={true}
+        />
+        <CustomButton
           variant="outlined"
           startIcon={<DateRangeOutlinedIcon />}
+          text="Select Date Range"
           sx={{
             borderColor: "#6C849D2E",
-            width: { xs: "100%", sm: "auto" },
             color: "#40566D",
             borderRadius: "8px",
             paddingX: 2,
@@ -94,16 +93,15 @@ const TabContent: React.FC<TabContentProps> = ({ data }) => (
             fontWeight: "500",
             fontSize: "14px",
           }}
-        >
-          Select Date Range
-        </Button>
+          shadow={true}
+        />
 
-        <Button
+        <CustomButton
           variant="outlined"
           startIcon={<IosShareOutlinedIcon />}
+          text="Export"
           sx={{
             borderColor: "#6C849D2E",
-            width: { xs: "100%", sm: "auto" },
             color: "#40566D",
             borderRadius: "8px",
             paddingX: 2,
@@ -111,16 +109,15 @@ const TabContent: React.FC<TabContentProps> = ({ data }) => (
             fontWeight: "500",
             fontSize: "14px",
           }}
-        >
-          Export
-        </Button>
+          shadow={true}
+        />
 
-        <Button
+        <CustomButton
           variant="outlined"
           startIcon={<SettingsOutlinedIcon />}
+          text="Customize"
           sx={{
             borderColor: "#6C849D2E",
-            width: { xs: "100%", sm: "auto" },
             color: "#40566D",
             borderRadius: "8px",
             paddingX: 2,
@@ -128,9 +125,8 @@ const TabContent: React.FC<TabContentProps> = ({ data }) => (
             fontWeight: "500",
             fontSize: "14px",
           }}
-        >
-          Customize
-        </Button>
+          shadow={true}
+        />
       </Box>
     </Box>
     <SubmissionTable data={data} />

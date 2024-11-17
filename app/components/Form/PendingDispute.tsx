@@ -33,6 +33,7 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
   // Create a reference for the drawer
   const drawerRef = useRef<HTMLDivElement | null>(null);
   const [expanded, setExpanded] = useState<string | false>("panel1");
+  const [showBox, setShowBox] = useState(false);
 
   const handleAccordionChange =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
@@ -59,6 +60,19 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
     };
   }, [onClose]);
 
+  useEffect(() => {
+    // When isVisible changes to false, hide the Box after 500ms (transition duration)
+    if (!isVisible) {
+      const timer = setTimeout(() => {
+        setShowBox(false); // Hide the Box from DOM after the slide-out transition
+      }, 500); // Wait for the transition duration
+
+      return () => clearTimeout(timer); // Cleanup timer when component unmounts or state changes
+    } else {
+      setShowBox(true); // Show the Box immediately when isVisible is true
+    }
+  }, [isVisible]);
+
   return (
     <Box
       ref={drawerRef}
@@ -68,13 +82,13 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
         right: "40px", // Positioned to the left of the sidebar
         width: "100%",
         maxWidth: { xs: "280px", sm: "371px" },
-        height: "100%",
         backgroundColor: "#F8FAFC",
         border: "1px solid #E0E0E0",
         boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
         transform: isVisible ? "translateX(0)" : "translateX(100%)", // Slide-in effect
         transition: "transform 0.3s ease-out", // Smooth transition
         zIndex: "1",
+        display: showBox ? "block" : "none",
       }}
     >
       <Box sx={{ margin: "auto" }}>

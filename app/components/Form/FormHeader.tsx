@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 
@@ -27,13 +27,15 @@ const submissionData = [
 ];
 
 const FormHeader = () => {
+  const theme = useTheme(); // Get the theme object
+
   return (
     <Box>
       <Typography
         sx={{
           fontSize: { xs: "18px", sm: "20px" },
-          color: "#2F4256",
-          fontWeight: "800",
+          color: theme.palette.primary.main, // Use primary color from theme
+          fontWeight: 800,
           lineHeight: "28px",
         }}
       >
@@ -42,8 +44,8 @@ const FormHeader = () => {
       <Typography
         sx={{
           fontSize: { xs: "12px", sm: "13px" },
-          color: "#2F4256",
-          fontWeight: "500",
+          color: theme.palette.primary.main, // Use primary color from theme
+          fontWeight: 500,
           lineHeight: "17.71px",
           marginTop: "3px",
         }}
@@ -69,7 +71,7 @@ const FormHeader = () => {
             key={index}
             sx={{
               width: "100%",
-              border: "1px solid #6C849D2E",
+              border: `1px solid ${theme.custom.borderColor}`, // Border color from theme
               borderRadius: "8px",
               padding: { xs: "10px 20px", sm: "12px 20px" },
               display: "flex",
@@ -86,11 +88,10 @@ const FormHeader = () => {
             />
             <Box>
               <Typography
-                // className="text-nowrap"
                 sx={{
-                  color: "#58728D",
+                  color: theme.palette.secondary.main, // Text color from theme
                   fontSize: "14px",
-                  fontWeight: "500",
+                  fontWeight: 500,
                   lineHeight: "20px",
                 }}
               >
@@ -98,10 +99,10 @@ const FormHeader = () => {
               </Typography>
               <Typography
                 sx={{
-                  color: "#243547",
+                  color: theme.palette.text.primary, // Primary text color from theme
                   fontSize: { xs: "18px", sm: "20px" },
                   lineHeight: "28px",
-                  fontWeight: "700",
+                  fontWeight: 700,
                 }}
               >
                 {item.count}

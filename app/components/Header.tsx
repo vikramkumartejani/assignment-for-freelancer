@@ -14,7 +14,6 @@ import Image from "next/image";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
-import RaiseDisputePopup from "./Form/RaiseDisputePopup";
 
 const Header = () => {
   const theme = useTheme();
@@ -25,10 +24,11 @@ const Header = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
 
- 
-
   return (
-    <AppBar position="fixed" sx={{ backgroundColor: "#192839", zIndex: 1100 }}>
+    <AppBar
+      position="fixed"
+      sx={{ backgroundColor: theme.custom.headerBackground, zIndex: 1100 }}
+    >
       <Toolbar
         sx={{
           display: "flex",
@@ -48,11 +48,10 @@ const Header = () => {
             display: isMobile ? "none" : "flex",
             alignItems: "center",
             justifyContent: "center",
-            backgroundColor: "#243547",
+            backgroundColor: theme.custom.searchBarColor,
             padding: "12px",
             width: isMobile ? "200px" : "400px",
             borderRadius: "8px 6px",
-            marginTop: isMobile ? "0" : "0",
           }}
         >
           <Image
@@ -91,18 +90,14 @@ const Header = () => {
         </Box>
 
         <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <div>
-            <Box >
-              <Image
-                src="/assets/profile.svg"
-                alt="Logo"
-                width={45}
-                height={40}
-              />
-            </Box>
-
-           
-          </div>
+          <Box>
+            <Image
+              src="/assets/profile.svg"
+              alt="Logo"
+              width={45}
+              height={40}
+            />
+          </Box>
 
           {isMobile && (
             <IconButton
@@ -126,7 +121,7 @@ const Header = () => {
         onClose={toggleDrawer}
         sx={{
           "& .MuiDrawer-paper": {
-            backgroundColor: "#192839",
+            backgroundColor: theme.custom.drawerBackground,
             color: "#fff",
             width: "100%",
             height: "100vh",
@@ -149,7 +144,7 @@ const Header = () => {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              backgroundColor: "#243547",
+              backgroundColor: theme.custom.searchBarColor,
               padding: "12px",
               width: "100%",
               borderRadius: "8px 6px",

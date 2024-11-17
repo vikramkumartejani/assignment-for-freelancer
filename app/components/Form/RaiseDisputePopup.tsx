@@ -1,20 +1,9 @@
 import * as React from "react";
-import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
-import {
-  DialogActions,
-  DialogContent,
-  AppBar,
-  Toolbar,
-  Typography,
-  TextField,
-  Grid,
-  Box,
-} from "@mui/material";
+import { DialogActions, DialogContent, Typography, Box } from "@mui/material";
 import Slide from "@mui/material/Slide";
 import { TransitionProps } from "@mui/material/transitions";
-import AttachFileIcon from "@mui/icons-material/AttachFile";
-import Image from "next/image";
+import CustomButton from "../CustomButton";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -87,14 +76,14 @@ const VendorPopup: React.FC<VendorPopupProps> = ({
             >
               Raise a Dispute
             </Typography>
-            <Button autoFocus color="inherit" onClick={handleClose}>
-              <Image
-                src="/assets/close.svg"
-                alt="close"
-                width={24}
-                height={24}
-              />
-            </Button>
+            <CustomButton
+              autoFocus
+              color="inherit"
+              onClick={handleClose}
+              iconSrc="/assets/close.svg" // Optional icon source
+              text="" // Empty text because the icon is the only content
+              shadow={false} // No shadow in this case
+            />
           </Box>
         </Box>
 
@@ -149,28 +138,26 @@ const VendorPopup: React.FC<VendorPopupProps> = ({
               placeholder="Add Query"
               className="resize-none py-2 h-[95px] placeholder:text-[#90A5BB] text-[14px] mt-2 border border-[#6C849D52] w-full rounded-lg outline-none px-3"
             />
-
-            <Button
+            <CustomButton
               variant="outlined"
               fullWidth
+              text="Add New Query"
               sx={{
                 marginTop: 2,
                 padding: "8px",
+                border: "1px dashed #607d8b",
                 borderColor: "#607d8b",
                 color: "#607d8b",
-                fontSize: "13px",
-                border: "1px dashed #607d8b",
-                textTransform: "none",
+                borderRadius: "8px",
                 fontWeight: "500",
-                borderRadius: 2,
+                fontSize: "13px",
                 "&:hover": {
                   borderColor: "#2f5292",
                   backgroundColor: "#f1f1f1",
                 },
               }}
-            >
-              Add New Query
-            </Button>
+              shadow={true}
+            />
           </Box>
         </DialogContent>
 
@@ -187,35 +174,29 @@ const VendorPopup: React.FC<VendorPopupProps> = ({
             },
           }}
         >
-          <Button
+          <CustomButton
+            text="Close"
             sx={{
-              backgroundColor: "white",
-              textTransform: "capitalize",
               padding: "0px 16px",
               height: "40px",
-              border: "2px solid #5D4AD43D",
               color: "#4838B0",
-              fontSize: "14px",
-              fontWeight: "600",
+              border: "2px solid #5D4AD43D",
               borderRadius: "8px",
+              background: "white",
             }}
-          >
-            Close
-          </Button>
-          <Button
+            shadow={true}
+          />
+          <CustomButton
             onClick={handleRaiseDispute}
+            text="Raise Dispute"
             sx={{
-              textTransform: "capitalize",
-              height: "40px",
-              backgroundColor: "#E9690C2E",
-              color: "#FFAC70",
-              fontSize: "14px",
-              fontWeight: "600",
               padding: "0px 16px",
+              height: "40px",
+              color: "#FFAC70",
+              backgroundColor: "#E9690C2E",
             }}
-          >
-            Raise Dispute
-          </Button>
+            shadow={true}
+          />
         </DialogActions>
       </Dialog>
     </React.Fragment>
