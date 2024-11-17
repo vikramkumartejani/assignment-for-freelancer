@@ -10,7 +10,6 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { SubmissionData } from "./TableData";
 
-// Define reusable styling
 const sectionStyles = {
   padding: { xs: "6px", sm: "12px" },
   display: "flex",
@@ -21,7 +20,6 @@ const sectionStyles = {
 const titleStyles = { fontWeight: "500", fontSize: "13px", color: "#58728D" };
 const contentStyles = { color: "#243547", fontWeight: "600", fontSize: "14px" };
 
-// Reusable Component for Vendor Information/Key Contacts
 const InfoBox: FC<{ label: string; value: React.ReactNode }> = ({
   label,
   value,
@@ -32,7 +30,6 @@ const InfoBox: FC<{ label: string; value: React.ReactNode }> = ({
   </Box>
 );
 
-// Vendor Popup Accordion Component
 interface VendorPopupAccordionProps {
   vendorData: SubmissionData | null;
 }
@@ -40,39 +37,38 @@ interface VendorPopupAccordionProps {
 export const VendorPopupAccordion: FC<VendorPopupAccordionProps> = ({
   vendorData,
 }) => {
-  if (!vendorData) return null; // Handle null case
+  if (!vendorData) return null; 
 
   const accordionStyles = {
     padding: "0px",
     borderBottom: "1px solid #6C849D2E",
-    minHeight: "auto", // For the Accordion itself
+    minHeight: "auto", 
     "&.Mui-expanded": {
-      minHeight: "auto", // Ensures no fixed height when expanded
+      minHeight: "auto",  
     },
   };
   const accordionSummaryStyles = {
     padding: "0px",
-    minHeight: "auto", // For the Accordion itself
+    minHeight: "auto", 
     "&.Mui-expanded": {
-      minHeight: "auto", // Ensures no fixed height when expanded
+      minHeight: "auto",  
     },
     "& .MuiAccordionSummary-content": {
-      margin: "16px 0", // Fixes content alignment when expanded
+      margin: "16px 0",  
     },
   };
 
   return (
     <Box sx={{ height: "100%" }}>
-      {/* Vendor Information Section */}
       <Accordion
         defaultExpanded
         elevation={0}
         sx={{
           padding: "0px",
           borderBottom: "1px solid #6C849D2E",
-          minHeight: "auto", // For the Accordion itself
+          minHeight: "auto", 
           "&.Mui-expanded": {
-            minHeight: "auto", // Ensures no fixed height when expanded
+            minHeight: "auto", 
           },
         }}
       >
@@ -80,12 +76,12 @@ export const VendorPopupAccordion: FC<VendorPopupAccordionProps> = ({
           expandIcon={<ExpandMoreIcon />}
           sx={{
             padding: "16px 0px",
-            minHeight: "auto", // For the Accordion itself
+            minHeight: "auto", 
             "&.Mui-expanded": {
-              minHeight: "auto", // Ensures no fixed height when expanded
+              minHeight: "auto",  
             },
             "& .MuiAccordionSummary-content": {
-              margin: "0", // Fixes content alignment when expanded
+              margin: "0", 
             },
           }}
         >

@@ -45,7 +45,7 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
 
   const handleIconClick = (icon: IconType) => {
     setSelectedIcon(icon);
-    setIsBoxVisible(icon === "sms"); // Only show SMS drawer if 'sms' is clicked
+    setIsBoxVisible(icon === "sms");  
   };
 
   const handleCloseDrawer = () => setIsBoxVisible(false);

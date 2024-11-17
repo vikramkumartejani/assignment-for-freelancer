@@ -1,6 +1,6 @@
 import { createTheme, ThemeOptions } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 
-// Augment the Theme interface inline to add custom properties
 declare module "@mui/material/styles" {
   interface Theme {
     custom: {
@@ -24,13 +24,13 @@ declare module "@mui/material/styles" {
 const theme: ThemeOptions = createTheme({
   palette: {
     primary: {
-      main: "#2F4256", // Example color
+      main: "#2F4256",
     },
     secondary: {
-      main: "#58728D", // Example color
+      main: "#58728D",
     },
     background: {
-      default: "#F9FAFB", // Example background color
+      default: "#F9FAFB",
     },
   },
 
@@ -43,14 +43,13 @@ const theme: ThemeOptions = createTheme({
       fontSize: "16px",
       fontWeight: 500,
     },
-    // Define other typography styles as needed
   },
 
   custom: {
-    borderColor: "#6C849D2E", // Custom border color
-    headerBackground: "#192839", // Custom header background color
-    searchBarColor: "#243547", // Custom search bar background color
-    drawerBackground: "#192839", // Custom drawer background color
+    borderColor: "#6C849D2E",
+    headerBackground: "#192839",
+    searchBarColor: "#243547",
+    drawerBackground: "#192839",
   },
 
   breakpoints: {

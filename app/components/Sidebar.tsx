@@ -14,7 +14,7 @@ import Link from "next/link";
 
 const Sidebar = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const theme = useTheme(); // Access the theme object
+  const theme = useTheme();  
 
   const handleListItemClick = (index: number) => {
     setSelectedIndex(index);
@@ -22,12 +22,12 @@ const Sidebar = () => {
 
   const menuItems = [
     { text: "Forms", image: "/assets/form.svg", link: "/", id: 0 },
-    { text: "Reports", image: "/assets/reports.svg", link: "/reports", id: 1 },
+    { text: "Reports", image: "/assets/reports.svg", link: "/report", id: 1 },
     { text: "Forms", image: "/assets/no-active-form.svg", link: "/", id: 2 },
     {
       text: "Settings",
       image: "/assets/setting.svg",
-      link: "/settings",
+      link: "/setting",
       id: 3,
     },
   ];
@@ -37,8 +37,8 @@ const Sidebar = () => {
       sx={{
         width: 240,
         height: "92%",
-        backgroundColor: theme.palette.background.default, // Use background color from theme
-        color: theme.palette.text.primary, // Use text primary color from theme
+        backgroundColor: theme.palette.background.default,  
+        color: theme.palette.text.primary,  
         padding: "16px 0 0 0",
         display: "flex",
         flexDirection: "column",
@@ -57,7 +57,7 @@ const Sidebar = () => {
                 color:
                   selectedIndex === index
                     ? theme.palette.primary.main
-                    : theme.palette.text.secondary, // Use theme colors
+                    : theme.palette.text.secondary,  
                 backgroundColor:
                   selectedIndex === index
                     ? theme.palette.action.hover
@@ -66,7 +66,7 @@ const Sidebar = () => {
                 borderRadius: 1,
                 cursor: "pointer",
                 textDecoration: "none",
-                "&:hover": { backgroundColor: theme.palette.action.hover }, // Use theme hover color
+                "&:hover": { backgroundColor: theme.palette.action.hover }, 
               }}
               component="a"
             >
@@ -76,15 +76,15 @@ const Sidebar = () => {
                     color:
                       selectedIndex === index
                         ? theme.palette.primary.main
-                        : theme.palette.text.secondary, // Use theme colors
+                        : theme.palette.text.secondary, 
                     minWidth: "28px",
                   }}
                 >
                   <Image
                     src={item.image}
                     alt={`${item.text} icon`}
-                    width={20} // Set width to your preference
-                    height={20} // Set height to your preference
+                    width={20} 
+                    height={20}  
                   />
                 </ListItemIcon>
 
@@ -95,7 +95,7 @@ const Sidebar = () => {
                     color:
                       selectedIndex === index
                         ? theme.palette.primary.main
-                        : theme.palette.text.primary, // Use theme colors
+                        : theme.palette.text.primary,  
                     fontSize: "14px",
                   }}
                 />
@@ -108,16 +108,16 @@ const Sidebar = () => {
       {/* BIN */}
       <Box
         sx={{
-          borderTop: `1px solid ${theme.palette.divider}`, // Use theme divider color
+          borderTop: `1px solid ${theme.palette.divider}`, 
           display: "flex",
           alignItems: "center",
-          color: theme.palette.text.primary, // Use text primary color from theme
+          color: theme.palette.text.primary,  
           gap: "12px",
           padding: "8px 24px",
           borderRadius: 1,
           cursor: "pointer",
           fontWeight: "600",
-          "&:hover": { backgroundColor: theme.palette.action.hover }, // Use theme hover color
+          "&:hover": { backgroundColor: theme.palette.action.hover }, 
         }}
       >
         <Image src="/assets/bin.svg" alt="bin" width={11.67} height={15} />
@@ -126,7 +126,7 @@ const Sidebar = () => {
             fontSize: "14px",
             fontWeight: "600",
             lineHeight: "23.8px",
-            color: theme.palette.secondary.main, // Use secondary color from theme
+            color: theme.palette.secondary.main, 
             marginTop: "1px",
           }}
         >

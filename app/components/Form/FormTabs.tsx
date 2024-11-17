@@ -50,13 +50,13 @@ const TabContent: React.FC<TabContentProps> = ({ data }) => (
               lineHeight: "20px",
               color: "#3D4B5C",
               "& fieldset": {
-                borderColor: "#6C849D2E", // Default border color
+                borderColor: "#6C849D2E",  
               },
               "&:hover fieldset": {
-                borderColor: "#4838B0", // Hover border color
+                borderColor: "#4838B0", 
               },
               "&.Mui-focused fieldset": {
-                borderColor: "#4838B0", // Focused border color
+                borderColor: "#4838B0", 
               },
             },
           }}
@@ -178,15 +178,15 @@ const FormTabs: React.FC = () => {
             minWidth: { xs: "auto", sm: "120px" },
             whiteSpace: "nowrap",
             borderBottom: "2px solid transparent",
-            color: "#58728D", // Default (normal tab) text color
+            color: "#58728D",  
             "&.Mui-selected": {
-              color: "#4838B0", // Active tab text color
-              borderBottomColor: "#5D4AD4", // Active tab underline color
+              color: "#4838B0", 
+              borderBottomColor: "#5D4AD4", 
               fontWeight: "700",
             },
           },
           "& .MuiTabs-indicator": {
-            display: "none", // Hide the indicator for a cleaner design
+            display: "none", 
           },
         }}
       >

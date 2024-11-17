@@ -19,20 +19,19 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   sx,
   ...props
 }) => {
-  // Conditional styling based on the shadow prop
   const boxShadowStyle = shadow
-    ? {} // If shadow is true, no change needed (default behavior)
+    ? {}  
     : {
-        boxShadow: "none !important", // Forcefully disable shadow
+        boxShadow: "none !important",  
         "&:hover": {
           backgroundColor: "#D44A2A",
-          boxShadow: "none !important", // Ensure no hover shadow
+          boxShadow: "none !important", 
         },
         "&:focus": {
-          boxShadow: "none !important", // Remove focus shadow
+          boxShadow: "none !important",  
         },
         "&:active": {
-          boxShadow: "none !important", // Remove active shadow
+          boxShadow: "none !important", 
         },
       };
 
@@ -44,8 +43,8 @@ const CustomButton: React.FC<CustomButtonProps> = ({
         fontWeight: 600,
         padding: "10px 12px",
         borderRadius: "4px",
-        ...boxShadowStyle, // Apply shadow styles conditionally
-        ...sx, // Allow additional custom styles from the parent
+        ...boxShadowStyle,  
+        ...sx,  
       }}
       {...props}
     >

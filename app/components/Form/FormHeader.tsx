@@ -2,7 +2,6 @@ import { Box, Typography, useTheme } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 
-// Arrays for data
 const submissionData = [
   {
     title: "Pending Submissions",
@@ -27,14 +26,14 @@ const submissionData = [
 ];
 
 const FormHeader = () => {
-  const theme = useTheme(); // Get the theme object
+  const theme = useTheme(); 
 
   return (
     <Box>
       <Typography
         sx={{
           fontSize: { xs: "18px", sm: "20px" },
-          color: theme.palette.primary.main, // Use primary color from theme
+          color: theme.palette.primary.main, 
           fontWeight: 800,
           lineHeight: "28px",
         }}
@@ -44,7 +43,7 @@ const FormHeader = () => {
       <Typography
         sx={{
           fontSize: { xs: "12px", sm: "13px" },
-          color: theme.palette.primary.main, // Use primary color from theme
+          color: theme.palette.primary.main, 
           fontWeight: 500,
           lineHeight: "17.71px",
           marginTop: "3px",
@@ -71,7 +70,7 @@ const FormHeader = () => {
             key={index}
             sx={{
               width: "100%",
-              border: `1px solid ${theme.custom.borderColor}`, // Border color from theme
+              border: `1px solid ${theme.custom.borderColor}`,  
               borderRadius: "8px",
               padding: { xs: "10px 20px", sm: "12px 20px" },
               display: "flex",
@@ -89,7 +88,7 @@ const FormHeader = () => {
             <Box>
               <Typography
                 sx={{
-                  color: theme.palette.secondary.main, // Text color from theme
+                  color: theme.palette.secondary.main,  
                   fontSize: "14px",
                   fontWeight: 500,
                   lineHeight: "20px",
@@ -99,7 +98,7 @@ const FormHeader = () => {
               </Typography>
               <Typography
                 sx={{
-                  color: theme.palette.text.primary, // Primary text color from theme
+                  color: theme.palette.text.primary,  
                   fontSize: { xs: "18px", sm: "20px" },
                   lineHeight: "28px",
                   fontWeight: 700,

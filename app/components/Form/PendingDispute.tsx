@@ -38,7 +38,6 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
       setExpanded(isExpanded ? panel : false);
     };
 
-  // Close drawer when clicked outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (

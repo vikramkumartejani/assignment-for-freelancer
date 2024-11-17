@@ -80,9 +80,9 @@ const VendorPopup: React.FC<VendorPopupProps> = ({
               autoFocus
               color="inherit"
               onClick={handleClose}
-              iconSrc="/assets/close.svg" // Optional icon source
-              text="" // Empty text because the icon is the only content
-              shadow={false} // No shadow in this case
+              iconSrc="/assets/close.svg"  
+              text=""  
+              shadow={false}  
             />
           </Box>
         </Box>
