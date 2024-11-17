@@ -10,7 +10,29 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { SubmissionData } from "./TableData";
 
-// Define the component props type
+// Define reusable styling
+const sectionStyles = {
+  padding: { xs: "6px", sm: "12px" },
+  display: "flex",
+  flexDirection: "column",
+  gap: "4px",
+};
+
+const titleStyles = { fontWeight: "500", fontSize: "13px", color: "#58728D" };
+const contentStyles = { color: "#243547", fontWeight: "600", fontSize: "14px" };
+
+// Reusable Component for Vendor Information/Key Contacts
+const InfoBox: FC<{ label: string; value: React.ReactNode }> = ({
+  label,
+  value,
+}) => (
+  <Box sx={sectionStyles}>
+    <Typography sx={titleStyles}>{label}:</Typography>
+    <Typography sx={contentStyles}>{value}</Typography>
+  </Box>
+);
+
+// Vendor Popup Accordion Component
 interface VendorPopupAccordionProps {
   vendorData: SubmissionData | null;
 }
@@ -18,9 +40,27 @@ interface VendorPopupAccordionProps {
 export const VendorPopupAccordion: FC<VendorPopupAccordionProps> = ({
   vendorData,
 }) => {
-  if (!vendorData) {
-    return null; // Or handle the null case as needed
-  }
+  if (!vendorData) return null; // Handle null case
+
+  const accordionStyles = {
+    padding: "0px",
+    borderBottom: "1px solid #6C849D2E",
+    minHeight: "auto", // For the Accordion itself
+    "&.Mui-expanded": {
+      minHeight: "auto", // Ensures no fixed height when expanded
+    },
+  };
+  const accordionSummaryStyles = {
+    padding: "0px",
+    minHeight: "auto", // For the Accordion itself
+    "&.Mui-expanded": {
+      minHeight: "auto", // Ensures no fixed height when expanded
+    },
+    "& .MuiAccordionSummary-content": {
+      margin: "16px 0", // Fixes content alignment when expanded
+    },
+  };
+
   return (
     <Box sx={{ height: "100%" }}>
       {/* Vendor Information Section */}
@@ -56,143 +96,35 @@ export const VendorPopupAccordion: FC<VendorPopupAccordionProps> = ({
             Vendor Information
           </Typography>
         </AccordionSummary>
-        <AccordionDetails
-          sx={{
-            padding: "0px",
-          }}
-        >
+        <AccordionDetails sx={{ padding: 0 }}>
           <Box display="flex" flexWrap="wrap" gap={"16px"} sx={{ mb: "12px" }}>
             <Box flexBasis={{ xs: "100%", sm: "48%", md: "32%" }}>
-              <Box
-                padding={{ xs: "6px", sm: "12px" }}
-                display={"flex"}
-                flexDirection={"column"}
-                gap={"4px"}
-              >
-                <Typography
-                  fontWeight={"500"}
-                  fontSize={"13px"}
-                  color="#58728D"
-                >
-                  Name of Vendor:
-                </Typography>
-                <Typography
-                  color="#243547"
-                  fontWeight={"600"}
-                  fontSize={"14px"}
-                >
-                  {vendorData?.vendorName}
-                </Typography>
-              </Box>
-              <Box
-                padding={{ xs: "6px", sm: "12px" }}
-                display={"flex"}
-                flexDirection={"column"}
-                gap={"4px"}
-              >
-                <Typography
-                  fontWeight={"500"}
-                  fontSize={"13px"}
-                  color="#58728D"
-                >
-                  Registered Office Address:
-                </Typography>
-                <Typography
-                  color="#243547"
-                  fontWeight={"600"}
-                  fontSize={"14px"}
-                >
-                  C 208, Neelkanth Business Park, Nathani Road, Vidyavihar West,
-                  Mumbai, Maharashtra 400086, India
-                </Typography>
-              </Box>
+              <InfoBox label="Name of Vendor" value={vendorData?.vendorName} />
+              <InfoBox
+                label="Registered Office Address"
+                value="C 208, Neelkanth Business Park, Nathani Road, Vidyavihar West, Mumbai, Maharashtra 400086, India"
+              />
             </Box>
             <Box flexBasis={{ xs: "100%", sm: "48%", md: "32%" }}>
-              <Box
-                padding={{ xs: "6px", sm: "12px" }}
-                display={"flex"}
-                flexDirection={"column"}
-                gap={"4px"}
-              >
-                <Typography
-                  fontWeight={"500"}
-                  fontSize={"13px"}
-                  color="#58728D"
-                >
-                  Category of Products:
-                </Typography>
-                <Typography
-                  color="#243547"
-                  fontWeight={"600"}
-                  fontSize={"14px"}
-                >
-                  Service
-                </Typography>
-              </Box>
-              <Box
-                padding={{ xs: "6px", sm: "12px" }}
-                display={"flex"}
-                flexDirection={"column"}
-                gap={"4px"}
-              >
-                <Typography
-                  fontWeight={"500"}
-                  fontSize={"13px"}
-                  color="#58728D"
-                >
-                  Head Office Addresses::
-                </Typography>
-                <Typography
-                  color="#243547"
-                  fontWeight={"600"}
-                  fontSize={"14px"}
-                >
-                  C 208, Neelkanth Business Park, Nathani Road, Vidyavihar West,
-                  Mumbai, Maharashtra 400086, India
-                </Typography>
-              </Box>
+              <InfoBox label="Category of Products" value="Service" />
+              <InfoBox
+                label="Head Office Address"
+                value="C 208, Neelkanth Business Park, Nathani Road, Vidyavihar West, Mumbai, Maharashtra 400086, India"
+              />
             </Box>
-            <Box
-              flexBasis={{ xs: "100%", sm: "48%", md: "32%" }}
-              padding={{ xs: "6px", sm: "12px" }}
-              flexDirection={"column"}
-              gap={"4px"}
-            >
-              <Typography fontWeight={"500"} fontSize={"13px"} color="#58728D">
-                Email ID:
-              </Typography>
-              <Typography color="#243547" fontWeight={"600"} fontSize={"14px"}>
-                {vendorData?.email}
-              </Typography>
+            <Box flexBasis={{ xs: "100%", sm: "48%", md: "32%" }}>
+              <InfoBox label="Email ID" value={vendorData?.email} />
             </Box>
           </Box>
         </AccordionDetails>
       </Accordion>
 
-      {/* Key Contacts and Details Section */}
-      <Accordion
-        defaultExpanded
-        elevation={0}
-        sx={{
-          padding: "0px",
-          borderBottom: "1px solid #6C849D2E",
-          minHeight: "auto", // For the Accordion itself
-          "&.Mui-expanded": {
-            minHeight: "auto", // Ensures no fixed height when expanded
-          },
-        }}
-      >
+      {/* Key Contacts Section */}
+      <Accordion defaultExpanded elevation={0} sx={{ ...accordionStyles }}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           sx={{
-            padding: "0px",
-            minHeight: "auto", // For the Accordion itself
-            "&.Mui-expanded": {
-              minHeight: "auto", // Ensures no fixed height when expanded
-            },
-            "& .MuiAccordionSummary-content": {
-              margin: "16px 0", // Fixes content alignment when expanded
-            },
+            ...accordionSummaryStyles,
           }}
         >
           <Typography
@@ -202,74 +134,14 @@ export const VendorPopupAccordion: FC<VendorPopupAccordionProps> = ({
             Key Contacts and Details
           </Typography>
         </AccordionSummary>
-        <AccordionDetails
-          sx={{
-            paddingX: "0px",
-            paddingY: "0px",
-          }}
-        >
+        <AccordionDetails sx={{ padding: 0 }}>
           <Box display="flex" flexWrap="wrap" gap={"16px"} sx={{ mb: "12px" }}>
             <Box flexBasis={{ xs: "100%", sm: "48%", md: "32%" }}>
-              <Box
-                padding={{ xs: "6px", sm: "12px" }}
-                display={"flex"}
-                flexDirection={"column"}
-                gap={"4px"}
-              >
-                <Typography
-                  fontWeight={"500"}
-                  fontSize={"13px"}
-                  color="#58728D"
-                >
-                  Name of Owner:
-                </Typography>
-                <Typography
-                  color="#243547"
-                  fontWeight={"600"}
-                  fontSize={"14px"}
-                >
-                  {vendorData?.ownerName}
-                </Typography>
-              </Box>
-              <Box
-                padding={{ xs: "6px", sm: "12px" }}
-                display={"flex"}
-                flexDirection={"column"}
-                gap={"4px"}
-              >
-                <Typography
-                  fontWeight={"500"}
-                  fontSize={"13px"}
-                  color="#58728D"
-                >
-                  Phone Number:
-                </Typography>
-                <Typography
-                  color="#243547"
-                  fontWeight={"600"}
-                  fontSize={"14px"}
-                >
-                  {vendorData?.phoneNumber}
-                </Typography>
-              </Box>
-              <Box
-                padding={{ xs: "6px", sm: "12px" }}
-                display={"flex"}
-                flexDirection={"column"}
-                gap={"4px"}
-              >
-                <Typography
-                  fontWeight={"500"}
-                  fontSize={"13px"}
-                  color="#58728D"
-                >
-                  Website:
-                </Typography>
-                <Typography
-                  color="#243547"
-                  fontWeight={"600"}
-                  fontSize={"14px"}
-                >
+              <InfoBox label="Name of Owner" value={vendorData?.ownerName} />
+              <InfoBox label="Phone Number" value={vendorData?.phoneNumber} />
+              <InfoBox
+                label="Website"
+                value={
                   <Link
                     href="https://www.dmacq.com"
                     target="_blank"
@@ -278,148 +150,41 @@ export const VendorPopupAccordion: FC<VendorPopupAccordionProps> = ({
                   >
                     www.dmacq.com
                   </Link>
-                </Typography>
-              </Box>
+                }
+              />
             </Box>
             <Box flexBasis={{ xs: "100%", sm: "48%", md: "32%" }}>
-              <Box
-                padding={{ xs: "6px", sm: "12px" }}
-                display={"flex"}
-                flexDirection={"column"}
-                gap={"4px"}
-              >
-                <Typography
-                  fontWeight={"500"}
-                  fontSize={"13px"}
-                  color="#58728D"
-                >
-                  Designation:
-                </Typography>
-                <Typography
-                  color="#243547"
-                  fontWeight={"600"}
-                  fontSize={"14px"}
-                >
-                  Director
-                </Typography>
-              </Box>
-              <Box
-                padding={{ xs: "6px", sm: "12px" }}
-                display={"flex"}
-                flexDirection={"column"}
-                gap={"4px"}
-              >
-                <Typography
-                  fontWeight={"500"}
-                  fontSize={"13px"}
-                  color="#58728D"
-                >
-                  Address:
-                </Typography>
-                <Typography
-                  color="#243547"
-                  fontWeight={"600"}
-                  fontSize={"14px"}
-                >
-                  {vendorData?.city}
-                </Typography>
-              </Box>
-              <Box
-                padding={{ xs: "6px", sm: "12px" }}
-                display={"flex"}
-                flexDirection={"column"}
-                gap={"4px"}
-              >
-                <Typography
-                  fontWeight={"500"}
-                  fontSize={"13px"}
-                  color="#58728D"
-                >
-                  Sector:
-                </Typography>
-                <Typography
-                  color="#243547"
-                  fontWeight={"600"}
-                  fontSize={"14px"}
-                >
-                  IT
-                </Typography>
-              </Box>
+              <InfoBox label="Designation" value="Director" />
+              <InfoBox label="Address" value={vendorData?.city} />
+              <InfoBox label="Sector" value="IT" />
             </Box>
             <Box flexBasis={{ xs: "100%", sm: "48%", md: "32%" }}>
-              <Box
-                padding={{ xs: "6px", sm: "12px" }}
-                display={"flex"}
-                flexDirection={"column"}
-                gap={"4px"}
-              >
-                <Typography
-                  fontWeight={"500"}
-                  fontSize={"13px"}
-                  color="#58728D"
-                >
-                  Email ID:
-                </Typography>
-                <Typography
-                  color="#243547"
-                  fontWeight={"600"}
-                  fontSize={"14px"}
-                >
-                  {vendorData?.email}
-                </Typography>
-              </Box>
-              <Box
-                padding={{ xs: "6px", sm: "12px" }}
-                display={"flex"}
-                flexDirection={"column"}
-                gap={"4px"}
-              >
-                <Typography
-                  fontWeight={"500"}
-                  fontSize={"13px"}
-                  color="#58728D"
-                >
-                  Aadhaar Card:
-                </Typography>
-                <Typography
-                  color="#243547"
-                  fontWeight={"600"}
-                  fontSize={"14px"}
-                >
+              <InfoBox label="Email ID" value={vendorData?.email} />
+              <InfoBox
+                label="Aadhaar Card"
+                value={
                   <Link href="#" underline="hover" color="primary">
                     {vendorData?.aadharCard}
                   </Link>
-                </Typography>
-              </Box>
+                }
+              />
             </Box>
           </Box>
         </AccordionDetails>
       </Accordion>
 
-      {/* Additional Sections (Expandable) */}
+      {/* Additional Sections */}
       <Accordion
         defaultExpanded
         elevation={0}
         sx={{
-          padding: "0px",
-          borderBottom: "1px solid #6C849D2E",
-          minHeight: "auto", // For the Accordion itself
-          "&.Mui-expanded": {
-            minHeight: "auto", // Ensures no fixed height when expanded
-          },
+          ...accordionStyles,
         }}
       >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           sx={{
-            padding: "0px",
-            minHeight: "auto", // For the Accordion itself
-            "&.Mui-expanded": {
-              minHeight: "auto", // Ensures no fixed height when expanded
-            },
-            "& .MuiAccordionSummary-content": {
-              margin: "16px 0", // Fixes content alignment when expanded
-            },
+            ...accordionSummaryStyles,
           }}
         >
           <Typography
@@ -436,30 +201,10 @@ export const VendorPopupAccordion: FC<VendorPopupAccordionProps> = ({
         </AccordionDetails>
       </Accordion>
 
-      <Accordion
-        defaultExpanded
-        elevation={0}
-        sx={{
-          padding: "0px",
-          borderBottom: "1px solid #6C849D2E",
-          minHeight: "auto", // For the Accordion itself
-          "&.Mui-expanded": {
-            minHeight: "auto", // Ensures no fixed height when expanded
-          },
-        }}
-      >
+      <Accordion defaultExpanded elevation={0} sx={{ ...accordionStyles }}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
-          sx={{
-            padding: "0px",
-            minHeight: "auto", // For the Accordion itself
-            "&.Mui-expanded": {
-              minHeight: "auto", // Ensures no fixed height when expanded
-            },
-            "& .MuiAccordionSummary-content": {
-              margin: "16px 0", // Fixes content alignment when expanded
-            },
-          }}
+          sx={{ ...accordionSummaryStyles }}
         >
           <Typography
             variant="subtitle1"

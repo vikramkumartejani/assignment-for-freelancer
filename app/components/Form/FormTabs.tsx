@@ -67,7 +67,11 @@ const TabContent: React.FC<TabContentProps> = ({ data }) => (
 
         <CustomButton
           variant="outlined"
-          startIcon={<FilterAltOutlinedIcon />}
+          startIcon={
+            <FilterAltOutlinedIcon
+              sx={{ fontSize: "20px", marginRight: "4px" }}
+            />
+          }
           text="Filter"
           sx={{
             borderColor: "#6C849D2E",
@@ -82,7 +86,11 @@ const TabContent: React.FC<TabContentProps> = ({ data }) => (
         />
         <CustomButton
           variant="outlined"
-          startIcon={<DateRangeOutlinedIcon />}
+          startIcon={
+            <DateRangeOutlinedIcon
+              sx={{ fontSize: "20px", marginRight: "4px" }}
+            />
+          }
           text="Select Date Range"
           sx={{
             borderColor: "#6C849D2E",
@@ -98,7 +106,11 @@ const TabContent: React.FC<TabContentProps> = ({ data }) => (
 
         <CustomButton
           variant="outlined"
-          startIcon={<IosShareOutlinedIcon />}
+          startIcon={
+            <IosShareOutlinedIcon
+              sx={{ fontSize: "20px", marginRight: "4px" }}
+            />
+          }
           text="Export"
           sx={{
             borderColor: "#6C849D2E",
@@ -114,7 +126,11 @@ const TabContent: React.FC<TabContentProps> = ({ data }) => (
 
         <CustomButton
           variant="outlined"
-          startIcon={<SettingsOutlinedIcon />}
+          startIcon={
+            <SettingsOutlinedIcon
+              sx={{ fontSize: "20px", marginRight: "4px" }}
+            />
+          }
           text="Customize"
           sx={{
             borderColor: "#6C849D2E",

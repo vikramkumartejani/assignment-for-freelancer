@@ -23,55 +23,36 @@ import CloseIcon from "@mui/icons-material/Close";
 
 interface PendingDisputProps {
   isVisible: boolean;
-  onClose: () => void; // Callback to close the drawer
+  onClose: () => void;
 }
 
 const PendingDisput: React.FC<PendingDisputProps> = ({
   isVisible,
   onClose,
 }) => {
-  // Create a reference for the drawer
   const drawerRef = useRef<HTMLDivElement | null>(null);
   const [expanded, setExpanded] = useState<string | false>("panel1");
-  const [showBox, setShowBox] = useState(false);
 
   const handleAccordionChange =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
     };
 
-  // Effect to handle clicks outside the drawer
+  // Close drawer when clicked outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
         drawerRef.current &&
         !drawerRef.current.contains(event.target as Node)
       ) {
-        onClose(); // Close the drawer if clicked outside
+        onClose();
       }
     };
-
-    // Add event listener for outside click
     document.addEventListener("mousedown", handleClickOutside);
-
-    // Cleanup the event listener when the component is unmounted
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [onClose]);
-
-  useEffect(() => {
-    // When isVisible changes to false, hide the Box after 500ms (transition duration)
-    if (!isVisible) {
-      const timer = setTimeout(() => {
-        setShowBox(false); // Hide the Box from DOM after the slide-out transition
-      }, 500); // Wait for the transition duration
-
-      return () => clearTimeout(timer); // Cleanup timer when component unmounts or state changes
-    } else {
-      setShowBox(true); // Show the Box immediately when isVisible is true
-    }
-  }, [isVisible]);
 
   return (
     <Box
@@ -79,16 +60,16 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
       sx={{
         position: "absolute",
         top: "0",
-        right: "40px", // Positioned to the left of the sidebar
+        right: "40px",
         width: "100%",
         maxWidth: { xs: "280px", sm: "371px" },
         backgroundColor: "#F8FAFC",
         border: "1px solid #E0E0E0",
         boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-        transform: isVisible ? "translateX(0)" : "translateX(100%)", // Slide-in effect
-        transition: "transform 0.3s ease-out", // Smooth transition
+        transform: isVisible ? "translateX(0)" : "translateX(100%)",
+        transition: "transform 0.3s ease-out",
         zIndex: "1",
-        display: showBox ? "block" : "none",
+        display: isVisible ? "block" : "none",
       }}
     >
       <Box sx={{ margin: "auto" }}>
@@ -114,9 +95,9 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
             sx={{
               padding: "0px",
               borderBottom: "1px solid #6C849D2E",
-              minHeight: "auto", // For the Accordion itself
+              minHeight: "auto",
               "&.Mui-expanded": {
-                minHeight: "auto", // Ensures no fixed height when expanded
+                minHeight: "auto",
                 marginTop: 0,
                 marginBottom: "12px",
               },
@@ -126,27 +107,17 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
               sx={{
                 margin: "0 !important",
                 padding: "12px",
-                flexDirection: "row-reverse", // Places expand icon on the left
-                justifyContent: "space-between", // Aligns text and checkmark icon
-                alignItems: "center", // Centers items vertically
+                flexDirection: "row-reverse",
+                justifyContent: "space-between",
+                alignItems: "center",
                 borderBottom: "1px solid #6C849D2E",
-                minHeight: "auto", // For the Accordion itself
-                "&.Mui-expanded": {
-                  minHeight: "auto", // Ensures no fixed height when expanded
-                },
-                "& .MuiAccordionSummary-content": {
-                  margin: "0", // Fixes content alignment when expanded
-                },
+                minHeight: "auto",
+                "&.Mui-expanded": { minHeight: "auto" },
+                "& .MuiAccordionSummary-content": { margin: "0" },
               }}
               expandIcon={
                 <ExpandMoreIcon
-                  sx={{
-                    color: "#58728D",
-                    width: "16px",
-                    height: "16px",
-                    marginY: "auto",
-                    marginleft: "8px",
-                  }}
+                  sx={{ color: "#58728D", width: "16px", height: "16px" }}
                 />
               }
             >
@@ -160,23 +131,15 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
               >
                 <Typography
                   variant="subtitle1"
-                  color={"#40566D"}
-                  fontSize={"12px"}
-                  fontWeight={"500"}
-                  margin={0}
-                  padding={0}
+                  color="#40566D"
+                  fontSize="12px"
+                  fontWeight="500"
                 >
                   1. Company Detail with Proof
                 </Typography>
               </Box>
               <CheckCircleOutlineIcon
-                sx={{
-                  color: "#58728D",
-                  width: "17px",
-                  height: "17px",
-                  marginY: "auto",
-                  marginLeft: "2px",
-                }}
+                sx={{ color: "#58728D", width: "17px", height: "17px" }}
               />
             </AccordionSummary>
 
@@ -190,96 +153,85 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
                     gap: "9px",
                   }}
                 >
-                  <ListItem
-                    alignItems="flex-start"
-                    sx={{ gap: "8px", padding: "0" }}
-                  >
-                    <ListItemAvatar
-                      sx={{ width: "24px", height: "24px", minWidth: "24px" }}
+                  {[
+                    {
+                      avatarSrc: "/assets/profile-img1.png",
+                      primary: "Dentsu • 2m ago",
+                      secondary:
+                        "Missing required documentation or Incorrect Company Detail, Attach address proof",
+                    },
+                    {
+                      avatarSrc: "/assets/profile-img2.png",
+                      primary: "Dmacq.com • Just Now",
+                      secondary:
+                        "Hi, I attached both files that you mentioned. Please check.",
+                      hasAttachment: true,
+                      attachmentName: "Adharcard.pdf",
+                    },
+                  ].map((item, index) => (
+                    <ListItem
+                      key={index}
+                      alignItems="flex-start"
+                      sx={{ gap: "8px", padding: "0" }}
                     >
-                      <Avatar
-                        sx={{ width: "24px", height: "24px" }}
-                        src="/assets/profile-img1.png"
-                        alt="User 1"
-                      />
-                    </ListItemAvatar>
-                    <ListItemText
-                      primary="Dentsu • 2m ago"
-                      secondary="Missing required documentation or Incorrect Company Detail, Attach address proof"
-                      primaryTypographyProps={{
-                        fontSize: "12px", // Font size for primary text
-                        fontWeight: "400", // Bold primary text
-                        color: "#768EA7", // Use theme color for primary text
-                      }}
-                      secondaryTypographyProps={{
-                        fontSize: "12px", // Smaller font size for secondary text
-                        color: "#192839", // Use theme color for secondary text
-                        fontWeight: "400", // Bold primary text
-                        paddingTop: "8px",
-                      }}
-                    />
-                  </ListItem>
-
-                  <ListItem
-                    alignItems="flex-start"
-                    sx={{ gap: "8px", padding: "0" }}
-                  >
-                    <ListItemAvatar
-                      sx={{ width: "24px", height: "24px", minWidth: "24px" }}
-                    >
-                      <Avatar
-                        sx={{ width: "24px", height: "24px" }}
-                        src="/assets/profile-img2.png"
-                        alt="User 2"
-                      />
-                    </ListItemAvatar>
-                    <Box sx={{ display: "flex", flexDirection: "column" }}>
-                      <ListItemText
-                        primary="Dmacq.com • Just Now"
-                        secondary="Hi, I attached both files that you mentioned. Please check."
-                        primaryTypographyProps={{
-                          fontSize: "12px", // Font size for primary text
-                          fontWeight: "400", // Bold primary text
-                          color: "#768EA7", // Use theme color for primary text
-                        }}
-                        secondaryTypographyProps={{
-                          fontSize: "12px", // Smaller font size for secondary text
-                          color: "#192839", // Use theme color for secondary text
-                          fontWeight: "400", // Bold primary text
-                          paddingTop: "8px",
-                        }}
-                      />
-                      <Paper
-                        variant="outlined"
-                        sx={{
-                          display: "flex",
-                          alignItems: "center",
-                          padding: "4px 8px",
-                          width: "fit-content",
-                          marginTop: "8px",
-                          background: "#F1F5FA",
-                          border: "none",
-                          borderRadius: "4px",
-                        }}
+                      <ListItemAvatar
+                        sx={{ width: "24px", height: "24px", minWidth: "24px" }}
                       >
-                        <img src="/assets/file-icon.svg" alt="" />
-                        <Typography
-                          sx={{ ml: "8px", color: "#243547", fontSize: "12px" }}
-                        >
-                          Adharcard.pdf
-                        </Typography>
-                        <IconButton size="small" sx={{ ml: "8px" }}>
-                          <CloseIcon sx={{ fontSize: "16px" }} />
-                        </IconButton>
-                      </Paper>
-                    </Box>
-                  </ListItem>
+                        <Avatar
+                          sx={{ width: "24px", height: "24px" }}
+                          src={item.avatarSrc}
+                        />
+                      </ListItemAvatar>
+                      <Box display={"flex"} flexDirection={"column"}>
+                        <ListItemText
+                          primary={item.primary}
+                          secondary={item.secondary}
+                          primaryTypographyProps={{
+                            fontSize: "12px",
+                            fontWeight: "400",
+                            color: "#768EA7",
+                          }}
+                          secondaryTypographyProps={{
+                            fontSize: "12px",
+                            color: "#192839",
+                            fontWeight: "400",
+                            paddingTop: "8px",
+                          }}
+                        />
+                        {item.hasAttachment && (
+                          <Paper
+                            variant="outlined"
+                            sx={{
+                              display: "flex",
+                              alignItems: "center",
+                              padding: "4px 8px",
+                              marginTop: "8px",
+                              background: "#F1F5FA",
+                              width: "fit-content",
+                            }}
+                          >
+                            <img src="/assets/file-icon.svg" alt="attachment" />
+                            <Typography
+                              sx={{
+                                ml: "8px",
+                                color: "#243547",
+                                fontSize: "12px",
+                              }}
+                            >
+                              {item.attachmentName}
+                            </Typography>
+                            <IconButton size="small" sx={{ ml: "8px" }}>
+                              <CloseIcon sx={{ fontSize: "16px" }} />
+                            </IconButton>
+                          </Paper>
+                        )}
+                      </Box>
+                    </ListItem>
+                  ))}
                 </List>
               </Box>
-
               <Box sx={{ padding: "12px" }}>
                 <Box display="flex" alignItems="center" sx={{ padding: "0" }}>
-                  {/* Attachment Icon */}
                   <IconButton sx={{ color: "#4838B0", padding: "4px" }}>
                     <AttachFileIcon sx={{ fontSize: "21px" }} />
                   </IconButton>
@@ -291,7 +243,6 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
                     padding="4px 8px"
                     sx={{ backgroundColor: "#F9FBFC", width: "100%" }}
                   >
-                    {/* Input Field */}
                     <TextField
                       placeholder="Type Your Reply..."
                       variant="standard"
@@ -301,27 +252,16 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
                         sx: { fontSize: "12px", color: "#90A5BB" },
                         endAdornment: (
                           <InputAdornment position="end">
-                            {/* Send Icon */}
-                            <IconButton
-                              sx={{
-                                color: "#40566D",
-                                padding: 0,
-                                paddingRight: "4px",
-                              }}
-                            >
+                            <IconButton sx={{ color: "#40566D", padding: 0 }}>
                               <SendIcon sx={{ fontSize: "16px" }} />
                             </IconButton>
                           </InputAdornment>
                         ),
                       }}
-                      sx={{
-                        marginLeft: "8px",
-                        backgroundColor: "#F8FAFC",
-                      }}
+                      sx={{ marginLeft: "8px", backgroundColor: "#F8FAFC" }}
                     />
                   </Box>
                 </Box>
-                {/* Hint Text */}
                 <Typography
                   sx={{
                     fontSize: "10px",
@@ -346,9 +286,9 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
               sx={{
                 padding: "0px",
                 borderBottom: "1px solid #6C849D2E",
-                minHeight: "auto", // For the Accordion itself
+                minHeight: "auto",
                 "&.Mui-expanded": {
-                  minHeight: "auto", // Ensures no fixed height when expanded
+                  minHeight: "auto",
                   marginTop: 0,
                   marginBottom: "12px",
                 },
@@ -358,26 +298,17 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
                 sx={{
                   margin: "0 !important",
                   padding: "12px",
-                  flexDirection: "row-reverse", // Places expand icon on the left
-                  justifyContent: "space-between", // Aligns text and checkmark icon
-                  alignItems: "center", // Centers items vertically
+                  flexDirection: "row-reverse",
+                  justifyContent: "space-between",
+                  alignItems: "center",
                   borderBottom: "1px solid #6C849D2E",
-                  minHeight: "auto", // For the Accordion itself
-                  "&.Mui-expanded": {
-                    minHeight: "auto", // Ensures no fixed height when expanded
-                  },
-                  "& .MuiAccordionSummary-content": {
-                    margin: "0", // Fixes content alignment when expanded
-                  },
+                  minHeight: "auto",
+                  "&.Mui-expanded": { minHeight: "auto" },
+                  "& .MuiAccordionSummary-content": { margin: "0" },
                 }}
                 expandIcon={
                   <ExpandMoreIcon
-                    sx={{
-                      color: "#58728D",
-                      width: "16px",
-                      height: "16px",
-                      marginY: "auto",
-                    }}
+                    sx={{ color: "#58728D", width: "16px", height: "16px" }}
                   />
                 }
               >
@@ -391,27 +322,18 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
                 >
                   <Typography
                     variant="subtitle1"
-                    color={"#40566D"}
-                    fontSize={"12px"}
-                    fontWeight={"500"}
-                    margin={0}
-                    padding={0}
+                    color="#40566D"
+                    fontSize="12px"
+                    fontWeight="500"
                   >
                     {item.title}
                   </Typography>
                 </Box>
                 <CheckCircleOutlineIcon
-                  sx={{
-                    color: "#58728D",
-                    width: "17px",
-                    height: "17px",
-                    marginY: "auto",
-                    marginLeft: "2px",
-                  }}
+                  sx={{ color: "#58728D", width: "17px", height: "17px" }}
                 />
               </AccordionSummary>
 
-              {/* Accordion Details */}
               <AccordionDetails sx={{ padding: "12px" }}>
                 <Typography variant="body2" color="#6C849D" fontSize="12px">
                   {item.details}

@@ -21,7 +21,6 @@ interface SubmissionTableProps {
 const SubmissionTable: React.FC<SubmissionTableProps> = ({ data }) => {
   const [order, setOrder] = useState<"asc" | "desc">("asc");
   const [orderBy, setOrderBy] = useState<keyof SubmissionData>("vendorName");
-
   const [openDialog, setOpenDialog] = useState<boolean>(false);
   const [selectedVendor, setSelectedVendor] = useState<SubmissionData | null>(
     null
@@ -51,8 +50,7 @@ const SubmissionTable: React.FC<SubmissionTableProps> = ({ data }) => {
     );
     stabilizedArray.sort((a, b) => {
       const order = comparator(a[0], b[0]);
-      if (order !== 0) return order;
-      return a[1] - b[1];
+      return order !== 0 ? order : a[1] - b[1];
     });
     return stabilizedArray.map((el) => el[0]);
   };
@@ -67,196 +65,75 @@ const SubmissionTable: React.FC<SubmissionTableProps> = ({ data }) => {
     return 0;
   };
 
+  const renderTableCell = (content: string | React.ReactNode, sx: any) => (
+    <TableCell sx={sx}>{content}</TableCell>
+  );
+
   return (
     <Box sx={{ overflowX: "auto" }}>
-      <TableContainer component={Paper} className="overflow-x-auto">
-        <Table className="overflow-hidden">
-          <TableHead
-            sx={{ backgroundColor: "#F1F5FA" }}
-            className="text-nowrap"
-          >
-            <TableRow
-              sx={{
-                borderBottom: "1px solid #6C849D2E", // Set row border color
-              }}
-            >
-              <TableCell
-                sx={{
-                  fontFamily: "Noto Sans",
-                  fontSize: { xs: "12px", sm: "13px" },
-                  fontWeight: 600,
-                  lineHeight: "17.71px",
-                  color: "#40566D",
-                }}
-              >
-                <TableSortLabel
-                  active={orderBy === "vendorName"}
-                  direction={orderBy === "vendorName" ? order : "asc"}
-                  onClick={() => handleRequestSort("vendorName")}
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead sx={{ backgroundColor: "#F1F5FA" }}>
+            <TableRow sx={{ borderBottom: "1px solid #6C849D2E" }}>
+              {[
+                "vendorName",
+                "email",
+                "ownerName",
+                "phoneNumber",
+                "city",
+                "panCard",
+                "aadharCard",
+              ].map((field) => (
+                <TableCell
+                  key={field}
+                  sx={{
+                    fontFamily: "Noto Sans",
+                    fontSize: { xs: "12px", sm: "13px" },
+                    fontWeight: 600,
+                    lineHeight: "17.71px",
+                    color: "#40566D",
+                    textTransform: "capitalize",
+                  }}
                 >
-                  Vendor Name
-                </TableSortLabel>
-              </TableCell>
-              <TableCell
-                sx={{
-                  fontFamily: "Noto Sans",
-                  fontSize: { xs: "12px", sm: "13px" },
-                  fontWeight: 600,
-                  lineHeight: "17.71px",
-                  color: "#40566D",
-                }}
-              >
-                <TableSortLabel
-                  active={orderBy === "email"}
-                  direction={orderBy === "email" ? order : "asc"}
-                  onClick={() => handleRequestSort("email")}
-                >
-                  Email ID
-                </TableSortLabel>
-              </TableCell>
-              <TableCell
-                sx={{
-                  fontFamily: "Noto Sans",
-                  fontSize: { xs: "12px", sm: "13px" },
-                  fontWeight: 600,
-                  lineHeight: "17.71px",
-                  color: "#40566D",
-                }}
-              >
-                <TableSortLabel
-                  active={orderBy === "ownerName"}
-                  direction={orderBy === "ownerName" ? order : "asc"}
-                  onClick={() => handleRequestSort("ownerName")}
-                >
-                  Name of Owner
-                </TableSortLabel>
-              </TableCell>
-              <TableCell
-                sx={{
-                  fontFamily: "Noto Sans",
-                  fontSize: { xs: "12px", sm: "13px" },
-                  fontWeight: 600,
-                  lineHeight: "17.71px",
-                  color: "#40566D",
-                }}
-              >
-                Phone Number
-              </TableCell>
-              <TableCell
-                sx={{
-                  fontFamily: "Noto Sans",
-                  fontSize: { xs: "12px", sm: "13px" },
-                  fontWeight: 600,
-                  lineHeight: "17.71px",
-                  color: "#40566D",
-                }}
-              >
-                City
-              </TableCell>
-              <TableCell
-                sx={{
-                  fontFamily: "Noto Sans",
-                  fontSize: { xs: "12px", sm: "13px" },
-                  fontWeight: 600,
-                  lineHeight: "17.71px",
-                  color: "#40566D",
-                }}
-              >
-                Pan Card
-              </TableCell>
-              <TableCell
-                sx={{
-                  fontFamily: "Noto Sans",
-                  fontSize: { xs: "12px", sm: "13px" },
-                  fontWeight: 600,
-                  lineHeight: "17.71px",
-                  color: "#40566D",
-                }}
-              >
-                Aadhar Card
-              </TableCell>
+                  <TableSortLabel
+                    active={orderBy === field}
+                    direction={orderBy === field ? order : "asc"}
+                    onClick={() =>
+                      handleRequestSort(field as keyof SubmissionData)
+                    }
+                  >
+                    {field
+                      .replace(/([A-Z])/g, " $1")
+                      .replace(/\b\w/g, (char) => char.toUpperCase())}
+                  </TableSortLabel>
+                </TableCell>
+              ))}
             </TableRow>
           </TableHead>
-          <TableBody className="text-nowrap">
+          <TableBody>
             {stableSort(data, comparator).map((row, index) => (
               <TableRow
                 key={index}
-                sx={{
-                  borderBottom: "1px solid #6C849D2E", // Set row border color
-                }}
+                sx={{ borderBottom: "1px solid #6C849D2E" }}
+                onClick={() => handleClickOpen(row)}
               >
-                <TableCell
-                  sx={{
-                    color: "#4838B0",
-                    fontSize: { xs: "12px", sm: "14px" },
-                    fontWeight: "600",
-                    lineHeight: "20px",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => handleClickOpen(row)}
-                >
-                  {row.vendorName}
-                </TableCell>
-                <TableCell
-                  sx={{
-                    color: "#2F4256",
+                {[
+                  { content: row.vendorName, field: "vendorName" },
+                  { content: row.email, field: "email" },
+                  { content: row.ownerName, field: "ownerName" },
+                  { content: row.phoneNumber, field: "phoneNumber" },
+                  { content: row.city, field: "city" },
+                  { content: row.panCard, field: "panCard" },
+                  { content: row.aadharCard, field: "aadharCard" },
+                ].map(({ content, field }) =>
+                  renderTableCell(content, {
+                    color: field === "vendorName" ? "#4838B0" : "#2F4256",
                     fontSize: { xs: "12px", sm: "13px" },
-                    fontWeight: "500",
+                    fontWeight: field === "vendorName" ? "600" : "500",
                     lineHeight: "17.71px",
-                  }}
-                >
-                  {row.email}
-                </TableCell>
-                <TableCell
-                  sx={{
-                    color: "#2F4256",
-                    fontSize: { xs: "12px", sm: "13px" },
-                    fontWeight: "500",
-                    lineHeight: "17.71px",
-                  }}
-                >
-                  {row.ownerName}
-                </TableCell>
-                <TableCell
-                  sx={{
-                    color: "#2F4256",
-                    fontSize: { xs: "12px", sm: "13px" },
-                    fontWeight: "500",
-                    lineHeight: "17.71px",
-                  }}
-                >
-                  {row.phoneNumber}
-                </TableCell>
-                <TableCell
-                  sx={{
-                    color: "#2F4256",
-                    fontSize: { xs: "12px", sm: "13px" },
-                    fontWeight: "500",
-                    lineHeight: "17.71px",
-                  }}
-                >
-                  {row.city}
-                </TableCell>
-                <TableCell
-                  sx={{
-                    color: "#2F4256",
-                    fontSize: { xs: "12px", sm: "13px" },
-                    fontWeight: "500",
-                    lineHeight: "17.71px",
-                  }}
-                >
-                  {row.panCard}
-                </TableCell>
-                <TableCell
-                  sx={{
-                    color: "#2F4256",
-                    fontSize: { xs: "12px", sm: "13px" },
-                    fontWeight: "500",
-                    lineHeight: "17.71px",
-                  }}
-                >
-                  {row.aadharCard}
-                </TableCell>
+                    cursor: field === "vendorName" ? "pointer" : "default",
+                  })
+                )}
               </TableRow>
             ))}
           </TableBody>
