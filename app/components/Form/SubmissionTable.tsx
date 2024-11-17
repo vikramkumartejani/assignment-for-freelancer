@@ -73,7 +73,7 @@ const SubmissionTable: React.FC<SubmissionTableProps> = ({ data }) => {
     <Box sx={{ overflowX: "auto" }}>
       <TableContainer component={Paper}>
         <Table>
-          <TableHead sx={{ backgroundColor: "#F1F5FA" }}>
+          <TableHead sx={{ backgroundColor: "#F1F5FA" }} className="text-nowrap">
             <TableRow sx={{ borderBottom: "1px solid #6C849D2E" }}>
               {[
                 "vendorName",
@@ -110,7 +110,7 @@ const SubmissionTable: React.FC<SubmissionTableProps> = ({ data }) => {
               ))}
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody className="text-nowrap">
             {stableSort(data, comparator).map((row, index) => (
               <TableRow
                 key={index}

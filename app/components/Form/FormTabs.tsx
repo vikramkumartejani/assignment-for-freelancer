@@ -42,7 +42,7 @@ const TabContent: React.FC<TabContentProps> = ({ data }) => (
             width: { xs: "100%", sm: "100%", md: "309px" },
             "& .MuiOutlinedInput-root": {
               borderRadius: "8px",
-              height: "36px",
+              height: "46px",
               padding: "8px 12px",
               fontFamily: "Noto Sans",
               fontSize: "14px",
@@ -50,13 +50,13 @@ const TabContent: React.FC<TabContentProps> = ({ data }) => (
               lineHeight: "20px",
               color: "#3D4B5C",
               "& fieldset": {
-                borderColor: "#6C849D2E",  
+                borderColor: "#6C849D2E",
               },
               "&:hover fieldset": {
-                borderColor: "#4838B0", 
+                borderColor: "#4838B0",
               },
               "&.Mui-focused fieldset": {
-                borderColor: "#4838B0", 
+                borderColor: "#4838B0",
               },
             },
           }}
@@ -178,15 +178,15 @@ const FormTabs: React.FC = () => {
             minWidth: { xs: "auto", sm: "120px" },
             whiteSpace: "nowrap",
             borderBottom: "2px solid transparent",
-            color: "#58728D",  
+            color: "#58728D",
             "&.Mui-selected": {
-              color: "#4838B0", 
-              borderBottomColor: "#5D4AD4", 
+              color: "#4838B0",
+              borderBottomColor: "#5D4AD4",
               fontWeight: "700",
             },
           },
           "& .MuiTabs-indicator": {
-            display: "none", 
+            display: "none",
           },
         }}
       >
