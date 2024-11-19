@@ -1,12 +1,11 @@
 "use client";
-import { Box, Button, ThemeProvider, CssBaseline } from "@mui/material";
-import { useState } from "react";
+import React, { useState } from "react";
+import { Box, ThemeProvider, CssBaseline } from "@mui/material";
 import Layout from "./components/Layout";
-import FormHeader from "./components/Form/FormHeader";
-import FormTabs from "./components/Form/FormTabs";
 import createCustomTheme, { lightPalette, darkPalette } from "./theme";
-import Brightness4Icon from "@mui/icons-material/Brightness4";  
-import Brightness7Icon from "@mui/icons-material/Brightness7";  
+import FormHeader from "./components/Organisms/FormHeader";
+import ThemeToggleButton from "./components/Molecule/ThemeToggleButton/ThemeToggleButton";
+import FormTabs from "./components/Organisms/FormTabs";
 
 export default function Home() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -23,17 +22,10 @@ export default function Home() {
         </Box>
       </Layout>
 
-      <Box
-        sx={{
-          position: "fixed",
-          bottom: 10,
-          right: 10,
-        }}
-      >
-        <Button variant="contained" onClick={() => setIsDarkMode(!isDarkMode)}>
-          {isDarkMode ? <Brightness7Icon /> : <Brightness4Icon />}
-        </Button>
-      </Box>
+      <ThemeToggleButton
+        isDarkMode={isDarkMode}
+        toggleDarkMode={() => setIsDarkMode(!isDarkMode)}
+      />
     </ThemeProvider>
   );
 }

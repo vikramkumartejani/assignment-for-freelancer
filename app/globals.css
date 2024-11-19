@@ -14,33 +14,3 @@
 body {
   font-family: "Noto Sans", sans-serif !important;
 }
-
-.css-1usuzwp-MuiButtonBase-root-MuiTab-root.Mui-selected {
-  color: #4838b0;
-}
-
-.css-1qltlow-MuiTabs-indicator {
-  background-color: #4838b0;
-}
-
-.css-1orzuox-MuiTableCell-root {
-  padding: 12px 16px;
-}
-
-/* Table */
-.css-169941l-MuiTableCell-root {
-  padding: 16px;
-}
-
-.css-1xoao6p-MuiTableCell-root {
-  padding: 16px;
-}
-
-@media screen and (max-width: 640px) {
-  .css-169941l-MuiTableCell-root {
-    padding: 10px 14px;
-  }
-  .css-1xoao6p-MuiTableCell-root {
-    padding: 10px 14px;
-  }
-}

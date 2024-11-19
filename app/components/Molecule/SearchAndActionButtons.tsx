@@ -1,7 +1,8 @@
-import { Box, TextField, InputAdornment } from "@mui/material";
-import { Search } from "@mui/icons-material";
-import RaiseDisputePopup from "./RaiseDisputePopup";
+import React from "react";
+import { Box } from "@mui/material";
+import SearchField from "../Atoms/SearchField";
 import CustomButton from "../CustomButton";
+import RaiseDisputePopup from "../Organisms/RaiseDisputePopup";
 
 interface SearchAndActionButtonsProps {
   handleClickOpen: () => void;
@@ -11,13 +12,13 @@ interface SearchAndActionButtonsProps {
   isMobile?: boolean;
 }
 
-const SearchAndActionButtons = ({
+const SearchAndActionButtons: React.FC<SearchAndActionButtonsProps> = ({
   handleClickOpen,
   handleClose,
   handleRaiseDispute,
   openS,
   isMobile = false,
-}: SearchAndActionButtonsProps) => {
+}) => {
   return (
     <Box
       sx={{
@@ -28,31 +29,9 @@ const SearchAndActionButtons = ({
       }}
     >
       {/* Search Field */}
-      <TextField
-        variant="outlined"
-        placeholder="Search"
-        size="small"
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <Search style={{ color: "#40566D" }} />
-            </InputAdornment>
-          ),
-          style: {
-            paddingLeft: "10px",
-            paddingRight: "10px",
-            height: "32px",
-            borderRadius: "8px",
-          },
-        }}
-        sx={{
-          width: isMobile ? "100%" : "300px",
-          "& .MuiOutlinedInput-root": { borderRadius: "20px" },
-          "& fieldset": { borderColor: "#6C849D2E" },
-        }}
-      />
+      <SearchField isMobile={isMobile} />
 
-      {/* Action Buttons */}
+      {/* Action Buttons using CustomButton */}
       <CustomButton
         text="Edit"
         iconSrc="/assets/edit.svg"
@@ -65,8 +44,8 @@ const SearchAndActionButtons = ({
         shadow={false}
       />
       <CustomButton
-        onClick={handleClickOpen}
         text="Dispute"
+        onClick={handleClickOpen}
         sx={{
           backgroundColor: "#E9690C",
           color: "white",

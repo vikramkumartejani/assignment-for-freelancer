@@ -1,6 +1,6 @@
 import { Box, CssBaseline, Drawer } from "@mui/material";
-import Header from "./Header";
-import Sidebar from "./Sidebar";
+import Header from "./Organisms/Header";
+import Sidebar from "./Organisms/Sidebar";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -38,10 +38,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           component="main"
           sx={{
             flexGrow: 1,
-            bgcolor: "background.default",
+            backgroundColor: "white",
             width: "100%",
           }}
-          style={{ padding: "20px" }}
+          className="px-3.5 py-5 md:p-5"
         >
           {children}
         </Box>

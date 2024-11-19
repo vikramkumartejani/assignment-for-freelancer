@@ -42,6 +42,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
         fontSize: "14px",
         fontWeight: 600,
         padding: "10px 12px",
+        border: "1px solid",
         borderRadius: "4px",
         ...boxShadowStyle,  
         ...sx,  
