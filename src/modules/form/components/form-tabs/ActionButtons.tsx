@@ -78,15 +78,19 @@ const ActionButtons: React.FC = () => {
               fontSize: "14px",
               fontWeight: 500,
               lineHeight: "20px",
-              color: "#3D4B5C",
+              color: "#768EA7",
               "& fieldset": {
                 borderColor: "#6C849D2E",
               },
               "&:hover fieldset": {
-                borderColor: "#4838B0",
+                borderColor: "#6C849D2E",
               },
               "&.Mui-focused fieldset": {
-                borderColor: "#4838B0",
+                borderColor: "#6C849D2E",
+              },
+              "& input::placeholder": {
+                color: "#768EA7", 
+                opacity: 1,
               },
             },
           }}
@@ -94,7 +98,7 @@ const ActionButtons: React.FC = () => {
             input: {
               startAdornment: (
                 <InputAdornment position="start">
-                  <SearchIcon sx={{ color: "#000", fontSize: "20px" }} />
+                  <SearchIcon sx={{ color: "#40566D", fontSize: "20px" }} />
                 </InputAdornment>
               ),
             },

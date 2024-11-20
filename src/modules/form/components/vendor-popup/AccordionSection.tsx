@@ -23,12 +23,20 @@ const cleanValue = (value: React.ReactNode) => {
   return value;
 };
 
+interface AccordionSectionProps {
+  vendorData: SubmissionData;
+}
+
 const accordionStyles = {
-  padding: "0px",
-  borderBottom: "1px solid #6C849D2E",
+  padding: {
+    xs: "0px 12px",
+    md: "0px 24px",
+  },
   minHeight: "auto",
   "&.Mui-expanded": {
     minHeight: "auto",
+    borderTop: "1px solid #6C849D2E",
+    margin: "0px !important",
   },
 };
 
@@ -39,17 +47,19 @@ const accordionSummaryStyles = {
     minHeight: "auto",
   },
   "& .MuiAccordionSummary-content": {
-    margin: "16px 0",
+    margin: "0px !important",
+    padding: "12px 0 12px 0",
   },
 };
 
-interface AccordionSectionProps {
-  vendorData: SubmissionData;
-}
+const accordionDetailsStyles = {
+  padding: "0px",
+  margin: "0",
+};
 
 const AccordionSection: React.FC<AccordionSectionProps> = ({ vendorData }) => {
   return (
-    <Box sx={{ height: "100%" }}>
+    <Box sx={{ height: "100%", marginTop: "0" }}>
       {/* Vendor Information Accordion */}
       <Accordion defaultExpanded elevation={0} sx={accordionStyles}>
         <AccordionSummary
@@ -60,14 +70,14 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({ vendorData }) => {
             text="Vendor Information"
             variant="subtitle1"
             sx={{
-              color:"#58728D",
-              fontWeight:"700",
-              fontSize:'14px',
-              lineHeight:'20px'
+              color: "#58728D",
+              fontWeight: "700",
+              fontSize: "14px",
+              lineHeight: "20px",
             }}
           />
         </AccordionSummary>
-        <AccordionDetails sx={{ padding: 0 }}>
+        <AccordionDetails sx={accordionDetailsStyles}>
           <Box display="flex" flexWrap="wrap" gap={"16px"} sx={{ mb: "12px" }}>
             <Box flexBasis={{ xs: "100%", sm: "48%", md: "32%" }}>
               <InfoBox
@@ -110,14 +120,14 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({ vendorData }) => {
             text="Key Contacts and Details"
             variant="subtitle1"
             sx={{
-              color:"#58728D",
-              fontWeight:"700",
-              fontSize:'14px',
-              lineHeight:'20px'
+              color: "#58728D",
+              fontWeight: "700",
+              fontSize: "14px",
+              lineHeight: "20px",
             }}
           />
         </AccordionSummary>
-        <AccordionDetails sx={{ padding: 0 }}>
+        <AccordionDetails sx={accordionDetailsStyles}>
           <Box display="flex" flexWrap="wrap" gap={"16px"} sx={{ mb: "12px" }}>
             <Box flexBasis={{ xs: "100%", sm: "48%", md: "32%" }}>
               <InfoBox
@@ -162,7 +172,6 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({ vendorData }) => {
         </AccordionDetails>
       </Accordion>
 
-      {/* Additional Organizational Information Accordion */}
       <Accordion defaultExpanded elevation={0} sx={accordionStyles}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -172,14 +181,17 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({ vendorData }) => {
             text="Organizational Information"
             variant="subtitle1"
             sx={{
-              color:"#2F4256",
-              fontWeight:"700",
-              fontSize:'14px',
-              lineHeight:'20px'
+              color: "#2F4256",
+              fontWeight: "700",
+              fontSize: "14px",
+              lineHeight: "20px",
             }}
           />
         </AccordionSummary>
-        <AccordionDetails sx={{ padding: "0px 0px 10px 0px" }}>
+        <AccordionDetails
+          sx={accordionDetailsStyles}
+          style={{ paddingBottom: "12px" }}
+        >
           <TypographyAtom
             text=" Additional organizational information goes here..."
             variant="subtitle1"
@@ -197,14 +209,17 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({ vendorData }) => {
             text="Key contacts and details"
             variant="subtitle1"
             sx={{
-              color:"#2F4256",
-              fontWeight:"700",
-              fontSize:'14px',
-              lineHeight:'20px'
+              color: "#2F4256",
+              fontWeight: "700",
+              fontSize: "14px",
+              lineHeight: "20px",
             }}
           />
         </AccordionSummary>
-        <AccordionDetails sx={{ padding: "0px 0px 10px 0px" }}>
+        <AccordionDetails
+          sx={accordionDetailsStyles}
+          style={{ paddingBottom: "12px" }}
+        >
           <TypographyAtom
             text=" Additional key contacts and details goes here..."
             variant="subtitle1"
@@ -212,6 +227,7 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({ vendorData }) => {
           />
         </AccordionDetails>
       </Accordion>
+
       <Accordion defaultExpanded elevation={0} sx={accordionStyles}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -221,14 +237,17 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({ vendorData }) => {
             text="Key contacts and details"
             variant="subtitle1"
             sx={{
-              color:"#2F4256",
-              fontWeight:"700",
-              fontSize:'14px',
-              lineHeight:'20px'
+              color: "#2F4256",
+              fontWeight: "700",
+              fontSize: "14px",
+              lineHeight: "20px",
             }}
           />
         </AccordionSummary>
-        <AccordionDetails sx={{ padding: "0px 0px 10px 0px" }}>
+        <AccordionDetails
+          sx={accordionDetailsStyles}
+          style={{ paddingBottom: "12px" }}
+        >
           <TypographyAtom
             text=" Additional key contacts and details goes here..."
             variant="subtitle1"

@@ -19,13 +19,17 @@ const TableRowData: React.FC<TableRowDataProps> = ({ row, onClick }) => {
 
   return (
     <TableRow
-      sx={{ borderBottom: "1px solid #6C849D2E", whiteSpace: "nowrap" }}
+      sx={{
+        borderBottom: "1px solid #6C849D2E",  
+        whiteSpace: "nowrap",
+      }}
       onClick={onClick}
     >
       {fields.map(({ content, field }) => (
         <TableCell
           key={field}
           sx={{
+            borderBottom: "1px solid #6C849D2E",
             color: field === "vendorName" ? "#4838B0" : "#2F4256",
             fontSize: { xs: "12px", sm: "13px" },
             fontWeight: field === "vendorName" ? "600" : "500",

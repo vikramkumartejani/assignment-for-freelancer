@@ -22,11 +22,11 @@ const VendorPopupContent: React.FC<VendorPopupContentProps> = ({
   return (
     <Box
       sx={{
-        paddingX: {
-          xs: "15px !important",
-          sm: "16px !important",
-          md: "24px !important",
-        },
+        // paddingX: {
+        //   xs: "15px !important",
+        //   sm: "16px !important",
+        //   md: "24px !important",
+        // },
         width: "100%",
       }}
     >

@@ -34,6 +34,7 @@ const TableHeader: React.FC<TableHeaderProps> = ({
         <TableCell
           key={column}
           sx={{
+            borderBottom: "1px solid #6C849D2E",
             fontFamily: "Noto Sans",
             fontSize: { xs: "12px", sm: "13px" },
             fontWeight: 600,

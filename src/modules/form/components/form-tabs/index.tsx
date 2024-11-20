@@ -17,7 +17,7 @@ const FormTabs: React.FC = () => {
         onChange={handleChange}
         aria-label="submission tabs"
         sx={{
-          color: "#58728D",
+          color: "#000",
           overflowX: "auto",
           borderBottom: "1px solid #167B592E",
           "& .MuiTabs-flexContainer": {

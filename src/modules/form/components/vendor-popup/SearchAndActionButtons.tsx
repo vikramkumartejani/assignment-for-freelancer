@@ -27,6 +27,7 @@ const SearchAndActionButtons: React.FC<SearchAndActionButtonsProps> = ({
         gap: "14px",
         alignItems: "center",
         justifyContent: "center",
+        padding:'0 12px'
       }}
     >
       {/* Search Field */}
@@ -42,7 +43,7 @@ const SearchAndActionButtons: React.FC<SearchAndActionButtonsProps> = ({
           color: "#4838B0",
           height: "32px",
         }}
-        shadow={false}
+        shadow={true}
       />
 
       <CustomButton

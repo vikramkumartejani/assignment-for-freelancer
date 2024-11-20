@@ -17,26 +17,30 @@ const SearchField: React.FC<SearchFieldProps> = ({ isMobile = false }) => {
         "& .MuiOutlinedInput-root": {
           borderRadius: "8px",
           borderColor: "#6C849D2E",
-          marginY:'auto',           
+          marginY: "auto",
           paddingLeft: "10px",
           paddingRight: "10px",
-          height:'32px',
+          height: "32px",
           "&:hover fieldset": {
-            borderColor: "#6C849D2E", 
+            borderColor: "#6C849D2E",
           },
           "&.Mui-focused fieldset": {
-            borderColor: "#6C849D2E", 
+            borderColor: "#6C849D2E",
           },
         },
         "& fieldset": {
           borderColor: "#6C849D2E",
+        },
+        "& input::placeholder": {
+          color: "#768EA7",
+          opacity: 1,
         },
       }}
       slotProps={{
         input: {
           startAdornment: (
             <InputAdornment position="start">
-              <Search style={{ color: "#40566D", fontSize: '20px' }} />
+              <Search style={{ color: "#40566D", fontSize: "20px" }} />
             </InputAdornment>
           ),
         },
