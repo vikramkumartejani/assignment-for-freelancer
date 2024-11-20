@@ -41,8 +41,8 @@ const VendorPopup: React.FC<VendorPopupProps> = ({ open, handleClose, handleRais
       }}
     >
       <Box sx={{ position: "relative", borderBottom: "1px solid #6C849D2E", height: "56px" }}>
-        <Box sx={{ padding: "0px 8px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <TypographyAtom text="Raise a Dispute" color="#243547" />
+        <Box sx={{ padding: " 0px 0px 0px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", height:'100%' }}>
+          <TypographyAtom  text="Raise a Dispute" sx={{color:'#243547', fontSize:'20px', fontWeight:'800'}} />
           <Button autoFocus color="inherit" onClick={handleClose}>
             <img src="/assets/close.svg" alt="close" />
           </Button>
@@ -50,7 +50,7 @@ const VendorPopup: React.FC<VendorPopupProps> = ({ open, handleClose, handleRais
       </Box>
 
       <DialogContent sx={{ padding: { xs: "14px 12px", sm: "14px 20px", md: "16px 24px" } }}>
-        <TypographyAtom text="Add one or more issues for this submission to address specific problems" variant="body1" />
+        <TypographyAtom text="Add one or more issues for this submission to address specific problems" sx={{fontSize:'13px', fontWeight:'500', color:'#2F4256'}}  />
         <QueryInput />
         <Button
           variant="outlined"
@@ -64,6 +64,7 @@ const VendorPopup: React.FC<VendorPopupProps> = ({ open, handleClose, handleRais
             borderRadius: "8px",
             fontWeight: "500",
             fontSize: "13px",
+            textTransform:'capitalize',
             "&:hover": {
               borderColor: "#2f5292",
               backgroundColor: "#f1f1f1",

@@ -26,6 +26,7 @@ const SearchAndActionButtons: React.FC<SearchAndActionButtonsProps> = ({
         flexWrap: "wrap",
         gap: "14px",
         alignItems: "center",
+        justifyContent: "center",
       }}
     >
       {/* Search Field */}
@@ -43,6 +44,7 @@ const SearchAndActionButtons: React.FC<SearchAndActionButtonsProps> = ({
         }}
         shadow={false}
       />
+
       <CustomButton
         text="Dispute"
         onClick={handleClickOpen}
@@ -51,6 +53,7 @@ const SearchAndActionButtons: React.FC<SearchAndActionButtonsProps> = ({
           color: "white",
           "&:hover": { backgroundColor: "#d25a08" },
           height: "32px",
+ 
         }}
         shadow={false}
       />
@@ -59,6 +62,7 @@ const SearchAndActionButtons: React.FC<SearchAndActionButtonsProps> = ({
         handleClose={handleClose}
         handleRaiseDispute={handleRaiseDispute}
       />
+
       <CustomButton
         text="Reject"
         sx={{
@@ -69,6 +73,7 @@ const SearchAndActionButtons: React.FC<SearchAndActionButtonsProps> = ({
         }}
         shadow={false}
       />
+
       <CustomButton
         text="Approve"
         sx={{

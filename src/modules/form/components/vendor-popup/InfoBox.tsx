@@ -7,8 +7,16 @@ const sectionStyles = {
   gap: "4px",
 };
 
-const titleStyles = { fontWeight: "500", fontSize: "13px", color: "#58728D" };
-const contentStyles = { color: "#243547", fontWeight: "600", fontSize: "14px" };
+const titleStyles = {
+  fontWeight: "500",
+  fontSize: "13px",
+  color: "#58728D",
+};
+const contentStyles = {
+  color: "#243547",
+  fontWeight: "600",
+  fontSize: "14px",
+};
 
 interface InfoBoxProps {
   label: string;
@@ -16,12 +24,11 @@ interface InfoBoxProps {
 }
 
 const cleanValue = (value: React.ReactNode) => {
-    if (typeof value === "string") {
-      return value.replace(/,+$/, "").trim();   
-    }
-    return value;
-  };
-  
+  if (typeof value === "string") {
+    return value.replace(/,+$/, "").trim();
+  }
+  return value;
+};
 
 const InfoBox: React.FC<InfoBoxProps> = ({ label, value }) => (
   <Box sx={sectionStyles}>

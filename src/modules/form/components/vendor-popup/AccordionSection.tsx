@@ -59,7 +59,12 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({ vendorData }) => {
           <TypographyAtom
             text="Vendor Information"
             variant="subtitle1"
-            color="#58728D"
+            sx={{
+              color:"#58728D",
+              fontWeight:"700",
+              fontSize:'14px',
+              lineHeight:'20px'
+            }}
           />
         </AccordionSummary>
         <AccordionDetails sx={{ padding: 0 }}>
@@ -104,7 +109,12 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({ vendorData }) => {
           <TypographyAtom
             text="Key Contacts and Details"
             variant="subtitle1"
-            color="#58728D"
+            sx={{
+              color:"#58728D",
+              fontWeight:"700",
+              fontSize:'14px',
+              lineHeight:'20px'
+            }}
           />
         </AccordionSummary>
         <AccordionDetails sx={{ padding: 0 }}>
@@ -161,7 +171,12 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({ vendorData }) => {
           <TypographyAtom
             text="Organizational Information"
             variant="subtitle1"
-            color="#58728D"
+            sx={{
+              color:"#2F4256",
+              fontWeight:"700",
+              fontSize:'14px',
+              lineHeight:'20px'
+            }}
           />
         </AccordionSummary>
         <AccordionDetails sx={{ padding: "0px 0px 10px 0px" }}>
@@ -181,7 +196,12 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({ vendorData }) => {
           <TypographyAtom
             text="Key contacts and details"
             variant="subtitle1"
-            color="#58728D"
+            sx={{
+              color:"#2F4256",
+              fontWeight:"700",
+              fontSize:'14px',
+              lineHeight:'20px'
+            }}
           />
         </AccordionSummary>
         <AccordionDetails sx={{ padding: "0px 0px 10px 0px" }}>
@@ -200,7 +220,12 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({ vendorData }) => {
           <TypographyAtom
             text="Key contacts and details"
             variant="subtitle1"
-            color="#58728D"
+            sx={{
+              color:"#2F4256",
+              fontWeight:"700",
+              fontSize:'14px',
+              lineHeight:'20px'
+            }}
           />
         </AccordionSummary>
         <AccordionDetails sx={{ padding: "0px 0px 10px 0px" }}>

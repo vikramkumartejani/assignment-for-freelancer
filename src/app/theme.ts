@@ -64,11 +64,20 @@ const createCustomTheme = (
         fontSize: "24px",
         fontWeight: 800,
       },
+      h4: {
+        fontSize: "45px",
+        fontWeight: 500,
+      },
       body1: {
         fontSize: "16px",
         fontWeight: 500,
       },
-      
+      subtitle1: {
+        color: "#58728D",
+        fontWeight: "700",
+        fontSize: "14px",
+        lineHeight: "20px",
+      },
     },
 
     custom: {
