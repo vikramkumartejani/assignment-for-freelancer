@@ -32,10 +32,16 @@ const accordionStyles = {
     xs: "0px 12px",
     md: "0px 24px",
   },
+  borderBottom: "1px solid #6C849D2E",
   minHeight: "auto",
+  "&.MuiAccordion-root::before": {
+    display: "none ",
+  },
+  "&.MuiAccordion-root::after": {
+    display: "none ",
+  },
   "&.Mui-expanded": {
     minHeight: "auto",
-    borderTop: "1px solid #6C849D2E",
     margin: "0px !important",
   },
 };
@@ -45,6 +51,9 @@ const accordionSummaryStyles = {
   minHeight: "auto",
   "&.Mui-expanded": {
     minHeight: "auto",
+  },
+  "&.MuiAccordion-root::before": {
+    display: "none ",
   },
   "& .MuiAccordionSummary-content": {
     margin: "0px !important",
@@ -123,6 +132,7 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({ vendorData }) => {
               color: "#58728D",
               fontWeight: "700",
               fontSize: "14px",
+
               lineHeight: "20px",
             }}
           />
