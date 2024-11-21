@@ -41,7 +41,7 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
       open={open}
       onClose={onClose}
       TransitionComponent={Transition}
-      sx={{marginTop:'80px'}}
+      sx={{ marginTop: "80px" }}
     >
       <Box sx={{ overflowX: "hidden", height: "100%" }}>
         <VendorPopupHeader vendorData={vendorData} onClose={onClose} />

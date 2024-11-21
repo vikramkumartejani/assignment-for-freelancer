@@ -35,6 +35,7 @@ const VendorPopup: React.FC<VendorPopupProps> = ({ open, handleClose, handleRais
           borderTopLeftRadius: "16px",
           borderBottomLeftRadius: "16px",
           bottom: 0,
+          zIndex:1000000,
           height: "100%",
           position: "absolute",
         },

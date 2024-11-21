@@ -20,6 +20,7 @@ import SendIcon from "@mui/icons-material/Send";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import CloseIcon from "@mui/icons-material/Close";
+import Image from "next/image";
 
 interface PendingDisputProps {
   isVisible: boolean;
@@ -93,11 +94,12 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
             elevation={0}
             sx={{
               padding: "0px",
-              borderBottom: "1px solid #6C849D2E",
+              border: "1px solid #6C849D2E !important",
+              borderRadius: "4px",
               minHeight: "auto",
               "&.Mui-expanded": {
                 minHeight: "auto",
-                marginTop: 0,
+                marginTop: "12px",
                 marginBottom: "12px",
               },
             }}
@@ -109,9 +111,9 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
                 flexDirection: "row-reverse",
                 justifyContent: "space-between",
                 alignItems: "center",
-                borderBottom: "1px solid #6C849D2E",
                 minHeight: "auto",
                 "&.Mui-expanded": { minHeight: "auto" },
+                // borderBottom: "1px solid #6C849D2E",
                 "& .MuiAccordionSummary-content": { margin: "0" },
               }}
               expandIcon={
@@ -133,16 +135,16 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
                   color="#40566D"
                   fontSize="12px"
                   fontWeight="500"
+                  lineHeight="14.4px"
                 >
                   1. Company Detail with Proof
                 </Typography>
               </Box>
-              <CheckCircleOutlineIcon
-                sx={{ color: "#58728D", width: "17px", height: "17px" }}
-              />
+              <Image src='/assets/arrow-accr.svg' alt="arrow" width={16} height={16} />
+              
             </AccordionSummary>
 
-            <AccordionDetails sx={{ padding: "0" }}>
+            <AccordionDetails sx={{ padding: "0",  borderTop: "1px solid #6C849D2E"  }}>
               <Box sx={{ padding: "16px" }}>
                 <List
                   sx={{
@@ -257,7 +259,6 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
                           </InputAdornment>
                         ),
                       }}
-
                       // slotProps={{
                       //   input: {
                       //     startAdornment: (
@@ -294,12 +295,18 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
               elevation={0}
               sx={{
                 padding: "0px",
-                borderBottom: "1px solid #6C849D2E",
+                border: "1px solid #6C849D2E ",
                 minHeight: "auto",
+                borderRadius:"4px",
+                marginTop: "12px",
+                marginBottom: "12px",
                 "&.Mui-expanded": {
                   minHeight: "auto",
-                  marginTop: 0,
+                  marginTop: "12px",
                   marginBottom: "12px",
+                },
+                "&::before": {
+                  display: "none",  
                 },
               }}
             >
@@ -310,9 +317,12 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
                   flexDirection: "row-reverse",
                   justifyContent: "space-between",
                   alignItems: "center",
-                  borderBottom: "1px solid #6C849D2E",
+                  // borderBottom: "1px solid #6C849D2E",
                   minHeight: "auto",
-                  "&.Mui-expanded": { minHeight: "auto" },
+                  "&.Mui-expanded": {
+                    minHeight: "auto",
+                    // borderTop: "0px solid #6C849D2E !important",
+                  },
                   "& .MuiAccordionSummary-content": { margin: "0" },
                 }}
                 expandIcon={
@@ -338,12 +348,12 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
                     {item.title}
                   </Typography>
                 </Box>
-                <CheckCircleOutlineIcon
-                  sx={{ color: "#58728D", width: "17px", height: "17px" }}
-                />
+                <Image src='/assets/arrow-accr.svg' alt="arrow" width={16} height={16} />
               </AccordionSummary>
 
-              <AccordionDetails sx={{ padding: "12px" }}>
+              <AccordionDetails
+                sx={{ padding: "12px", borderTop: "1px solid #6C849D2E" }}
+              >
                 <Typography variant="body2" color="#6C849D" fontSize="12px">
                   {item.details}
                 </Typography>

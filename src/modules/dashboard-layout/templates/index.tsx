@@ -17,7 +17,7 @@ const DashboardLayout: React.FC<LayoutProps> = ({ children }) => {
       <DashboardHeader />
 
       {/* Body Section (Sidebar + Content) */}
-      <Box sx={{ display: "flex", flex: 1, pt: 8 }}>
+      <Box sx={{ display: "flex", flex: 1, pt: 7 }}>
         <Drawer
           variant="permanent"
           sx={{
@@ -26,7 +26,7 @@ const DashboardLayout: React.FC<LayoutProps> = ({ children }) => {
             [`& .MuiDrawer-paper`]: {
               width: drawerWidth,
               boxSizing: "border-box",
-              mt: 8,
+              mt: 5.5,
             },
             display: { lg: "block", xs: "none" },
           }}

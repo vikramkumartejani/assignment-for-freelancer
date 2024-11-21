@@ -39,7 +39,7 @@ const TableHeader: React.FC<TableHeaderProps> = ({
             fontSize: { xs: "12px", sm: "13px" },
             fontWeight: 600,
             lineHeight: "17.71px",
-            color: "#40566D",
+            color: "#40566D", // Default color for inactive columns
             textTransform: "capitalize",
           }}
         >
@@ -47,6 +47,12 @@ const TableHeader: React.FC<TableHeaderProps> = ({
             active={orderBy === column}
             direction={orderBy === column ? order : "asc"}
             onClick={() => onRequestSort(column as keyof SubmissionData)}
+            sx={{
+              color: orderBy === column ? "#40566D !important" : "#40566D !important", // Ensure text color is white
+              "& .MuiTableSortLabel-icon": {
+                color: "#40566D !important", // Ensure the sort icon is white
+              },
+            }}
           >
             {column
               .replace(/([A-Z])/g, " $1")

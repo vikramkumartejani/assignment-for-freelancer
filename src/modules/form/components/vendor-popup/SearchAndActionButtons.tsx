@@ -40,6 +40,7 @@ const SearchAndActionButtons: React.FC<SearchAndActionButtonsProps> = ({
         iconAlt="edit"
         sx={{
           backgroundColor: "#F7F4FF",
+          border: "1px solid #5D4AD43D",
           color: "#4838B0",
           height: "32px",
         }}

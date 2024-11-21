@@ -17,17 +17,20 @@ const DashboardHeader: React.FC = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
 
   return (
-    <AppBar position="fixed" sx={{ backgroundColor: "#192839", zIndex: 1100 }}>
-      <Toolbar
+    <AppBar
+      position="fixed"
+      sx={{ height: "48px", backgroundColor: "#192839", zIndex: 1300 }}
+    >
+      <Box
         sx={{
           display: "flex",
+          padding: "0 24px 0 12px",
           justifyContent: "space-between",
+          height: "100% !important",
           alignItems: "center",
         }}
       >
-        <Box sx={{ display: "flex", alignItems: "center" }}>
-          <Logo />
-        </Box>
+        <Logo />
 
         {!isMobile && <SearchBar placeholder="Quick Search" />}
 
@@ -35,7 +38,7 @@ const DashboardHeader: React.FC = () => {
           <Avatar
             alt="Profile"
             src="/assets/profile.svg"
-            sx={{ width: 45, height: 40 }}
+            sx={{ width: 32, height: 32 }}
           />
 
           {isMobile && (
@@ -44,14 +47,11 @@ const DashboardHeader: React.FC = () => {
             </IconButton>
           )}
         </Box>
-      </Toolbar>
+      </Box>
 
       <DrawerMenu isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
     </AppBar>
   );
 };
 
-
-
-export default DashboardHeader
-
+export default DashboardHeader;

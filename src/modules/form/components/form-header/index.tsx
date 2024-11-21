@@ -47,7 +47,7 @@ const FormHeader: React.FC = () => {
           color: theme.palette.primary.main,
           fontWeight: 500,
           lineHeight: "17.71px",
-          marginTop: "3px",
+          // marginTop: "3px",
         }}
       />
       <Box

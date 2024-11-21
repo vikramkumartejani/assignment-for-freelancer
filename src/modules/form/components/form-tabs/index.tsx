@@ -19,6 +19,8 @@ const FormTabs: React.FC = () => {
         sx={{
           color: "#000",
           overflowX: "auto",
+          // backgroundColor:"#000",
+          height: "40px",
           borderBottom: "1px solid #167B592E",
           "& .MuiTabs-flexContainer": {
             flexWrap: { xs: "wrap", sm: "nowrap" },
@@ -28,15 +30,15 @@ const FormTabs: React.FC = () => {
             textTransform: "none",
             fontWeight: "500",
             fontSize: { xs: "12px", sm: "14px" },
-            padding: { xs: "6px 8px", sm: "8px 16px" },
+            padding: "9px 16px",
             minWidth: { xs: "auto", sm: "120px" },
             whiteSpace: "nowrap",
             borderBottom: "2px solid transparent",
             color: "#58728D",
             "&.Mui-selected": {
               color: "#4838B0",
-              borderBottomColor: "#5D4AD4",
               fontWeight: "700",
+              borderBottom: "2px solid #5D4AD4"
             },
           },
           "& .MuiTabs-indicator": {

@@ -16,23 +16,24 @@ const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({ text, image, selected
         display: "flex",
         alignItems: "center",
         color: selected ? "primary.main" : "text.secondary",
-        backgroundColor: selected ? "action.hover" : "transparent",
-        padding: "8px 20px",
+        backgroundColor: selected ? "#F4F2FF" : "transparent",
+        padding: "8px 18px",
         borderRadius: 1,
         cursor: "pointer",
+        height:'40px',
         textDecoration: "none",
-        "&:hover": { backgroundColor: "action.hover" },
+        "&:hover": { backgroundColor: "#F4F2FF" },
       }}
     >
       <ListItem disablePadding>
-        <ListItemIcon sx={{ color: selected ? "primary.main" : "text.secondary", minWidth: "28px" }}>
+        <ListItemIcon sx={{ color: selected ? "primary.main" : "text.secondary", minWidth: "30px" }}>
           <Image src={image} alt={`${text} icon`} width={20} height={20} />
         </ListItemIcon>
         <ListItemText
           primary={text}
           primaryTypographyProps={{
             fontWeight: selected ? "bold" : "normal",
-            color: selected ? "primary.main" : "text.primary",
+            color: selected ? "#5D4AD4" : "#40566D",
             fontSize: "14px",
           }}
         />

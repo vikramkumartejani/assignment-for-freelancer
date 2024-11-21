@@ -10,8 +10,8 @@ type IconType = "sms" | "preview" | "history" | null;
 interface VendorPopupSidePanelProps {
   selectedIcon: IconType;
   handleIconClick: (icon: IconType) => void;
-  isBoxVisible: boolean; 
-  onCloseBox: () => void;  
+  isBoxVisible: boolean;
+  onCloseBox: () => void;
 }
 
 const VendorPopupSidePanel: React.FC<VendorPopupSidePanelProps> = ({
@@ -40,6 +40,7 @@ const VendorPopupSidePanel: React.FC<VendorPopupSidePanelProps> = ({
         minWidth: "40px",
         zIndex: "2",
         display: "flex",
+        height:'100%',
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "space-between",

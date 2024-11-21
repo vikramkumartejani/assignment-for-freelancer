@@ -12,22 +12,22 @@ const SearchBar: React.FC<SearchBarProps> = ({ placeholder }) => {
   return (
     <Box
       sx={{
-        height: "40px",
+        height: "32px",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: "#243547",
-        padding: "12px",
-        borderRadius: "8px 6px",
+        paddingX: "12px",
+        borderRadius: "8px",
       }}
     >
-      <SearchIcon sx={{ color: "#FFFFFF", fontSize: "24px" }} />
+      <SearchIcon sx={{ color: "#FFFFFF", width:'20px', height:'20px' }} />
 
       <InputBase
         placeholder={placeholder}
         sx={
           {
-            fontSize: "15px",
+            fontSize: "14px",
             [theme.breakpoints.up("md")]: {
               width: "400px",
             },

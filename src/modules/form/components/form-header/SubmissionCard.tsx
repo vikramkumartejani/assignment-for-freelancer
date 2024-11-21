@@ -21,10 +21,11 @@ const SubmissionCard: React.FC<SubmissionCardProps> = ({
         width: "100%",
         border: `1px solid ${theme.custom.borderColor}`,
         borderRadius: "8px",
-        padding: { xs: "10px 20px", sm: "12px 20px" },
+        padding: { xs: "10px 20px", sm: "20px 20px" },
         display: "flex",
         alignItems: "center",
         gap: "16px",
+        boxShadow:'none !important',
       }}
     >
       <Image
@@ -46,10 +47,11 @@ const SubmissionCard: React.FC<SubmissionCardProps> = ({
         </Typography>
         <Typography
           sx={{
-            color: theme.palette.text.primary,
+            color: "#243547",
             fontSize: { xs: "18px", sm: "20px" },
             fontWeight: 700,
             lineHeight: "28px",
+            marginTop:'4px',
           }}
         >
           {count}
