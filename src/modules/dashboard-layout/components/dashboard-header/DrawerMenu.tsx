@@ -65,8 +65,7 @@ const DrawerMenu: React.FC<DrawerMenuProps> = ({
               text={item.text}
               image={item.image}
               selected={false}
-              onClick={() => {}}
-            />
+              onClick={() => { } } selectedImage={""}  />
           </Link>
         ))}
       </List>
