@@ -23,11 +23,12 @@ const SearchAndActionButtons: React.FC<SearchAndActionButtonsProps> = ({
     <Box
       sx={{
         display: "flex",
-        // flexWrap: "wrap",
+        flexWrap: { xs: "wrap", sm: "nowrap" },
         gap: "14px",
         alignItems: "center",
         justifyContent: "center",
         padding: "0 12px",
+        width:"100%"
       }}
     >
       {/* Search Field */}

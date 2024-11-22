@@ -13,7 +13,8 @@ const SearchField: React.FC<SearchFieldProps> = ({ isMobile = false }) => {
       placeholder="Search"
       size="small"
       sx={{
-        width: isMobile ? "100%" : "309px",
+        // width: isMobile ? "100%" : "309px",
+        width: { xs: "100%", sm: "309px" },
         "& .MuiOutlinedInput-root": {
           borderRadius: "8px",
           borderColor: "#6C849D2E",
