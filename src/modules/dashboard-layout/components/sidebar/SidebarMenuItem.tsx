@@ -4,7 +4,7 @@ import Image from "next/image";
 interface SidebarMenuItemProps {
   text: string;
   image: string;
-  selectedImage: string;  // Prop for the selected image
+  selectedImage: string; 
   selected: boolean;
   onClick: () => void;
 }
@@ -29,7 +29,7 @@ const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({ text, image, selected
       <ListItem disablePadding>
         <ListItemIcon sx={{ color: selected ? "primary.main" : "text.secondary", minWidth: "30px" }}>
           <Image 
-            src={selected ? selectedImage : image}  // Use selectedImage or default image based on the selected state
+            src={selected ? selectedImage : image}  
             alt={`${text} icon`} 
             width={20} 
             height={20} 

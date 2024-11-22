@@ -8,7 +8,7 @@ import SidebarBin from "./SidebarBin";
 interface MenuItem {
   text: string;
   image: string;
-  selectedImage: string; // Add selectedImage
+  selectedImage: string; 
   link: string;
   id: number;
 }
@@ -47,7 +47,7 @@ const Sidebar: React.FC = () => {
             <SidebarMenuItem
               text={item.text}
               image={item.image}
-              selectedImage={item.selectedImage} // Pass selectedImage
+              selectedImage={item.selectedImage}  
               selected={selectedIndex === item.id}
               onClick={() => handleListItemClick(item.id)}
             />
