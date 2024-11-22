@@ -11,7 +11,7 @@ interface VendorPopupSidePanelProps {
   selectedIcon: IconType;
   handleIconClick: (icon: IconType) => void;
   isBoxVisible: boolean;
-  onCloseBox: () => void;  
+  onCloseBox: () => void;
 }
 
 const VendorPopupSidePanel: React.FC<VendorPopupSidePanelProps> = ({
@@ -67,7 +67,7 @@ const VendorPopupSidePanel: React.FC<VendorPopupSidePanelProps> = ({
                 borderLeft:
                   selectedIcon === iconType ? "1px solid #5D4AD4" : "none",
               }}
-              onClick={() => handleIconClickWrapper(iconType as IconType)}  
+              onClick={() => handleIconClickWrapper(iconType as IconType)}
             >
               {iconType === "sms" && (
                 <SmsOutlinedIcon sx={iconStyles(selectedIcon === "sms")} />

@@ -33,18 +33,18 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
   const drawerRef = useRef<HTMLDivElement | null>(null);
   const [expanded, setExpanded] = useState<string[]>(["panel1"]);
 
-  const handleAccordionChange = (panel: string) => (
-    event: React.SyntheticEvent,
-    isExpanded: boolean
-  ) => {
-    setExpanded((prevExpanded) => {
-      if (isExpanded) {
-        return [...prevExpanded, panel];
-      } else {
-        return prevExpanded.filter((expandedPanel) => expandedPanel !== panel);
-      }
-    });
-  };
+  const handleAccordionChange =
+    (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
+      setExpanded((prevExpanded) => {
+        if (isExpanded) {
+          return [...prevExpanded, panel];
+        } else {
+          return prevExpanded.filter(
+            (expandedPanel) => expandedPanel !== panel
+          );
+        }
+      });
+    };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -74,6 +74,14 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
         transition: "transform 0.3s ease-out",
         zIndex: "1",
         display: isVisible ? "block" : "none",
+        position: "static",
+        top: "auto",
+        right: "auto",
+        "@media (max-width: 1024px)": {
+          position: "absolute",
+          top: "0",
+          right: "40px",
+        },
       }}
     >
       <Box sx={{ margin: "auto", shadow: "none" }}>
@@ -143,10 +151,17 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
                   1. Company Detail with Proof
                 </Typography>
               </Box>
-              <Image src='/assets/arrow-accr.svg' alt="arrow" width={16} height={16} />
+              <Image
+                src="/assets/arrow-accr.svg"
+                alt="arrow"
+                width={16}
+                height={16}
+              />
             </AccordionSummary>
 
-            <AccordionDetails sx={{ padding: "0", borderTop: "1px solid #6C849D2E" }}>
+            <AccordionDetails
+              sx={{ padding: "0", borderTop: "1px solid #6C849D2E" }}
+            >
               <Box sx={{ padding: "16px" }}>
                 <List
                   sx={{
@@ -339,10 +354,17 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
                     {item.title}
                   </Typography>
                 </Box>
-                <Image src='/assets/arrow-accr.svg' alt="arrow" width={16} height={16} />
+                <Image
+                  src="/assets/arrow-accr.svg"
+                  alt="arrow"
+                  width={16}
+                  height={16}
+                />
               </AccordionSummary>
 
-              <AccordionDetails sx={{ padding: "12px", borderTop: "1px solid #6C849D2E" }}>
+              <AccordionDetails
+                sx={{ padding: "12px", borderTop: "1px solid #6C849D2E" }}
+              >
                 <Typography variant="body2" color="#6C849D" fontSize="12px">
                   {item.details}
                 </Typography>
