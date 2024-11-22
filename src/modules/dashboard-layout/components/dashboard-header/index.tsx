@@ -19,12 +19,12 @@ const DashboardHeader: React.FC = () => {
   return (
     <AppBar
       position="fixed"
-      sx={{ height: "48px", backgroundColor: "#192839", zIndex: 1300 }}
+      sx={{ height: "48px", backgroundColor: "#192839", zIndex: 1300, boxShadow:'none' }}
     >
       <Box
         sx={{
           display: "flex",
-          padding: "0 24px 0 12px",
+          padding: { xs: "0 12px 0 12px", sm: "0 24px 0 12px" },
           justifyContent: "space-between",
           height: "100% !important",
           alignItems: "center",

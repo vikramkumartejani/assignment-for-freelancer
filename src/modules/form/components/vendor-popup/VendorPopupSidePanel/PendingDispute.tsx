@@ -31,12 +31,20 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
   onClose,
 }) => {
   const drawerRef = useRef<HTMLDivElement | null>(null);
-  const [expanded, setExpanded] = useState<string | false>("panel1");
+  const [expanded, setExpanded] = useState<string[]>(["panel1"]);
 
-  const handleAccordionChange =
-    (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
-      setExpanded(isExpanded ? panel : false);
-    };
+  const handleAccordionChange = (panel: string) => (
+    event: React.SyntheticEvent,
+    isExpanded: boolean
+  ) => {
+    setExpanded((prevExpanded) => {
+      if (isExpanded) {
+        return [...prevExpanded, panel];
+      } else {
+        return prevExpanded.filter((expandedPanel) => expandedPanel !== panel);
+      }
+    });
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -68,7 +76,7 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
         display: isVisible ? "block" : "none",
       }}
     >
-      <Box sx={{ margin: "auto",shadow: "none", }}>
+      <Box sx={{ margin: "auto", shadow: "none" }}>
         <Typography
           variant="h6"
           gutterBottom
@@ -85,7 +93,7 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
 
         <Box sx={{ padding: "16px", overflow: "auto", height: "100%" }}>
           <Accordion
-            expanded={expanded === "panel1"}
+            expanded={expanded.includes("panel1")}
             onChange={handleAccordionChange("panel1")}
             elevation={0}
             sx={{
@@ -136,10 +144,9 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
                 </Typography>
               </Box>
               <Image src='/assets/arrow-accr.svg' alt="arrow" width={16} height={16} />
-              
             </AccordionSummary>
 
-            <AccordionDetails sx={{ padding: "0",  borderTop: "1px solid #6C849D2E"  }}>
+            <AccordionDetails sx={{ padding: "0", borderTop: "1px solid #6C849D2E" }}>
               <Box sx={{ padding: "16px" }}>
                 <List
                   sx={{
@@ -254,15 +261,6 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
                           </InputAdornment>
                         ),
                       }}
-                      // slotProps={{
-                      //   input: {
-                      //     startAdornment: (
-                      //       <InputAdornment position="start">
-                      //         <Search style={{ color: "#40566D" }} />
-                      //       </InputAdornment>
-                      //     ),
-                      //   },
-                      // }}
                       sx={{ marginLeft: "8px", backgroundColor: "#F8FAFC" }}
                     />
                   </Box>
@@ -285,14 +283,14 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
           {accordionItems.map((item, index) => (
             <Accordion
               key={index}
-              expanded={expanded === `panel${index + 2}`}
+              expanded={expanded.includes(`panel${index + 2}`)}
               onChange={handleAccordionChange(`panel${index + 2}`)}
               elevation={0}
               sx={{
                 padding: "0px",
                 border: "1px solid #6C849D2E ",
                 minHeight: "auto",
-                borderRadius:"4px",
+                borderRadius: "4px",
                 marginTop: "12px",
                 marginBottom: "12px",
                 "&.Mui-expanded": {
@@ -301,7 +299,7 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
                   marginBottom: "12px",
                 },
                 "&::before": {
-                  display: "none",  
+                  display: "none",
                 },
               }}
             >
@@ -312,11 +310,9 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
                   flexDirection: "row-reverse",
                   justifyContent: "space-between",
                   alignItems: "center",
-                  // borderBottom: "1px solid #6C849D2E",
                   minHeight: "auto",
                   "&.Mui-expanded": {
                     minHeight: "auto",
-                    // borderTop: "0px solid #6C849D2E !important",
                   },
                   "& .MuiAccordionSummary-content": { margin: "0" },
                 }}
@@ -346,9 +342,7 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
                 <Image src='/assets/arrow-accr.svg' alt="arrow" width={16} height={16} />
               </AccordionSummary>
 
-              <AccordionDetails
-                sx={{ padding: "12px", borderTop: "1px solid #6C849D2E" }}
-              >
+              <AccordionDetails sx={{ padding: "12px", borderTop: "1px solid #6C849D2E" }}>
                 <Typography variant="body2" color="#6C849D" fontSize="12px">
                   {item.details}
                 </Typography>

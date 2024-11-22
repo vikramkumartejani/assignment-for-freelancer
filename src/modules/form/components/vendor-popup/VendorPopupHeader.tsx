@@ -48,18 +48,19 @@ const VendorPopupHeader: React.FC<VendorPopupHeaderProps> = ({
         />
 
         <Box display="flex" alignItems="center" gap={"12px"}>
-          <Box  sx={{
-          display: "flex",
-          "@media (max-width: 1024px)": { display: "none" },
-        }}>
-
-          <SearchAndActionButtons
-            handleClickOpen={handleClickOpen}
-            handleClose={handleClose}
-            handleRaiseDispute={handleRaiseDispute}
-            openS={openS}
+          <Box
+            sx={{
+              display: "flex",
+              "@media (max-width: 1024px)": { display: "none" },
+            }}
+          >
+            <SearchAndActionButtons
+              handleClickOpen={handleClickOpen}
+              handleClose={handleClose}
+              handleRaiseDispute={handleRaiseDispute}
+              openS={openS}
             />
-            </Box>
+          </Box>
 
           <IconButton edge="end" onClick={onClose}>
             <CloseIcon sx={{ color: "#40566D" }} />

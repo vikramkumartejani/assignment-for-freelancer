@@ -28,6 +28,8 @@ const TableHeader: React.FC<TableHeaderProps> = ({
         borderBottom: "1px solid #6C849D2E",
         backgroundColor: "#F1F5FA",
         whiteSpace: "nowrap",
+        padding: "0px !important",
+        height:"40px !important"
       }}
     >
       {columns.map((column) => (
@@ -38,6 +40,8 @@ const TableHeader: React.FC<TableHeaderProps> = ({
             fontFamily: "Noto Sans",
             fontSize: { xs: "12px", sm: "13px" },
             fontWeight: 600,
+             padding: "0px 16px !important",
+        height:"40px !important",
             lineHeight: "17.71px",
             color: "#40566D", // Default color for inactive columns
             textTransform: "capitalize",

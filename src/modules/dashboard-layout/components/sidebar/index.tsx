@@ -8,6 +8,7 @@ import SidebarBin from "./SidebarBin";
 interface MenuItem {
   text: string;
   image: string;
+  selectedImage: string; // Add selectedImage
   link: string;
   id: number;
 }
@@ -21,10 +22,10 @@ const Sidebar: React.FC = () => {
   };
 
   const menuItems: MenuItem[] = [
-    { text: "Forms", image: "/assets/form.svg", link: "/", id: 0 },
-    { text: "Reports", image: "/assets/reports.svg", link: "/report", id: 1 },
-    { text: "Forms", image: "/assets/no-active-form.svg", link: "/", id: 2 },
-    { text: "Settings", image: "/assets/setting.svg", link: "/setting", id: 3 },
+    { text: "Forms", image: "/assets/no-active-form.svg", selectedImage: "/assets/form.svg", link: "/", id: 0 },
+    { text: "Reports", image: "/assets/reports.svg", selectedImage: "/assets/active-barchart.svg", link: "/report", id: 1 },
+    { text: "Forms", image: "/assets/no-active-form.svg", selectedImage: "/assets/form.svg", link: "/", id: 2 },
+    { text: "Settings", image: "/assets/setting.svg", selectedImage: "/assets/active-settings.svg", link: "/setting", id: 3 },
   ];
 
   return (
@@ -46,6 +47,7 @@ const Sidebar: React.FC = () => {
             <SidebarMenuItem
               text={item.text}
               image={item.image}
+              selectedImage={item.selectedImage} // Pass selectedImage
               selected={selectedIndex === item.id}
               onClick={() => handleListItemClick(item.id)}
             />

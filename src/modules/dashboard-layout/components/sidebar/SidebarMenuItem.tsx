@@ -4,11 +4,12 @@ import Image from "next/image";
 interface SidebarMenuItemProps {
   text: string;
   image: string;
+  selectedImage: string;  // Prop for the selected image
   selected: boolean;
   onClick: () => void;
 }
 
-const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({ text, image, selected, onClick }) => {
+const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({ text, image, selectedImage, selected, onClick }) => {
   return (
     <Box
       onClick={onClick}
@@ -20,14 +21,19 @@ const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({ text, image, selected
         padding: "8px 18px",
         borderRadius: 1,
         cursor: "pointer",
-        height:'40px',
+        height: "40px",
         textDecoration: "none",
         "&:hover": { backgroundColor: "#F4F2FF" },
       }}
     >
       <ListItem disablePadding>
         <ListItemIcon sx={{ color: selected ? "primary.main" : "text.secondary", minWidth: "30px" }}>
-          <Image src={image} alt={`${text} icon`} width={20} height={20} />
+          <Image 
+            src={selected ? selectedImage : image}  // Use selectedImage or default image based on the selected state
+            alt={`${text} icon`} 
+            width={20} 
+            height={20} 
+          />
         </ListItemIcon>
         <ListItemText
           primary={text}

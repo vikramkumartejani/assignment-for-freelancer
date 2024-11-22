@@ -61,6 +61,7 @@ const VendorPopupSidePanel: React.FC<VendorPopupSidePanelProps> = ({
               key={iconType}
               sx={{
                 padding: "8px",
+                marginBottom: "12px",
                 cursor: "pointer",
                 background:
                   selectedIcon === iconType ? "#EAE7FA" : "transparent",

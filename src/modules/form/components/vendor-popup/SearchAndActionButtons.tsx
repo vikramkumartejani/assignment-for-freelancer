@@ -23,11 +23,11 @@ const SearchAndActionButtons: React.FC<SearchAndActionButtonsProps> = ({
     <Box
       sx={{
         display: "flex",
-        flexWrap: "wrap",
+        // flexWrap: "wrap",
         gap: "14px",
         alignItems: "center",
         justifyContent: "center",
-        padding:'0 12px'
+        padding: "0 12px",
       }}
     >
       {/* Search Field */}
@@ -55,10 +55,10 @@ const SearchAndActionButtons: React.FC<SearchAndActionButtonsProps> = ({
           color: "white",
           "&:hover": { backgroundColor: "#d25a08" },
           height: "32px",
- 
         }}
         shadow={false}
       />
+
       <RaiseDisputePopup
         open={openS}
         handleClose={handleClose}

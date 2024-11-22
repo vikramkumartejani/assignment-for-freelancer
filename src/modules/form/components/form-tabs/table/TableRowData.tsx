@@ -30,6 +30,8 @@ const TableRowData: React.FC<TableRowDataProps> = ({ row, onClick }) => {
           key={field}
           sx={{
             borderBottom: "1px solid #6C849D2E",
+            padding: "0px 16px !important",
+        height:"48px !important",
             color: field === "vendorName" ? "#4838B0" : "#2F4256",
             fontSize: { xs: "12px", sm: "13px" },
             fontWeight: field === "vendorName" ? "600" : "500",

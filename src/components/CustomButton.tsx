@@ -20,18 +20,18 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   ...props
 }) => {
   const boxShadowStyle = shadow
-    ? {}  
+    ? {}
     : {
-        boxShadow: "none !important",  
+        boxShadow: "none !important",
         "&:hover": {
           backgroundColor: "#D44A2A",
-          boxShadow: "none !important", 
+          boxShadow: "none !important",
         },
         "&:focus": {
-          boxShadow: "none !important",  
+          boxShadow: "none !important",
         },
         "&:active": {
-          boxShadow: "none !important", 
+          boxShadow: "none !important",
         },
       };
 
@@ -43,9 +43,10 @@ const CustomButton: React.FC<CustomButtonProps> = ({
         fontWeight: 600,
         padding: "10px 12px",
         border: "1px solid",
+
         borderRadius: "4px",
-        ...boxShadowStyle,  
-        ...sx,  
+        ...boxShadowStyle,
+        ...sx,
       }}
       {...props}
     >
@@ -59,6 +60,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
         />
       )}
       {startIcon && startIcon}
+
       {text}
     </MuiButton>
   );
