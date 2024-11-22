@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Box } from "@mui/material";
 import PendingDisput from "./PendingDispute";
 import SmsOutlinedIcon from "@mui/icons-material/SmsOutlined";
@@ -7,23 +7,29 @@ import HistoryOutlinedIcon from "@mui/icons-material/HistoryOutlined";
 
 type IconType = "sms" | "preview" | "history" | null;
 
-const VendorPopupSidePanel: React.FC = () => {
-  const [selectedIcon, setSelectedIcon] = useState<IconType>(null); 
-  const [isBoxVisible, setIsBoxVisible] = useState(false); 
+interface VendorPopupSidePanelProps {
+  selectedIcon: IconType;
+  handleIconClick: (icon: IconType) => void;
+  isBoxVisible: boolean;
+  onCloseBox: () => void;  
+}
 
-  const handleIconClick = (icon: IconType) => {
-    if (selectedIcon === icon) {
-    } else {
-      setSelectedIcon(icon);  
-      setIsBoxVisible(true);
-    }
-  };
-
-  const handleCloseDrawer = () => setIsBoxVisible(false);  
-
+const VendorPopupSidePanel: React.FC<VendorPopupSidePanelProps> = ({
+  selectedIcon,
+  handleIconClick,
+  isBoxVisible,
+  onCloseBox,
+}) => {
   const iconStyles = (selected: boolean) => ({
     color: selected ? "#5D4AD4" : "#58728D",
   });
+
+  const handleIconClickWrapper = (icon: IconType) => {
+    if (selectedIcon === icon) {
+      return;
+    }
+    handleIconClick(icon);
+  };
 
   return (
     <Box
@@ -39,7 +45,7 @@ const VendorPopupSidePanel: React.FC = () => {
     >
       {/* Side Panel */}
       <Box sx={{ display: "flex" }}>
-        <PendingDisput isVisible={isBoxVisible} onClose={handleCloseDrawer} />
+        <PendingDisput isVisible={isBoxVisible} onClose={onCloseBox} />
         <Box
           sx={{
             paddingY: "16px",
@@ -57,11 +63,11 @@ const VendorPopupSidePanel: React.FC = () => {
                 marginBottom: "12px",
                 cursor: "pointer",
                 background:
-                  selectedIcon === iconType ? "#EAE7FA" : "transparent",  
+                  selectedIcon === iconType ? "#EAE7FA" : "transparent",
                 borderLeft:
                   selectedIcon === iconType ? "1px solid #5D4AD4" : "none",
               }}
-              onClick={() => handleIconClick(iconType as IconType)}  
+              onClick={() => handleIconClickWrapper(iconType as IconType)}  
             >
               {iconType === "sms" && (
                 <SmsOutlinedIcon sx={iconStyles(selectedIcon === "sms")} />

@@ -1,11 +1,11 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 import { Dialog, Box } from "@mui/material";
 import { TransitionProps } from "@mui/material/transitions";
 import Slide from "@mui/material/Slide";
-import { SubmissionData } from "../data/TableData";
 import VendorPopupHeader from "./VendorPopupHeader";
 import VendorPopupContent from "./VendorPopupContent";
 import VendorPopupSidePanel from "./VendorPopupSidePanel/VendorPopupSidePanel";
+import { SubmissionData } from "../data/TableData";
 
 interface VendorPopupProps {
   open: boolean;
@@ -26,13 +26,19 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
   const [selectedIcon, setSelectedIcon] = useState<IconType>(null);
   const [isBoxVisible, setIsBoxVisible] = useState(false);
 
+  useEffect(() => {
+    if (!open) {
+      setIsBoxVisible(false);
+    }
+  }, [open]); 
+
   const handleIconClick = (icon: IconType) => {
     setSelectedIcon(icon);
-    setIsBoxVisible(icon === "sms");
+    setIsBoxVisible(icon === "sms");  
   };
 
   const onCloseBox = () => {
-    setIsBoxVisible(false);
+    setIsBoxVisible(false);  
   };
 
   return (
@@ -43,10 +49,10 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
       TransitionComponent={Transition}
       sx={{ marginTop: "80px" }}
     >
-      <Box sx={{ width:'100%',  height: "100vh" }}>
+      <Box sx={{ width: "100%", height: "100vh" }}>
         <VendorPopupHeader vendorData={vendorData} onClose={onClose} />
 
-        <Box sx={{ display: "flex", position: "relative", height: "100%", }}>
+        <Box sx={{ display: "flex", position: "relative", height: "100%" }}>
           <VendorPopupContent
             vendorData={vendorData}
             openS={false}
@@ -59,7 +65,7 @@ const VendorPopup: FC<VendorPopupProps> = ({ open, onClose, vendorData }) => {
             selectedIcon={selectedIcon}
             handleIconClick={handleIconClick}
             isBoxVisible={isBoxVisible}
-            onCloseBox={onCloseBox}
+            onCloseBox={onCloseBox}  
           />
         </Box>
       </Box>
