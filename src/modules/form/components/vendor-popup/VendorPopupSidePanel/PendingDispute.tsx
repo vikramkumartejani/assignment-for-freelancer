@@ -17,7 +17,6 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import SendIcon from "@mui/icons-material/Send";
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import CloseIcon from "@mui/icons-material/Close";
 import Image from "next/image";
@@ -58,21 +57,18 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
     <Box
       ref={drawerRef}
       sx={{
-        position: "absolute",
-        top: "0",
-        right: "40px",
-        width: "100%",
-        maxWidth: { xs: "280px", sm: "371px" },
+        shadow: "none",
+        minWidth: { xs: "280px", sm: "371px" },
         backgroundColor: "#F8FAFC",
-        border: "1px solid #E0E0E0",
-        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+        borderLeft: "1px solid #E0E0E0",
+        borderRight: "1px solid #E0E0E0",
         transform: isVisible ? "translateX(0)" : "translateX(100%)",
         transition: "transform 0.3s ease-out",
         zIndex: "1",
         display: isVisible ? "block" : "none",
       }}
     >
-      <Box sx={{ margin: "auto" }}>
+      <Box sx={{ margin: "auto",shadow: "none", }}>
         <Typography
           variant="h6"
           gutterBottom
@@ -113,7 +109,6 @@ const PendingDisput: React.FC<PendingDisputProps> = ({
                 alignItems: "center",
                 minHeight: "auto",
                 "&.Mui-expanded": { minHeight: "auto" },
-                // borderBottom: "1px solid #6C849D2E",
                 "& .MuiAccordionSummary-content": { margin: "0" },
               }}
               expandIcon={

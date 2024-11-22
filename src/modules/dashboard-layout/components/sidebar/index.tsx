@@ -31,7 +31,7 @@ const Sidebar: React.FC = () => {
     <Box
       sx={{
         width: 240,
-        height: "92%",
+        height: "96%",
         backgroundColor: theme.palette.background.default,
         color: theme.palette.text.primary,
         padding: "16px 0 0 0",

@@ -17,7 +17,7 @@ const DashboardLayout: React.FC<LayoutProps> = ({ children }) => {
       <DashboardHeader />
 
       {/* Body Section (Sidebar + Content) */}
-      <Box sx={{ display: "flex", flex: 1, pt: 7 }}>
+      <Box sx={{ display: "flex", flex: 1, pt: 7, }}>
         <Drawer
           variant="permanent"
           sx={{

@@ -34,13 +34,11 @@ const VendorPopupSidePanel: React.FC<VendorPopupSidePanelProps> = ({
   return (
     <Box
       sx={{
-        paddingY: "16px",
         background: "#F1F5FA",
-        width: "40px",
-        minWidth: "40px",
+        border:"none",
         zIndex: "2",
         display: "flex",
-        height:'100%',
+        
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "space-between",
@@ -52,7 +50,7 @@ const VendorPopupSidePanel: React.FC<VendorPopupSidePanelProps> = ({
         <Box
           sx={{
             paddingY: "16px",
-            background: "#F1F5FA",
+            height:'100vh',
             width: "40px",
             minWidth: "40px",
             zIndex: "2",
