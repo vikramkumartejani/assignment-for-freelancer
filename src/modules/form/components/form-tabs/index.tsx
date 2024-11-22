@@ -19,7 +19,8 @@ const FormTabs: React.FC = () => {
         sx={{
           color: "#000",
           overflowX: "auto",
-          height: "40px",
+          minHeight: "40px !important",
+          
           padding:"0px !important",
           borderBottom: "1px solid #167B592E",
           "& .MuiTabs-flexContainer": {
@@ -28,6 +29,8 @@ const FormTabs: React.FC = () => {
           },
           "& .MuiTab-root": {
             textTransform: "none",
+            minHeight: "38px !important",
+            maxHeight: "40px !important",
             fontWeight: "500",
             fontSize: { xs: "12px", sm: "14px" },
             minWidth: { xs: "auto", sm: "120px" },
