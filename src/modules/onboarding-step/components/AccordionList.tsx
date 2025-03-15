@@ -13,28 +13,28 @@ import Attachment from './steps/Attachment'
 const AccordionList: React.FC = () => {
     return (
         <Box>
-            <AccordionComponent title="1. Vendor Basic Details">
+            <AccordionComponent id="vendor-basic-details" title="1. Vendor Basic Details">
                 <VendorBasicDetails />
             </AccordionComponent>
-            <AccordionComponent title="2. Pan & GST Details">
+            <AccordionComponent id="pan-gst-details" title="2. Pan & GST Details">
                 <PanGstDetails />
             </AccordionComponent>
-            <AccordionComponent title="3. Address Details">
+            <AccordionComponent id="address-details" title="3. Address Details">
                 <AddressDetails />
             </AccordionComponent>
-            <AccordionComponent title="4. MSME Details">
+            <AccordionComponent id="msme-details" title="4. MSME Details">
                 <MsmeDetails />
             </AccordionComponent>
-            <AccordionComponent title="5. Bank & Payment Details">
+            <AccordionComponent id="bank-payment-details" title="5. Bank & Payment Details">
                 <BankPaymentDetails />
             </AccordionComponent>
-            <AccordionComponent title="6. Contact Details">
+            <AccordionComponent id="contact-details" title="6. Contact Details">
                 <ContactDetails />
             </AccordionComponent>
-            <AccordionComponent title="7. Tax Details">
+            <AccordionComponent id="tax-details" title="7. Tax Details">
                 <TaxDetails />
             </AccordionComponent>
-            <AccordionComponent title="8. Attachment" isLast>
+            <AccordionComponent id="attachment" title="8. Attachment" isLast>
                 <Attachment />
             </AccordionComponent>
         </Box>

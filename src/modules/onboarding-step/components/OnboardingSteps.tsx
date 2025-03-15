@@ -6,14 +6,20 @@ interface StepProps {
     label: string;
 }
 
-const Step: React.FC<StepProps> = ({ number, label }) => (
-    <Box sx={{ display: 'flex', alignItems: 'center', gap: "12px", position: 'relative', zIndex: 2 }}>
-        <Box sx={{ border: '1px solid #6C849D2E', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: "center", minHeight: "20px", minWidth: "20px", maxHeight: "20px", maxWidth: "20px", bgcolor: "#FFFFFF" }}>
-            <Typography variant='h6' sx={{ color: "#6C849D", fontWeight: 700, lineHeight: "16px", fontSize: '12px' }}>{number}</Typography>
+const Step: React.FC<StepProps> = ({ number, label }) => {
+    const handleClick = () => {
+        document.getElementById(label.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-'))?.scrollIntoView({ behavior: 'smooth' });
+    };
+
+    return (
+        <Box onClick={handleClick} sx={{ display: 'flex', alignItems: 'center', gap: "12px", position: 'relative', zIndex: 2, cursor: 'pointer' }}>
+            <Box sx={{ border: '1px solid #6C849D2E', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: "center", minHeight: "20px", minWidth: "20px", maxHeight: "20px", maxWidth: "20px", bgcolor: "#FFFFFF" }}>
+                <Typography variant='h6' sx={{ color: "#6C849D", fontWeight: 700, lineHeight: "16px", fontSize: '12px' }}>{number}</Typography>
+            </Box>
+            <Typography variant='h6' sx={{ color: "#243547", fontWeight: 500, lineHeight: "20px", fontSize: '14px' }}>{label}</Typography>
         </Box>
-        <Typography variant='h6' sx={{ color: "#243547", fontWeight: 500, lineHeight: "20px", fontSize: '14px' }}>{label}</Typography>
-    </Box>
-);
+    );
+};
 
 const OnboardingSteps: React.FC = () => {
     const steps = [

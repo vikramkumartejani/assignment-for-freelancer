@@ -20,12 +20,13 @@ const accordionTypographyStyle = {
 };
 
 interface AccordionComponentProps {
+    id: string;
     title: string;
     children: React.ReactNode;
     isLast?: boolean;
 }
 
-const AccordionComponent: React.FC<AccordionComponentProps> = ({ title, children, isLast = false }) => {
+const AccordionComponent: React.FC<AccordionComponentProps> = ({ id, title, children, isLast = false }) => {
     const [expanded, setExpanded] = React.useState<string | false>(false);
 
     const handleChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
@@ -33,7 +34,7 @@ const AccordionComponent: React.FC<AccordionComponentProps> = ({ title, children
     };
 
     return (
-        <Accordion expanded={expanded === title} onChange={handleChange(title)} sx={{ boxShadow: 'none', '&:before': { display: 'none' }, '&.Mui-expanded': { margin: 0 }, ...(isLast && { borderBottom: "1px solid #E3EAF3" }) }}>
+        <Accordion id={id} expanded={expanded === title} onChange={handleChange(title)} sx={{ boxShadow: 'none', '&:before': { display: 'none' }, '&.Mui-expanded': { margin: 0 }, ...(isLast && { borderBottom: "1px solid #E3EAF3" }) }}>
             <AccordionSummary expandIcon={<ExpandMoreIcon sx={{ color: "#768EA7" }} />} aria-controls={`${title}-content`} id={`${title}-header`} sx={accordionHeaderStyle}>
                 <Typography variant="h6" sx={accordionTypographyStyle}>
                     {title}
