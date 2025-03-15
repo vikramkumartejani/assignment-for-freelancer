@@ -62,9 +62,9 @@ interface DropdownProps {
     options: { value: string; label: string }[]
     required?: boolean
     onChange?: (value: string) => void
-    defaultToFirstOption?: boolean  
-    defaultValue?: string 
-    placeholder?: string  
+    defaultToFirstOption?: boolean
+    defaultValue?: string
+    placeholder?: string
 }
 
 const Dropdown: React.FC<DropdownProps> = ({
@@ -72,7 +72,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     options,
     required = false,
     onChange,
-    defaultToFirstOption = false, 
+    defaultToFirstOption = false,
     defaultValue = "",
     placeholder = "Select",
 }) => {
@@ -166,4 +166,3 @@ const Dropdown: React.FC<DropdownProps> = ({
 }
 
 export default Dropdown
-
