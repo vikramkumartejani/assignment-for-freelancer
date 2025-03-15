@@ -106,8 +106,8 @@ const GstinModal: React.FC<GstinModalProps> = ({ open, onClose }) => {
                                         ['E-Invoice Status', 'Applicable']
                                     ].map(([label, value]) => (
                                         <Box key={label} sx={{ display: 'flex' }}>
-                                            <Typography sx={{ fontWeight: 500, minWidth: 195, minHeight: "40px", display: "flex", alignItems: "center", color:"#40566D", fontSize:"14px", lineHeight:"20px" }}>{label}:</Typography>
-                                            <Typography sx={{pl:"20px", fontWeight: 600, minWidth: 292, minHeight: "40px", display: "flex", alignItems: "center", color:"#192839", fontSize:"14px", lineHeight:"20px" }}>{value}</Typography>
+                                            <Typography sx={{ fontWeight: 500, minWidth: 195, minHeight: "40px", display: "flex", alignItems: "center", color: "#40566D", fontSize: "14px", lineHeight: "20px" }}>{label}:</Typography>
+                                            <Typography sx={{ pl: "20px", fontWeight: 600, minWidth: 292, minHeight: "40px", display: "flex", alignItems: "center", color: "#192839", fontSize: "14px", lineHeight: "20px" }}>{value}</Typography>
                                         </Box>
                                     ))}
                                 </Box>
@@ -124,9 +124,11 @@ const GstinModal: React.FC<GstinModalProps> = ({ open, onClose }) => {
                                             width: "100%",
                                             height: "66px",
                                             color: selectedAddress === "address1" ? "#192839" : "#40566D",
-                                            fontSize: "14px",
-                                            lineHeight: "20px",
-                                            fontWeight: 500,
+                                            "& .MuiFormControlLabel-label": {
+                                                fontSize: "14px",
+                                                lineHeight: "20px",
+                                                fontWeight: 500,
+                                            },
                                         }}
                                         value="address1"
                                         control={
@@ -146,9 +148,11 @@ const GstinModal: React.FC<GstinModalProps> = ({ open, onClose }) => {
                                             width: "100%",
                                             height: "66px",
                                             color: selectedAddress === "address2" ? "#192839" : "#40566D",
-                                            fontSize: "10px",
-                                            lineHeight: "20px",
-                                            fontWeight: 500,
+                                            "& .MuiFormControlLabel-label": {
+                                                fontSize: "14px",
+                                                lineHeight: "20px",
+                                                fontWeight: 500,
+                                            },
                                         }}
                                         value="address2"
                                         control={
@@ -168,9 +172,11 @@ const GstinModal: React.FC<GstinModalProps> = ({ open, onClose }) => {
                                             width: "100%",
                                             height: "66px",
                                             color: selectedAddress === "address3" ? "#192839" : "#40566D",
-                                            fontSize: "14px",
-                                            lineHeight: "20px",
-                                            fontWeight: 500,
+                                            "& .MuiFormControlLabel-label": {
+                                                fontSize: "14px",
+                                                lineHeight: "20px",
+                                                fontWeight: 500,
+                                            },
                                         }}
                                         value="address3"
                                         control={
