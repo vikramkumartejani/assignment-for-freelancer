@@ -146,7 +146,7 @@ const GstinModal: React.FC<GstinModalProps> = ({ open, onClose }) => {
                                             width: "100%",
                                             height: "66px",
                                             color: selectedAddress === "address2" ? "#192839" : "#40566D",
-                                            fontSize: "14px",
+                                            fontSize: "10px",
                                             lineHeight: "20px",
                                             fontWeight: 500,
                                         }}
