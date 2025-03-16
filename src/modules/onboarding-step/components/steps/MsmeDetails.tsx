@@ -60,7 +60,7 @@ const MsmeDetails: React.FC = () => {
                                 }}
                             >
                                 {isValidated && <Image src="/assets/validated.svg" alt="validated" width={16} height={16} />}
-                                Validate
+                                {isValidated ? "Validated" : "Validate"}
                             </Button>
                         </Box>
                     </Box>

@@ -1,12 +1,32 @@
 "use client"
 
 import type React from "react"
-import { Box } from "@mui/material"
+import { useState } from "react"
+import { Box, Button } from "@mui/material"
 import Dropdown from "./Dropdown"
 import DatePicker from "./DatePicker"
 import Input from "./Input"
+import Image from "next/image"
+import BusinessType from "./BusinessTypeDropdown"
+import Attachment from './Attachment'
+import BusinessTypeDropdown from "./BusinessTypeDropdown"
 
 const VendorBasicDetails: React.FC = () => {
+    const [vendorPan, setVendorPan] = useState({ id: "vendorPan", value: "ABCD12345GH", isValidated: false })
+    const [businessType, setBusinessType] = useState<string>("");
+
+    const handleInputChange = (field: string, value: string) => {
+        if (field === "vendorPan") {
+            setVendorPan(prevState => ({ ...prevState, value }))
+        }
+    }
+
+    const handleValidate = (id: string) => {
+        if (id === "vendorPan") {
+            setVendorPan(prevState => ({ ...prevState, isValidated: true }))
+        }
+    }
+
     const options = [
         { value: "Business in India", label: "Business in India" },
         { value: "Business in Foreign", label: "Business in Foreign" },
@@ -70,107 +90,170 @@ const VendorBasicDetails: React.FC = () => {
     return (
         <Box sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>
             <Box>
-                <Dropdown 
-                    label="Vendor Location" 
-                    options={options} 
-                    required={true} 
+                <Dropdown
+                    label="Vendor Location"
+                    options={options}
+                    required={true}
                     defaultValue="Business in India"
                 />
             </Box>
-            <Box>
-                <Input label="Vendor Name" required value="Tech Innovation"/>
+
+            <Box sx={{ display: "flex", gap: "20px", alignItems: "end" }}>
+                <Box sx={{ width: "100%" }}>
+                    <Input
+                        label='Vendor Pan'
+                        required
+                        value={vendorPan.value}
+                        onChange={(e) => handleInputChange("vendorPan", e.target.value)}
+                    />
+                </Box>
+                <Box>
+                    <Button
+                        onClick={() => handleValidate(vendorPan.id)}
+                        sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "8px",
+                            bgcolor: vendorPan.isValidated ? "#167B59" : "#5D4AD4",
+                            padding: "0px 16px",
+                            width: "117px",
+                            borderRadius: "8px",
+                            height: '40px',
+                            color: "#FFFFFF",
+                            fontSize: "14px",
+                            fontWeight: 600,
+                            lineHeight: "16px",
+                            textTransform: "capitalize"
+                        }}
+                    >
+                        {vendorPan.isValidated && <Image src="/assets/validated.svg" alt='validated' width={16} height={16} />}
+                        {vendorPan.isValidated ? "Validated" : "Validate"}
+
+                    </Button>
+                </Box>
             </Box>
+
             <Box>
-                <Input label="Email Id" required value="tech.innovation@tech.com"/>
+                <BusinessTypeDropdown onBusinessTypeChange={setBusinessType} />
             </Box>
+
             <Box>
-                <Input label="Designation" placeholder="Enter Designation"/>
+                <Input label="Pan Registration Name" required value="Tech Innovation" />
             </Box>
+
             <Box>
-                <Input label="Mobile No" placeholder="Enter Mobile Number"/>
+                <Input label="Pan Status" required value="Active" />
             </Box>
+
             <Box>
-                <Dropdown 
-                    label="Dentsu Entity Name" 
-                    options={dentsuentityname} 
+                <Input label="Vendor Name" required value="Tech Innovation" />
+            </Box>
+
+            <Box>
+                <Input label="Email Id" required value="tech.innovation@tech.com" />
+            </Box>
+
+            <Box>
+                <Input label="Designation" placeholder="Enter Designation" />
+            </Box>
+
+            <Box>
+                <Input label="Mobile No" placeholder="Enter Mobile Number" />
+            </Box>
+
+            <Box>
+                <Dropdown
+                    label="Dentsu Entity Name"
+                    options={dentsuentityname}
                     defaultValue="Dentsu Webchutney Pvt. Ltd."
-                    required={true} 
+                    required={true}
                 />
             </Box>
+
             <Box>
-                <Dropdown 
-                    label="Vendor Type" 
-                    options={vendortype} 
+                <Dropdown
+                    label="Vendor Type"
+                    options={vendortype}
                     defaultValue="Media"
-                    required={true} 
+                    required={true}
                 />
             </Box>
+
             <Box>
-                <Dropdown 
-                    label="Brand Name" 
-                    options={brandname} 
+                <Dropdown
+                    label="Brand Name"
+                    options={brandname}
                     defaultValue="NovaTech Solutions"
-                    required={true} 
+                    required={true}
                 />
             </Box>
+
             <Box>
-                <Dropdown 
-                    label="Medium" 
-                    options={mediumtwo} 
+                <Dropdown
+                    label="Medium"
+                    options={mediumtwo}
                     defaultValue="TV"
-                    required={true} 
+                    required={true}
                 />
             </Box>
+
             <Box>
-                <Input label="Explain the nature of the vendor’s business" required value="Media"/>
+                <Input label="Explain the nature of the vendor’s business" required value="Media" />
             </Box>
+
             <Box>
-                <Dropdown 
-                    label="Medium" 
-                    options={medium} 
+                <Dropdown
+                    label="Medium"
+                    options={medium}
                     defaultValue="Digital Marketing"
-                    required={true} 
+                    required={true}
                 />
             </Box>
+
             <Box>
-                <Dropdown 
-                    label="Estimated Annual Turnover with Dentsu" 
-                    options={estimatedannual} 
+                <Dropdown
+                    label="Estimated Annual Turnover with Dentsu"
+                    options={estimatedannual}
                     defaultValue="₹1,00,00,000"
-                    required={true} 
+                    required={true}
                 />
             </Box>
+
             <Box>
-                <Input 
-                    label="Have you evaluated any existing vendors who are empaneled in our system, and what was your conclusion? Please provide a business rationale for onboarding this vendor" 
+                <Input
+                    label="Have you evaluated any existing vendors who are empaneled in our system, and what was your conclusion? Please provide a business rationale for onboarding this vendor"
                     value="They have a strong industry reputation and align well with our project requirements"
-                    required 
+                    required
                 />
             </Box>
+
             <Box>
-                <Dropdown 
-                    label="Payment Terms" 
-                    options={paymentterms} 
-                    required={true} 
-                    defaultToFirstOption={true} 
+                <Dropdown
+                    label="Payment Terms"
+                    options={paymentterms}
+                    required={true}
+                    defaultToFirstOption={true}
                 />
             </Box>
+
             <Box>
-                <Dropdown 
-                    label="Payment Mode" 
-                    options={paymentmode} 
-                    required={true} 
-                    defaultToFirstOption={true} 
+                <Dropdown
+                    label="Payment Mode"
+                    options={paymentmode}
+                    required={true}
+                    defaultToFirstOption={true}
                 />
             </Box>
+
             <Box>
                 <Dropdown
                     label="Please mention TDS rate"
                     options={TDSrate}
                     required={true}
-                    defaultToFirstOption={true} 
+                    defaultToFirstOption={true}
                 />
             </Box>
+
             <Box>
                 <Dropdown
                     label="Do you have a related party relationship with this vendor (To the best of your knowledge & belief are any owners or employees of the vendor, immediate family members or close friends of"
@@ -179,29 +262,33 @@ const VendorBasicDetails: React.FC = () => {
                     defaultToFirstOption={true}
                 />
             </Box>
+
             <Box>
-                <Input 
-                    label="What kind of relation" 
+                <Input
+                    label="What kind of relation"
                     value="N/A"
-                    required 
+                    required
                 />
             </Box>
+
             <Box>
-                <DatePicker label="Please mention the Campaign start Date" />
+                <DatePicker dateLabel="Please mention the Campaign start Date" />
             </Box>
+
             <Box>
-                <Input 
-                    label="Requestor Email Id" 
+                <Input
+                    label="Requestor Email Id"
                     value="ramesh.pawar@tech.com"
-                    required 
+                    required
                 />
             </Box>
+
             <Box>
-                <Dropdown 
-                    label="Approver Name" 
-                    options={approverName} 
-                    required={true} 
-                    defaultToFirstOption={true} 
+                <Dropdown
+                    label="Approver Name"
+                    options={approverName}
+                    required={true}
+                    defaultToFirstOption={true}
                 />
             </Box>
         </Box>

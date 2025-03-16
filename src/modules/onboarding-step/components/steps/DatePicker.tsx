@@ -1,98 +1,98 @@
-import React, { useRef, useState } from 'react';
-import { TextField, InputAdornment, Box, Typography } from '@mui/material';
-import { styled } from '@mui/system';
-import Image from 'next/image';
+import React, { useState } from "react";
+import { Box, TextField, Typography, InputAdornment, IconButton, Menu, FormHelperText } from "@mui/material";
+import dayjs, { Dayjs } from "dayjs";
+import PreviewerCustomCalendar from "../PreviewerCustomCalendar";
+import Image from "next/image";
 
 interface DatePickerProps {
-    label: string;
-    required?: boolean;
+    dateLabel: string;
 }
 
-const CustomTextField = styled(TextField)({
-    '& .MuiInputBase-root': {
-        borderRadius: '8px',
-        border: '1px solid #6C849D52',
-        padding: '10px 16px 10px 0px',
-        fontSize: '14px',
-        fontWeight: 500,
-        color: '#192839',
-        lineHeight: '20px',
-        height: '40px',
-        backgroundColor: 'transparent',
-    },
-    '& .MuiInputLabel-root': {
-        color: '#2F4256',
-        fontWeight: 'medium',
-    },
-    '& .MuiInputLabel-asterisk': {
-        color: '#D44A4A',
-    },
-    '& .MuiOutlinedInput-notchedOutline': {
-        border: 'none',
-    },
-    '& input[type="date"]::-webkit-calendar-picker-indicator': {
-        opacity: 0,
-        width: 0,
-        position: 'absolute',
-    },
-    '& input::placeholder': {
-        textTransform: 'uppercase',
-        color: "#768EA7",
-        fontSize: "14px",
-        fontWeight: 500,
-        lineHeight: "20px",
-        opacity: 1,
-    },
-    '& input': {
-        textTransform: 'uppercase',
-        color: "#768EA7",
-        fontSize: "14px",
-        fontWeight: 500,
-        lineHeight: "20px"
-    },
-});
+const DatePicker: React.FC<DatePickerProps> = ({ dateLabel }) => {
+    const [calendarAnchorEl, setCalendarAnchorEl] = useState<null | HTMLElement>(null);
+    const [activeFieldId, setActiveFieldId] = useState<string | null>(null);
+    const [dateValues, setDateValues] = useState<{ [key: string]: Dayjs | null }>({});
+    const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
-const DatePicker: React.FC<DatePickerProps> = ({ label, required = false }) => {
-    const [selectedDate, setSelectedDate] = useState<string>('');
-    const inputRef = useRef<HTMLInputElement>(null);
-
-    const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSelectedDate(event.target.value);
+    const openCalendar = (event: React.MouseEvent<HTMLElement>, fieldId: string) => {
+        setCalendarAnchorEl(event.currentTarget);
+        setActiveFieldId(fieldId);
     };
 
-    const handleIconClick = () => {
-        if (inputRef.current) {
-            inputRef.current.showPicker(); 
+    const closeCalendar = () => {
+        setCalendarAnchorEl(null);
+        setActiveFieldId(null);
+    };
+
+    const handleDateChange = (date: Dayjs | null) => {
+        if (activeFieldId) {
+            setDateValues((prev) => ({ ...prev, [activeFieldId]: date }));
         }
+        closeCalendar();
     };
 
     return (
         <Box>
-            <Typography variant="body2" sx={{ color: '#2F4256', fontSize: '13px', fontWeight: 500, mb: '6px' }}>
-                {label}
-                {required && <span style={{ color: '#D44A4A' }}>*</span>}
-            </Typography>
-            <CustomTextField
-                type="date"
-                value={selectedDate}
-                onChange={handleDateChange}
-                fullWidth
-                required={required}
-                inputRef={inputRef}
-                InputLabelProps={{
-                    shrink: true,
+            <Typography
+                sx={{
+                    fontSize: "13px",
+                    fontWeight: 500,
+                    paddingBottom: "8px",
+                    color: "#2F4256",
                 }}
+            >
+                {dateLabel}<span style={{ color: "#D44A4A" }}>*</span>
+            </Typography>
+
+            <TextField
+                fullWidth
+                id="date-field"
+                placeholder="DD/MM/YYYY"
+                required
+                variant="outlined"
+                value={dateValues["date-field"] ? dayjs(dateValues["date-field"]).format("DD-MM-YYYY") : ""}
+                onClick={(e) => openCalendar(e, "date-field")}
                 InputProps={{
+                    readOnly: true,
                     endAdornment: (
-                        <InputAdornment position="end" onClick={handleIconClick} style={{ cursor: 'pointer' }}>
-                            <Image src="/assets/date-picker.svg" alt="Date Picker Icon" width={16} height={16} />
+                        <InputAdornment position="end">
+                            <IconButton onClick={(e) => openCalendar(e, "date-field")} edge="end">
+                                <Image src="/assets/date-picker.svg" alt="Date Picker Icon" width={18} height={18} style={{ marginRight: "4px" }} />
+                            </IconButton>
                         </InputAdornment>
                     ),
                 }}
-                placeholder={!selectedDate ? 'MM/DD/YYYY' : ''}  
+                sx={{
+                    width: "100%",
+                    "& .MuiOutlinedInput-root": { height: "40px", borderRadius: "8px", },
+                    "& .MuiInputBase-input": { height: "40px", cursor: "pointer" },
+                    "& input::placeholder": { color: "#768EA7", opacity: 1, fontSize: "14px", fontWeight: 500, lineHeight: "20px" },
+                }}
             />
+
+
+            {calendarAnchorEl && activeFieldId && (
+                <Menu
+                    anchorEl={calendarAnchorEl}
+                    open={Boolean(calendarAnchorEl)}
+                    onClose={closeCalendar}
+                    sx={{ marginLeft: 20, "& .MuiPaper-root": { boxShadow: 1, border: "1px solid #ccc" } }}
+                >
+                    <PreviewerCustomCalendar
+                        startDate={dateValues[activeFieldId] || null}
+                        endDate={null}
+                        onStartDateChange={handleDateChange}
+                        onEndDateChange={() => { }}
+                        onClose={closeCalendar}
+                        isSingleDate={true}
+                    />
+                </Menu>
+            )}
+
+            {errors["date-field"] && <FormHelperText error>{errors["date-field"]}</FormHelperText>}
         </Box>
     );
 };
 
 export default DatePicker;
+

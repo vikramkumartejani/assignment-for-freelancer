@@ -33,8 +33,10 @@ const TaxDetails: React.FC = () => {
                     <Box>
                         <Input label="Enter Limit" placeholder='Enter Limit' required />
                     </Box>
-                    <DatePicker label="LDC Period Start Date" required/>
-                    <DatePicker label="LDC Period End Date" required/>
+                    <DatePicker dateLabel="LDC Period Start Date"/>
+
+                    <DatePicker dateLabel='LDC Period End Date' />
+
                     <Box>
                         <Input label="LDC Certificate Number" placeholder='Enter Percentage' required />
                     </Box>

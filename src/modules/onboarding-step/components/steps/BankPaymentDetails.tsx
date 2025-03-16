@@ -84,7 +84,7 @@ const BankPaymentDetails: React.FC = () => {
                                 }}
                             >
                                 {account.isValidated && <Image src="/assets/validated.svg" alt='validated' width={16} height={16} />}
-                                Validate
+                                {account.isValidated ? "Validated" : "Validate"}
                             </Button>
                         </Box>
                     </Box>
