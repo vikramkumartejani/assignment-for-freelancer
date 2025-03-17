@@ -1,14 +1,14 @@
-import React from 'react'
-import { Box } from '@mui/material'
-import AccordionComponent from './AccordionComponent'
-import VendorBasicDetails from './steps/VendorBasicDetails'
-import PanGstDetails from './steps/PanGstDetails'
-import AddressDetails from './steps/AddressDetails'
-import MsmeDetails from './steps/MsmeDetails'
-import BankPaymentDetails from './steps/BankPaymentDetails'
-import ContactDetails from './steps/ContactDetails'
-import TaxDetails from './steps/TaxDetails'
-import Attachment from './steps/Attachment'
+import React, { useState } from 'react';
+import { Box } from '@mui/material';
+import AccordionComponent from './AccordionComponent';
+import VendorBasicDetails from './steps/VendorBasicDetails';
+import PanGstDetails from './steps/PanGstDetails';
+import AddressDetails from './steps/AddressDetails';
+import MsmeDetails from './steps/MsmeDetails';
+import BankPaymentDetails from './steps/BankPaymentDetails';
+import ContactDetails from './steps/ContactDetails';
+import TaxDetails from './steps/TaxDetails';
+import Attachment from './steps/Attachment';
 
 interface AccordionListProps {
     expanded: string | false;
@@ -16,10 +16,12 @@ interface AccordionListProps {
 }
 
 const AccordionList: React.FC<AccordionListProps> = ({ expanded }) => {
+    const [businessType, setBusinessType] = useState<string | null>(null);
+
     return (
         <Box>
             <AccordionComponent id="vendor-basic-details" title="1. Vendor Basic Details" expanded={expanded === "vendor-basic-details"}>
-                <VendorBasicDetails />
+                <VendorBasicDetails businessType={businessType} setBusinessType={setBusinessType} />
             </AccordionComponent>
             <AccordionComponent id="pan-gst-details" title="2. Pan & GST Details" expanded={expanded === "pan-gst-details"}>
                 <PanGstDetails />
@@ -40,10 +42,10 @@ const AccordionList: React.FC<AccordionListProps> = ({ expanded }) => {
                 <TaxDetails />
             </AccordionComponent>
             <AccordionComponent id="attachment" title="8. Attachment" isLast expanded={expanded === "attachment"}>
-                <Attachment />
+                <Attachment businessType={businessType} />
             </AccordionComponent>
         </Box>
-    )
-}
+    );
+};
 
-export default AccordionList
+export default AccordionList;

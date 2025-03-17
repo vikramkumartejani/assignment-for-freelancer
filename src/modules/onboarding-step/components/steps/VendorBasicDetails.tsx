@@ -7,13 +7,14 @@ import Dropdown from "./Dropdown"
 import DatePicker from "./DatePicker"
 import Input from "./Input"
 import Image from "next/image"
-import BusinessType from "./BusinessTypeDropdown"
-import Attachment from './Attachment'
-import BusinessTypeDropdown from "./BusinessTypeDropdown"
 
-const VendorBasicDetails: React.FC = () => {
+interface VendorBasicDetailsProps {
+    businessType: string | null;
+    setBusinessType: (value: string | null) => void;
+}
+
+const VendorBasicDetails: React.FC<VendorBasicDetailsProps> = ({ businessType, setBusinessType }) => {
     const [vendorPan, setVendorPan] = useState({ id: "vendorPan", value: "ABCD12345GH", isValidated: false })
-    const [businessType, setBusinessType] = useState<string>("");
 
     const handleInputChange = (field: string, value: string) => {
         if (field === "vendorPan") {
@@ -87,6 +88,19 @@ const VendorBasicDetails: React.FC = () => {
         { value: "Dentsu Webchutney Pvt. Ltd. - 1", label: "Dentsu Webchutney Pvt. Ltd. - 1" },
     ]
 
+    const businessTypes = [
+        { value: "Individual", label: "Individual" },
+        { value: "Proprietorship", label: "Proprietorship" },
+        { value: "Partnership", label: "Partnership" },
+        { value: "Private Limited", label: "Private Limited" },
+        { value: "Public Limited", label: "Public Limited" },
+        { value: "Foreign", label: "Foreign" },
+        { value: "Vendor", label: "Vendor" },
+    ];
+
+    const handleDropdownChange = (selectedValue: string) => {
+        setBusinessType(selectedValue);
+    };
     return (
         <Box sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>
             <Box>
@@ -134,7 +148,13 @@ const VendorBasicDetails: React.FC = () => {
             </Box>
 
             <Box>
-                <BusinessTypeDropdown onBusinessTypeChange={setBusinessType} />
+            <Dropdown
+                label="Business Type"
+                options={businessTypes}
+                required={true}
+                defaultValue={businessType || ""}
+                onChange={handleDropdownChange}  
+            />
             </Box>
 
             <Box>
