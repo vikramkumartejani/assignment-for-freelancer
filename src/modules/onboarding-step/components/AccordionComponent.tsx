@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Accordion, AccordionSummary, AccordionDetails, Typography, Box } from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
@@ -24,21 +24,26 @@ interface AccordionComponentProps {
     title: string;
     children: React.ReactNode;
     isLast?: boolean;
+    expanded: boolean;
 }
 
-const AccordionComponent: React.FC<AccordionComponentProps> = ({ id, title, children, isLast = false }) => {
-    const [expanded, setExpanded] = React.useState<string | false>(false);
+const AccordionComponent: React.FC<AccordionComponentProps> = ({ id, title, children, isLast = false, expanded }) => {
+    const [internalExpanded, setInternalExpanded] = React.useState<string | false>(expanded ? title : false);
+
+    useEffect(() => {
+        setInternalExpanded(expanded ? title : false);
+    }, [expanded, title]);
 
     const handleChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
-        setExpanded(isExpanded ? panel : false);
+        setInternalExpanded(isExpanded ? panel : false);
     };
 
     return (
-        <Accordion id={id} expanded={expanded === title} onChange={handleChange(title)} sx={{ boxShadow: 'none', '&:before': { display: 'none' }, '&.Mui-expanded': { margin: 0 }, ...(isLast && { borderBottom: "1px solid #E3EAF3" }) }}>
+        <Accordion id={id} expanded={internalExpanded === title} onChange={handleChange(title)} sx={{ boxShadow: 'none', '&:before': { display: 'none' }, '&.Mui-expanded': { margin: 0 }, ...(isLast && { borderBottom: "1px solid #E3EAF3" }) }}>
             <AccordionSummary expandIcon={<ExpandMoreIcon sx={{ color: "#768EA7" }} />} aria-controls={`${title}-content`} id={`${title}-header`} sx={accordionHeaderStyle}>
                 <Typography variant="h6" sx={accordionTypographyStyle}>
                     {title}
-                </Typography>   
+                </Typography>
             </AccordionSummary>
             <AccordionDetails sx={{ padding: '0px 20px 20px 20px' }}>
                 {children}

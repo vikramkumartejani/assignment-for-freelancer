@@ -6,7 +6,12 @@ import OnboardingSteps from './OnboardingSteps'
 import AccordionList from './AccordionList'
 
 const FormTimeline: React.FC = () => {
+    const [expanded, setExpanded] = useState<string | false>(false);
 
+    const handleExpand = (id: string) => {
+        setExpanded(id);
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    };
 
     return (
         <Box sx={{ maxWidth: 902, mx: 'auto', width: '100%', borderRadius: 2, display: 'flex', alignItems: 'start', bgcolor: "white", minHeight: '664px', height: "664px" }}>
@@ -15,15 +20,15 @@ const FormTimeline: React.FC = () => {
                 <Typography variant="h6" sx={{ color: '#243547', fontWeight: 700, lineHeight: '24px', fontSize: '16px', marginBottom: "28px" }}>
                     Onboarding Steps
                 </Typography>
-                <OnboardingSteps />
+                <OnboardingSteps onStepClick={handleExpand} />
             </Box>
 
             {/* Vendor Onboarding  */}
             <Box sx={{
                 width: '100%', bgcolor: 'white', borderTopRightRadius: 8, borderBottomRightRadius: 8, display: 'flex', flexDirection: 'column', minHeight: '664px', maxHeight: "664px", overflowY: "scroll",
-                scrollbarWidth: "none",  
+                scrollbarWidth: "none",
                 "&::-webkit-scrollbar": {
-                    display: "none", 
+                    display: "none",
                 },
             }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', p: 3 }}>
@@ -38,7 +43,7 @@ const FormTimeline: React.FC = () => {
                     <Image src='/assets/dentsu.svg' alt='dentsu' width={114} height={24} />
                 </Box>
                 {/* Form Accordion */}
-                <AccordionList/>
+                <AccordionList expanded={expanded} handleExpand={handleExpand} />
 
                 <Box sx={{ display: 'flex', alignItems: 'end', justifyContent: 'end', p: 3 }}>
                     <Button sx={{ bgcolor: "#5D4AD4", fontSize: "14px", lineHeight: "16px", color: "white", fontWeight: 600, width: '86px', height: "40px", textTransform: "capitalize", borderRadius: "8px" }}>Preview</Button>

@@ -10,31 +10,36 @@ import ContactDetails from './steps/ContactDetails'
 import TaxDetails from './steps/TaxDetails'
 import Attachment from './steps/Attachment'
 
-const AccordionList: React.FC = () => {
+interface AccordionListProps {
+    expanded: string | false;
+    handleExpand: (id: string) => void;
+}
+
+const AccordionList: React.FC<AccordionListProps> = ({ expanded }) => {
     return (
         <Box>
-            <AccordionComponent id="vendor-basic-details" title="1. Vendor Basic Details">
+            <AccordionComponent id="vendor-basic-details" title="1. Vendor Basic Details" expanded={expanded === "vendor-basic-details"}>
                 <VendorBasicDetails />
             </AccordionComponent>
-            <AccordionComponent id="pan-gst-details" title="2. Pan & GST Details">
+            <AccordionComponent id="pan-gst-details" title="2. Pan & GST Details" expanded={expanded === "pan-gst-details"}>
                 <PanGstDetails />
             </AccordionComponent>
-            <AccordionComponent id="address-details" title="3. Address Details">
+            <AccordionComponent id="address-details" title="3. Address Details" expanded={expanded === "address-details"}>
                 <AddressDetails />
             </AccordionComponent>
-            <AccordionComponent id="msme-details" title="4. MSME Details">
+            <AccordionComponent id="msme-details" title="4. MSME Details" expanded={expanded === "msme-details"}>
                 <MsmeDetails />
             </AccordionComponent>
-            <AccordionComponent id="bank-payment-details" title="5. Bank & Payment Details">
+            <AccordionComponent id="bank-payment-details" title="5. Bank & Payment Details" expanded={expanded === "bank-payment-details"}>
                 <BankPaymentDetails />
             </AccordionComponent>
-            <AccordionComponent id="contact-details" title="6. Contact Details">
+            <AccordionComponent id="contact-details" title="6. Contact Details" expanded={expanded === "bank-details"}>
                 <ContactDetails />
             </AccordionComponent>
-            <AccordionComponent id="tax-details" title="7. Tax Details">
+            <AccordionComponent id="tax-details" title="7. Tax Details" expanded={expanded === "tax-details"}>
                 <TaxDetails />
             </AccordionComponent>
-            <AccordionComponent id="attachment" title="8. Attachment" isLast>
+            <AccordionComponent id="attachment" title="8. Attachment" isLast expanded={expanded === "attachment"}>
                 <Attachment />
             </AccordionComponent>
         </Box>

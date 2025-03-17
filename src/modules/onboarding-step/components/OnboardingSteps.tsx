@@ -4,11 +4,13 @@ import React from 'react'
 interface StepProps {
     number: number;
     label: string;
+    onClick: () => void;
 }
 
-const Step: React.FC<StepProps> = ({ number, label }) => {
+const Step: React.FC<StepProps> = ({ number, label, onClick }) => {
     const handleClick = () => {
         document.getElementById(label.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-'))?.scrollIntoView({ behavior: 'smooth' });
+        onClick();
     };
 
     return (
@@ -21,7 +23,7 @@ const Step: React.FC<StepProps> = ({ number, label }) => {
     );
 };
 
-const OnboardingSteps: React.FC = () => {
+const OnboardingSteps: React.FC<{ onStepClick: (id: string) => void }> = ({ onStepClick }) => {
     const steps = [
         "Vendor Basic Details",
         "Pan & GST Details",
@@ -37,7 +39,7 @@ const OnboardingSteps: React.FC = () => {
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: "28px", position: 'relative' }}>
             <Box sx={{ position: 'absolute', top: '20px', bottom: '20px', left: '10px', width: '1px', bgcolor: '#E3EAF3', zIndex: 1 }} />
             {steps.map((label, index) => (
-                <Step key={index} number={index + 1} label={label} />
+                <Step key={index} number={index + 1} label={label} onClick={() => onStepClick(label.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-'))} />
             ))}
         </Box>
     )
