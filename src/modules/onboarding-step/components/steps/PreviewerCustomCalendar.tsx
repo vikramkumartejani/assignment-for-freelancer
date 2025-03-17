@@ -72,7 +72,7 @@ const PreviewerCustomCalendar: React.FC<PreviewerCustomCalendarProps> = ({
                     onChange={handleDateChange}
                     sx={{
                         "& .MuiPickersDay-root.Mui-selected": { backgroundColor: "#5D4AD4" },
-                        "& .MuiPickersDay-root:not(.Mui-selected):hover": { backgroundColor: "#5D4AD4" }
+                        "& .MuiPickersDay-root:not(.Mui-selected):hover": { backgroundColor: "#5D4AD4", color:"#ffffff" }
                     }}
                 />
 
