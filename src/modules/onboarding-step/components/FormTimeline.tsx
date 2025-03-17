@@ -10,7 +10,6 @@ const FormTimeline: React.FC = () => {
 
     const handleExpand = (id: string) => {
         setExpanded(id);
-        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     };
 
     return (
