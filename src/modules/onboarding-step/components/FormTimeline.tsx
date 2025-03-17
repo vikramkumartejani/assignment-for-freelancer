@@ -14,7 +14,6 @@ const FormTimeline: React.FC = () => {
 
     return (
         <Box sx={{ maxWidth: 902, mx: 'auto', width: '100%', borderRadius: 2, display: 'flex', alignItems: 'start', bgcolor: "white", minHeight: '664px', height: "664px" }}>
-            {/* Onboarding Steps */}
             <Box sx={{ p: 3, bgcolor: '#F8FAFC', borderRight: '1px solid #6C849D2E', minWidth: 248, borderTopLeftRadius: 8, borderBottomLeftRadius: 8, minHeight: '664px', height: "664px" }}>
                 <Typography variant="h6" sx={{ color: '#243547', fontWeight: 700, lineHeight: '24px', fontSize: '16px', marginBottom: "28px" }}>
                     Onboarding Steps
